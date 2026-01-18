@@ -397,6 +397,7 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人
 - **开发用途**：环境检测
 - **最新版本**：``v1.6.1-8d59eacb (3)``
 - **发行日期**：早于 2025 年 12 月 20 日
+- ![duckDetectorCN.png](duckDetectorCN.png)
 
 ### Hunter
 

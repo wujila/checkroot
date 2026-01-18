@@ -10,17 +10,18 @@ Given the following definitions, the development of bypassing can be briefly des
 
 - Magisk + Xposed (2018 and before), 
 - Magisk + Edxposed (2019), 
-- Magisk + Edxposed + Anti-detection plugins (2020), 
-- Magisk + LSPosed (2021), 
-- Magisk + Zygisk + Shamiko + LSPosed (2022), 
-- Magisk Fork + Zygisk Fork + Shamiko + LSPosed (2023), 
-- Magisk Fork + Zygisk Fork + Shamiko + LSPosed Fork + PIF + TS (2024), 
-- Magisk Fork + Zygisk Fork + SUSFS/Shamiko/Zygisk Assistant + LSPosed Fork + PIF + TS (the first season in 2025), 
-- Magisk Fork + Zygisk Fork + SUSFS/Shamiko/NoHello + LSPosed Fork + PIF + TS + VBMeta Fixer + Cleanup (the second season in 2025), 
-- SukiSU-Ultra + SUSFS + Zygisk Next (v1.2.9.1 and before) + Shamiko + LSPosed Fork + PIF + TS + VBMeta Fixer + Audit Patch + Cleanup (the third season in 2025), and
-- SukiSU-Ultra + SUSFS + Zygisk Next (v1.3.0 and later) + LSPosed Fork + PIF + TS + VBMeta Fixer + Audit Patch + Cleanup (the fourth season in 2025). 
+- Magisk + Edxposed + Anti-detection plugins + Dialog Cancellation (2020), 
+- Magisk + LSPosed + HMA (2021), 
+- Magisk + Zygisk + Shamiko + LSPosed + HMA (2022), 
+- Magisk Fork + Zygisk Fork + Shamiko + LSPosed + HMA (2023), 
+- Magisk Fork + Zygisk Fork + Shamiko + LSPosed Fork + PIF + TS + HMA (2024), 
+- Magisk Fork + Zygisk Fork + SUSFS/Shamiko/Zygisk Assistant + LSPosed Fork + PIF + TS + HMAL (the first season in 2025), 
+- Magisk Fork + Zygisk Fork + SUSFS/Shamiko/NoHello + LSPosed Fork + PIF + TS + VBMeta Fixer + HMAL + Cleanup (the second season in 2025), 
+- SukiSU-Ultra + SUSFS + Zygisk Next (v1.2.9.1 and before) + Shamiko + LSPosed Fork + PIF + TS + VBMeta Fixer + Audit Patch + HMA + Cleanup (the third season in 2025), 
+- SukiSU-Ultra + SUSFS + Zygisk Next (v1.3.0 and later) + LSPosed Fork + PIF + TS + VBMeta Fixer + Audit Patch + HMA + Cleanup (the fourth season in 2025), and
+- SukiSU-Ultra + SUSFS + Zygisk Next (v1.3.0 and later) + LSPosed Fork + PIF + TS + VBMeta Fixer + Audit Patch + FuseFixer + HMA + Cleanup (the first season in 2026)
 
-Currently, even with the state-of-the-art bypassing techniques, the following problems still cannot be solved with appropriate solutions. 
+Currently, even with the state-of-the-art bypassing techniques, the following effects still cannot be implemented appropriately. 
 
 - Hide custom ROMs
 - Hide USB debugging and even developer options without injection traces detected
@@ -49,16 +50,25 @@ While following the tutorials, please also consider referring to the documentati
       - Remove the Shamiko, NoHello, and Zygisk Assistant modules, as well as their related folders in ``/data/adb``
       - Reboot the device
     - Install the latest [LSPosed](https://github.com/JingMatrix/LSPosed/actions) module (the latest Release version in the last successful CI construction action in the ``Actions`` tab of the GitHub repository of the ``Jing Matrix`` fork) in the SukiSU-Ultra layer
-      - Reboot $\rightarrow$ Open the LSPosed Manager $\rightarrow$ Create the LSPosed daemon $\rightarrow$ Create a desktop shortcut to the LSPosed daemon $\rightarrow$ Disable the logs, which could make the LSPosed detectable $\rightarrow$ Disable the LSPosed taskbar notification in the settings page of the LSPosed daemon $\rightarrow$ Uninstall the LSPosed Manager
-      - Input ``*#*#5776733#*#*`` in the dialer (do not call) or click the ``action`` button in the module detail in the SukiSU-Ultra manager to open the LSPosed daemon if necessary (or in case the desktop shortcut is missing)
-      - Install the latest [HMA](https://t.me/HideMyApplist) plugin (the latest build in its Telegram) in the LSPosed layer
-      - Set the target scope of the HMA plugin to **System Framework** only and enable the HMA plugin in the LSPosed Manager
-      - Reboot the device
-      - Configure the HMA
-        - Hide HMA's icon from the launcher in HMA's settings page
-        - Set the three switches in Data Isolation to ``On``, ``Off``, and ``On`` in sequence in the HMA's settings page (may require root privileges)
-        - Build appropriate whitelist (what applications the detectors can see) or blacklist (what applications the detectors cannot see) templates (can refer to [this tutorial](./HMA.md))
-        - Except for the SukiSU-Ultra Manager and the plugins, enable hiding for all user applications and system-pre-installed non-critical applications with suitable templates applied
+      - Reboot
+      - Click the ``action`` button in the module detail of the LSPosed module in the SukiSU-Ultra Manager or input ``*#*#5776733#*#*`` in the dialer (do not call) to open the LSPosed Manager
+      - Switch to the settings tab of the LSPosed Manager
+        - Disable the logs, which could make LSPosed detectable
+        - Create a desktop shortcut to the LSPosed Manager (daemon)
+        - Disable the LSPosed taskbar notification
+        - Uninstall the LSPosed Manager if you have installed it as an application
+      - Install and activate the plugins with the narrowest target scope in the LSPosed Manager
+        - Install and activate the latest [HMA](https://t.me/HideMyApplist) plugin (the latest build in its Telegram) in the LSPosed layer
+          - Set the target scope of the HMA plugin to **System Framework** only and enable the HMA plugin in the LSPosed Manager
+          - Configure the HMA
+            - Hide HMA's icon from the launcher in HMA's settings page
+            - Set the three switches in Data Isolation to ``On``, ``Off``, and ``On`` in sequence in the HMA's settings page (may require root privileges)
+            - Build appropriate whitelist (what applications the detectors can see) or blacklist (what applications the detectors cannot see) templates (can refer to [this tutorial](./HMA.md))
+            - Except for the SukiSU-Ultra Manager and the plugins, enable hiding for all user applications and system-pre-installed non-critical applications with suitable templates applied
+        - Install and activate the latest [FuseFixer](https://t.me/real5ec1cff) plugin (the latest build in its Telegram) in the LSPosed layer
+          - Set the target scope of the FuseFixer plugin to the recommended application only
+        - Install other plugins (if you wish to) with the narrowest target scope in the LSPosed Manager
+      - Reboot
     - Install the latest [Play Integrity fix](https://github.com/KOWX712/PlayIntegrityFix/actions) module in the SukiSU-Ultra layer (See [https://github.com/LRFP-Team/LRFP/tree/main/Implementers/Others](https://github.com/LRFP-Team/LRFP/tree/main/Implementers/Others) if the original repository is unavailable)
       - Enable the ``Spoof Build`` option via the web UI
       - Enable the ``Spoof Build (Play Store)``, the ``Spoof Props``, and ``Spoof Provider`` options via the web UI if you wish to
@@ -102,16 +112,25 @@ While following the tutorials, please also consider referring to the documentati
     - Please keep the switches of ``Use anonymous memory`` and ``Use Zygisk Next linker`` in the same state to avoid being detected
     - Remove the Shamiko and the NoHello modules, remove their related folders in ``/data/adb``, and reboot the device
   - Install the latest [LSPosed](https://github.com/JingMatrix/LSPosed/actions) module (the latest Release version in the last successful CI construction action in the ``Actions`` tab of the GitHub repository of the ``Jing Matrix`` fork) in the Magisk layer
-    - Reboot $\rightarrow$ Open the LSPosed Manager $\rightarrow$ Create the LSPosed daemon $\rightarrow$ Create a desktop shortcut to the LSPosed daemon $\rightarrow$ Disable the logs, which could make the LSPosed detectable $\rightarrow$ Disable the LSPosed taskbar notification in the settings page of the LSPosed daemon $\rightarrow$ Uninstall the LSPosed Manager
-    - Input ``*#*#5776733#*#*`` in the dialer (do not call) or click the ``action`` button in the module detail in the Magisk manager to open the LSPosed daemon if necessary (or in case the desktop shortcut is missing)
-    - Install the latest [HMA](https://t.me/HideMyApplist) plugin (the latest build in its Telegram) in the LSPosed layer
-    - Set the target scope of the HMA plugin to **System Framework** only and enable the HMA plugin in the LSPosed Manager
-    - Reboot the device
-    - Configure the HMA
-      - Hide HMA's icon from the launcher in HMA's settings page
-      - Set the three switches in Data Isolation to ``On``, ``Off``, and ``On`` in sequence in the HMA's settings page (may require root privileges)
-      - Build appropriate whitelist (what applications the detectors can see) or blacklist (what applications the detectors cannot see) templates (can refer to [this tutorial](./HMA.md))
-      - Except for the Magisk Manager and the plugins, enable hiding for all user applications and system-pre-installed non-critical applications with suitable templates applied
+    - Reboot
+    - Click the ``action`` button in the module detail of the LSPosed module in the Magisk Manager or input ``*#*#5776733#*#*`` in the dialer (do not call) to open the LSPosed Manager
+    - Switch to the settings tab of the LSPosed Manager
+      - Disable the logs, which could make LSPosed detectable
+      - Create a desktop shortcut to the LSPosed Manager (daemon)
+      - Disable the LSPosed taskbar notification
+      - Uninstall the LSPosed Manager if you have installed it as an application
+    - Install and activate the plugins with the narrowest target scope in the LSPosed Manager
+      - Install and activate the latest [HMA](https://t.me/HideMyApplist) plugin (the latest build in its Telegram) in the LSPosed layer
+        - Set the target scope of the HMA plugin to **System Framework** only and enable the HMA plugin in the LSPosed Manager
+        - Configure the HMA
+          - Hide HMA's icon from the launcher in HMA's settings page
+          - Set the three switches in Data Isolation to ``On``, ``Off``, and ``On`` in sequence in the HMA's settings page (may require root privileges)
+          - Build appropriate whitelist (what applications the detectors can see) or blacklist (what applications the detectors cannot see) templates (can refer to [this tutorial](./HMA.md))
+          - Except for the Magisk Manager and the plugins, enable hiding for all user applications and system-pre-installed non-critical applications with suitable templates applied
+      - Install and activate the latest [FuseFixer](https://t.me/real5ec1cff) plugin (the latest build in its Telegram) in the LSPosed layer
+        - Set the target scope of the FuseFixer plugin to the recommended application only
+      - Install other plugins (if you wish to) with the narrowest target scope in the LSPosed Manager
+    - Reboot
   - Install the latest [Play Integrity fix](https://github.com/KOWX712/PlayIntegrityFix/actions) module in the Magisk layer (See [https://github.com/LRFP-Team/LRFP/tree/main/Implementers/Others](https://github.com/LRFP-Team/LRFP/tree/main/Implementers/Others) if the original repository is unavailable)
     - Enable the ``Spoof Build`` option via a third-party web UI like [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable/actions)
     - Enable the ``Spoof Build (Play Store)``, the ``Spoof Props``, and ``Spoof Provider`` options via a third-party web UI like [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable/actions) if you wish to
@@ -168,16 +187,25 @@ While following the tutorials, please also consider referring to the documentati
       - Please keep the switches of ``Use anonymous memory`` and ``Use Zygisk Next linker`` in the same state to avoid being detected
       - Remove the Shamiko and the NoHello modules, remove their related folders in ``/data/adb``, and reboot the device
     - Install the latest [LSPosed](https://github.com/JingMatrix/LSPosed/actions) module (the latest Release version in the last successful CI construction action in the ``Actions`` tab of the GitHub repository of the ``Jing Matrix`` fork) in the Apatch layer
-      - Reboot $\rightarrow$ Open the LSPosed Manager $\rightarrow$ Create the LSPosed daemon $\rightarrow$ Create a desktop shortcut to the LSPosed daemon $\rightarrow$ Disable the logs, which could make the LSPosed detectable $\rightarrow$ Disable the LSPosed taskbar notification in the settings page of the LSPosed daemon $\rightarrow$ Uninstall the LSPosed Manager
-      - Input ``*#*#5776733#*#*`` in the dialer (do not call) or click the ``action`` button in the module detail in the Apatch manager to open the LSPosed daemon if necessary (or in case the desktop shortcut is missing)
-      - Install the latest [HMA](https://t.me/HideMyApplist) plugin (the latest build in its Telegram) in the LSPosed layer
-      - Set the target scope of the HMA plugin to **System Framework** only and enable the HMA plugin in the LSPosed Manager
-      - Reboot the device
-      - Configure the HMA
-        - Hide HMA's icon from the launcher in HMA's settings page
-        - Set the three switches in Data Isolation to ``On``, ``Off``, and ``On`` in sequence in the HMA's settings page (may require root privileges)
-        - Build appropriate whitelist (what applications the detectors can see) or blacklist (what applications the detectors cannot see) templates (can refer to [this tutorial](./HMA.md))
-        - Except for the Apatch Manager and the plugins, enable hiding for all user applications and system-pre-installed non-critical applications with suitable templates applied
+      - Reboot
+      - Click the ``action`` button in the module detail of the LSPosed module in the Apatch Manager or input ``*#*#5776733#*#*`` in the dialer (do not call) to open the LSPosed Manager
+      - Switch to the settings tab of the LSPosed Manager
+        - Disable the logs, which could make LSPosed detectable
+        - Create a desktop shortcut to the LSPosed Manager (daemon)
+        - Disable the LSPosed taskbar notification
+        - Uninstall the LSPosed Manager if you have installed it as an application
+      - Install and activate the plugins with the narrowest target scope in the LSPosed Manager
+        - Install and activate the latest [HMA](https://t.me/HideMyApplist) plugin (the latest build in its Telegram) in the LSPosed layer
+          - Set the target scope of the HMA plugin to **System Framework** only and enable the HMA plugin in the LSPosed Manager
+          - Configure the HMA
+            - Hide HMA's icon from the launcher in HMA's settings page
+            - Set the three switches in Data Isolation to ``On``, ``Off``, and ``On`` in sequence in the HMA's settings page (may require root privileges)
+            - Build appropriate whitelist (what applications the detectors can see) or blacklist (what applications the detectors cannot see) templates (can refer to [this tutorial](./HMA.md))
+            - Except for the Apatch Manager and the plugins, enable hiding for all user applications and system-pre-installed non-critical applications with suitable templates applied
+        - Install and activate the latest [FuseFixer](https://t.me/real5ec1cff) plugin (the latest build in its Telegram) in the LSPosed layer
+          - Set the target scope of the FuseFixer plugin to the recommended application only
+        - Install other plugins (if you wish to) with the narrowest target scope in the LSPosed Manager
+      - Reboot
     - Install the latest [Play Integrity fix](https://github.com/KOWX712/PlayIntegrityFix/actions) module in the Apatch layer (See [https://github.com/LRFP-Team/LRFP/tree/main/Implementers/Others](https://github.com/LRFP-Team/LRFP/tree/main/Implementers/Others) if the original repository is unavailable)
       - Enable the ``Spoof Build`` option via the web UI
       - Enable the ``Spoof Build (Play Store)``, the ``Spoof Props``, and ``Spoof Provider`` options via the web UI if you wish to
@@ -213,16 +241,25 @@ While following the tutorials, please also consider referring to the documentati
     - Enable whitelist mode on the settings page of the Magisk Delta
     - Select the package of the application that requires root privileges (you can only select the necessary packages in the applications)
   - Install the latest [LSPosed](https://github.com/JingMatrix/LSPosed/actions) module (the latest Release version in the last successful CI construction action in the ``Actions`` tab of the GitHub repository of the ``Jing Matrix`` fork) in the Magisk layer
-    - Reboot $\rightarrow$ Open the LSPosed Manager $\rightarrow$ Create the LSPosed daemon $\rightarrow$ Create a desktop shortcut to the LSPosed daemon $\rightarrow$ Disable the logs, which could make the LSPosed detectable $\rightarrow$ Disable the LSPosed taskbar notification in the settings page of the LSPosed daemon $\rightarrow$ Uninstall the LSPosed Manager
-    - Input ``*#*#5776733#*#*`` in the dialer (do not call) or click the ``action`` button in the module detail in the Magisk manager to open the LSPosed daemon if necessary (or in case the desktop shortcut is missing)
-    - Install the latest [HMA](https://t.me/HideMyApplist) plugin (the latest build in its Telegram) in the LSPosed layer
-    - Set the target scope of the HMA plugin to **System Framework** only and enable the HMA plugin in the LSPosed Manager
-    - Reboot the device
-    - Configure the HMA
-      - Hide HMA's icon from the launcher in HMA's settings page
-      - Set the three switches in Data Isolation to ``On``, ``Off``, and ``On`` in sequence in the HMA's settings page (may require root privileges)
-      - Build appropriate whitelist (what applications the detectors can see) or blacklist (what applications the detectors cannot see) templates (can refer to [this tutorial](./HMA.md))
-      - Except for the Magisk Manager and the plugins, enable hiding for all user applications and system-pre-installed non-critical applications with suitable templates applied
+    - Reboot
+    - Click the ``action`` button in the module detail of the LSPosed module in the Magisk Manager or input ``*#*#5776733#*#*`` in the dialer (do not call) to open the LSPosed Manager
+    - Switch to the settings tab of the LSPosed Manager
+      - Disable the logs, which could make LSPosed detectable
+      - Create a desktop shortcut to the LSPosed Manager (daemon)
+      - Disable the LSPosed taskbar notification
+      - Uninstall the LSPosed Manager if you have installed it as an application
+    - Install and activate the plugins with the narrowest target scope in the LSPosed Manager
+      - Install and activate the latest [HMA](https://t.me/HideMyApplist) plugin (the latest build in its Telegram) in the LSPosed layer
+        - Set the target scope of the HMA plugin to **System Framework** only and enable the HMA plugin in the LSPosed Manager
+        - Configure the HMA
+          - Hide HMA's icon from the launcher in HMA's settings page
+          - Set the three switches in Data Isolation to ``On``, ``Off``, and ``On`` in sequence in the HMA's settings page (may require root privileges)
+          - Build appropriate whitelist (what applications the detectors can see) or blacklist (what applications the detectors cannot see) templates (can refer to [this tutorial](./HMA.md))
+          - Except for the Magisk Manager and the plugins, enable hiding for all user applications and system-pre-installed non-critical applications with suitable templates applied
+      - Install and activate the latest [FuseFixer](https://t.me/real5ec1cff) plugin (the latest build in its Telegram) in the LSPosed layer
+        - Set the target scope of the FuseFixer plugin to the recommended application only
+      - Install other plugins (if you wish to) with the narrowest target scope in the LSPosed Manager
+    - Reboot
   - Install the latest [Play Integrity fix](https://github.com/KOWX712/PlayIntegrityFix/actions) module in the Magisk layer (See [https://github.com/LRFP-Team/LRFP/tree/main/Implementers/Others](https://github.com/LRFP-Team/LRFP/tree/main/Implementers/Others) if the original repository is unavailable)
     - Enable the ``Spoof Build`` option via a third-party web UI like [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable/actions)
     - Enable the ``Spoof Build (Play Store)``, the ``Spoof Props``, and ``Spoof Provider`` options via a third-party web UI like [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable/actions) if you wish to
@@ -264,17 +301,18 @@ For special cases, please refer to [./specialCases.md](./specialCases.md).
 
 - Magisk + Xposed（2018 年及之前版本）；
 - Magisk + Edxposed（2019 年）；
-- Magisk + Edxposed + 各系防封检测插件（2020 年）；
-- Magisk + LSPosed（2021 年）；
-- Magisk + Zygisk + Shamiko + LSPosed（2022 年）；
-- Magisk Fork + Zygisk Fork + Shamiko + LSPosed（2023 年）；
-- Magisk Fork + Zygisk Fork + Shamiko + LSPosed Fork + PIF + TS（2024 年）；
-- Magisk Fork + Zygisk Fork + SUSFS/Shamiko + LSPosed Fork + PIF + TS（2025 年第一季度）；
-- Magisk Fork + Zygisk Fork + SUSFS/Shamiko/NoHello + LSPosed Fork + PIF + TS + VBMeta Fixer + 残留清理（2025 年第二季度）；
-- SukiSU-Ultra + SUSFS + Zygisk Next (v1.2.9.1 and before) + Shamiko + LSPosed Fork + PIF + TS + VBMeta Fixer + Audit Patch + 残留清理（2025 年第三季度）以及；
-- SukiSU-Ultra + SUSFS + Zygisk Next (v1.3.0 and later) + LSPosed Fork + PIF + TS + VBMeta Fixer + Audit Patch + 残留清理（2025 年第四季度）。
+- Magisk + Edxposed + 各系防封检测插件 + 对话框取消（2020 年）；
+- Magisk + LSPosed + HMA（2021 年）；
+- Magisk + Zygisk + Shamiko + LSPosed + HMA（2022 年）；
+- Magisk Fork + Zygisk Fork + Shamiko + LSPosed + HMA（2023 年）；
+- Magisk Fork + Zygisk Fork + Shamiko + LSPosed Fork + PIF + TS + HMA（2024 年）；
+- Magisk Fork + Zygisk Fork + SUSFS/Shamiko/Zygisk Assistant + LSPosed Fork + PIF + TS + HMAL（2025 年第一季度）；
+- Magisk Fork + Zygisk Fork + SUSFS/Shamiko/NoHello + LSPosed Fork + PIF + TS + VBMeta Fixer + HMAL + 残留清理（2025 年第二季度）；
+- SukiSU-Ultra + SUSFS + Zygisk Next (v1.2.9.1 and before) + Shamiko + LSPosed Fork + PIF + TS + VBMeta Fixer + Audit Patch + HMA + 残留清理（2025 年第三季度）；
+- SukiSU-Ultra + SUSFS + Zygisk Next (v1.3.0 and later) + LSPosed Fork + PIF + TS + VBMeta Fixer + Audit Patch + HMA + 残留清理（2025 年第四季度）；以及
+- SukiSU-Ultra + SUSFS + Zygisk Next (v1.3.0 and later) + LSPosed Fork + PIF + TS + VBMeta Fixer + Audit Patch + FuseFixer + HMA + 残留清理（2026 年第一季度）。
 
-目前，即使使用了最先进的过检技术，以下问题依旧无法使用合适的方案解决。
+目前，即使使用了最先进的过检技术，以下效果依旧无法使用合适的方案实现。
 
 - 隐藏自定义 ROM
 - 在不暴露注入痕迹的前提下隐藏 USB 调试甚至开发者选项
@@ -288,7 +326,7 @@ For special cases, please refer to [./specialCases.md](./specialCases.md).
 
 ### 正在使用 KernelSU (KSU) / KSU Next (KSUN) / SukiSU-Ultra
 
-- 安装 SukiSU-Ultra GitHub 存储库的 ``Actions`` 选项卡中最后一次成功生成构建的 action 内生成的最新版 [SukiSU-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra/actions)
+- 安装 SukiSU-Ultra GitHub 存储库的 ``Actions`` 选项卡中最后一次成功生成构建的工作流内生成的最新版 [SukiSU-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra/actions)
   - 修补内核以支持 SukiSU-Ultra 和 SUSFS
   - 在 SukiSU-Ultra 管理器的超级用户页内进行配置
     - 将所有需要 root 的应用程序进行授权
@@ -301,17 +339,26 @@ For special cases, please refer to [./specialCases.md](./specialCases.md).
       - 为避免某些应用程序无法正确运行，推荐禁用 Zygisk Next 链接器（或在 root 下执行 ``/data/adb/modules/zygisksu/bin/zygiskd linker system``）（最终使得文件 ``/data/adb/zygisksu/linker`` 的内容为 ``0``）（此选项在设备重启后才会生效）
       - 请保持“使用匿名内存”和“使用 Zygisk Next 链接器”同开同关以免被检测到
       - 移除 Shamiko 和 NoHello 模块，清理 ``/data/adb`` 下的痕迹并重启设备
-    - 在 SukiSU-Ultra 层安装 ``Jing Matrix`` 分支 GitHub 存储库的 ``Actions`` 选项卡中最后一次成功生成构建的 action 内生成的最新 Release 版的 [LSPosed](https://github.com/JingMatrix/LSPosed/actions) 模块
-      - 重启设备 $\rightarrow$ 打开 LSPosed 管理器 $\rightarrow$ 创建 LSPosed 寄生器 $\rightarrow$ 创建寄生器快捷方式 $\rightarrow$ 关闭可能导致 LSPosed 被检测到的日志功能和 LSPosed 的任务栏通知 $\rightarrow$ 卸载 LSPosed 管理器
-      - 如有需要可使用拨号键拨号 ``*#*#5776733#*#*``（不要呼出）或点击 SukiSU-Ultra 管理器中 LSPosed 模块详情中的操作（播放）按钮打开 LSPosed 寄生器（或是在桌面快捷方式丢失的情况下）
-      - 在 LSPosed 层安装 HMA 官方 Telegram 发布的最新版 [HMA](https://t.me/HideMyApplist) 插件
-      - 设置作用域为仅**系统框架**并启用插件
+    - 在 SukiSU-Ultra 层安装 ``Jing Matrix`` 分支 GitHub 存储库的 ``Actions`` 选项卡中最后一次成功生成构建的工作流内生成的最新 Release 版的 [LSPosed](https://github.com/JingMatrix/LSPosed/actions) 模块
       - 重启设备
-      - 配置 HMA 插件
-        - 在 HMA 的设置页面将 HMA 的图标从启动器中隐藏
-        - 在 HMA 的设置页面将数据隔离中的三个开关依次设置为开、关、开（部分修改需要 root 权限）
-        - 构建适当的白名单（只想让检测软件检测到哪些应用）或黑名单（让检测软件不能检测到哪些应用）模板（可参照[该教程](./HMA.md)）
-        - 对除面具和插件之外的一切用户应用和系统预装的非关键应用启用隐藏并应用模板
+      - 点击 SukiSU-Ultra 管理器中 LSPosed 模块详情中的操作（播放）按钮或使用拨号键拨号 ``*#*#5776733#*#*``（不要呼出）打开 LSPosed 管理器
+      - 切换到 LSPosed 管理器的设置页
+        - 关闭可能会导致 LSPosed 被检测到的日志功能
+        - 创建桌面快捷方式指向 LSPosed 寄生器
+        - 禁用 LSPosed 任务栏通知
+        - 若已将 LSPosed 管理器安装为应用程序请卸载
+      - 在 LSPosed 层以最小作用域的形式安装并激活插件
+        - 在 LSPosed 层安装 HMA 官方 Telegram 发布的最新版 [HMA](https://t.me/HideMyApplist) 插件
+          - 在 LSPosed 管理器中设置 HMA 插件的作用域为仅**系统框架**并启用插件
+          - 配置 HMA
+            - 在 HMA 的设置页面将 HMA 的图标从启动器中隐藏
+            - 在 HMA 的设置页面将数据隔离中的三个开关依次设置为开、关、开（部分修改需要 root 权限）
+            - 构建适当的白名单（只想让检测软件检测到哪些应用）或黑名单（让检测软件不能检测到哪些应用）模板（可参照[该教程](./HMA.md)）
+            - 对除 SukiSU-Ultra 管理器和插件之外的一切用户应用和系统预装的非关键应用启用隐藏并应用模板
+        - 在 LSPosed 层安装并激活 FuseFixer 官方 Telegram 发布的最新版 [FuseFixer](https://t.me/real5ec1cff) 插件
+          - 在 LSPosed 管理器中设置 FuseFixer 插件的作用域为仅 LSPosed 管理器中显示的推荐应用程序
+        - 以最小作用域的形式安装并激活其它有需要的插件
+      - 重启设备
     - 在 SukiSU-Ultra 层安装最新版 [Play Integrity fix](https://github.com/KOWX712/PlayIntegrityFix/actions) 模块
       - 通过 web UI 启用 ``Spoof Build`` 选项
       - 如果需要，可以通过 web UI 启用 ``Spoof Build (Play Store)``、``Spoof Props`` 和 ``Spoof Provider`` 选项
@@ -330,7 +377,7 @@ For special cases, please refer to [./specialCases.md](./specialCases.md).
             - 您的 ``keybox.xml`` 在进行检验前被宣布或预计至少通过 Device（旧 Strong）完整性检验
               - 您的 ``keybox.xml`` 是私有的且您不会公开分享：请随意进行完整性检验，因为只要没有多个 Android 设备共享同一个 ``keybox.xml``，Google 很可能不会吊销您的 ``keybox.xml``
               - 您的 ``keybox.xml`` 是从公共渠道获取的或者您想公开分享它：这是可以接受的 $\leftarrow$ 但只要您的 ``keybox.xml`` 在多台 Android 设备上进行检查，基于 Google 应用程序接口的完整性检验将加速 Google 对其吊销 $\leftarrow$ 但是，如果您不手动进行完整性检验，您将难以信任它的完整性，而需要完整性检验的应用程序迟早会基于 Google 应用程序接口进行检查，这也会加速它的吊销 $\leftarrow$ 如果您的 Android 设备上没有这样的应用程序，只需使用 Tricky Store 模块带来的默认 ``keybox.xml`` 或您自己生成的 ``keybox.xml`` 即可
-            - 您的 ``keybox.xml`` 在检查之前已宣布或预计会通过 Basic（旧 Device）完整性检查：请随意检查，因为从 Tricky Store 模块带来的默认 ``keybox.xml`` 或您自己生成的 ``keybox.xml`` 也可以通过 Basic（旧 Device）完整性检验，而且获取它们相当容易
+            - 您的 ``keybox.xml`` 在进行检验前被宣布或预计会通过 Basic（旧 Device）完整性检查：请随意检查，因为从 Tricky Store 模块带来的默认 ``keybox.xml`` 或您自己生成的 ``keybox.xml`` 也可以通过 Basic（旧 Device）完整性检验，而且获取它们相当容易
           - 其它完整性检验应用程序：[https://github.com/LRFP-Team/LRFP/tree/main/Detectors](https://github.com/LRFP-Team/LRFP/tree/main/Detectors) 中的一些完整性检验应用程序会根据自己的云库（而非 Google 的云库）检查 ``keybox.xml`` 是否已被吊销
         - 如果 ``keybox.xml`` 已被吊销，或者其完整性比 Tricky Store 模块提供的默认 ``keybox.xml`` 更差，请在 MT 管理器中单击 ``/data/adb/tricky_store/keybox.xml.bak`` 以恢复备份
       - 使用 MT 管理器提取检测应用的安装包包名（可以长按复制）并编辑 ``/data/adb/tricky_store/target.txt`` 将所有目标应用的包名添加进去（仅支持白名单模式）
@@ -354,17 +401,26 @@ For special cases, please refer to [./specialCases.md](./specialCases.md).
     - 为避免某些应用程序无法正确运行，推荐禁用 Zygisk Next 链接器（或在 root 下执行 ``/data/adb/modules/zygisksu/bin/zygiskd linker system``）（最终使得文件 ``/data/adb/zygisksu/linker`` 的内容为 ``0``）（此选项在设备重启后才会生效）
     - 请保持“使用匿名内存”和“使用 Zygisk Next 链接器”同开同关以免被检测到
     - 移除 Shamiko 和 NoHello 模块，清理 ``/data/adb`` 下的痕迹并重启设备
-  - 在面具层安装 ``Jing Matrix`` 分支 GitHub 存储库的 ``Actions`` 选项卡中最后一次成功生成构建的 action 内生成的最新 Release 版的 [LSPosed](https://github.com/JingMatrix/LSPosed/actions) 模块
-    - 重启设备 $\rightarrow$ 打开 LSPosed 管理器 $\rightarrow$ 创建 LSPosed 寄生器 $\rightarrow$ 创建寄生器快捷方式 $\rightarrow$ 关闭可能导致 LSPosed 被检测到的日志功能和 LSPosed 的任务栏通知 $\rightarrow$ 卸载 LSPosed 管理器
-    - 如有需要可使用拨号键拨号 ``*#*#5776733#*#*``（不要呼出）或点击面具管理器中 LSPosed 模块详情中的操作（播放）按钮打开 LSPosed 寄生器（或是在桌面快捷方式丢失的情况下）
-    - 在 LSPosed 层安装 HMA 官方 Telegram 发布的最新版 [HMA](https://t.me/HideMyApplist) 插件
-    - 设置作用域为仅**系统框架**并启用插件
+  - 在面具层安装 ``Jing Matrix`` 分支 GitHub 存储库的 ``Actions`` 选项卡中最后一次成功生成构建的工作流内生成的最新 Release 版的 [LSPosed](https://github.com/JingMatrix/LSPosed/actions) 模块
     - 重启设备
-    - 配置 HMA 插件
-      - 在 HMA 的设置页面将 HMA 的图标从启动器中隐藏
-      - 在 HMA 的设置页面将数据隔离中的三个开关依次设置为开、关、开（部分修改需要 root 权限）
-      - 构建适当的白名单（只想让检测软件检测到哪些应用）或黑名单（让检测软件不能检测到哪些应用）模板（可参照[该教程](./HMA.md)）
-      - 对除面具和插件之外的一切用户应用和系统预装的非关键应用启用隐藏并应用模板
+    - 点击面具管理器中 LSPosed 模块详情中的操作（播放）按钮或使用拨号键拨号 ``*#*#5776733#*#*``（不要呼出）打开 LSPosed 管理器
+    - 切换到 LSPosed 管理器的设置页
+      - 关闭可能会导致 LSPosed 被检测到的日志功能
+      - 创建桌面快捷方式指向 LSPosed 寄生器
+      - 禁用 LSPosed 任务栏通知
+      - 若已将 LSPosed 管理器安装为应用程序请卸载
+    - 在 LSPosed 层以最小作用域的形式安装并激活插件
+      - 在 LSPosed 层安装 HMA 官方 Telegram 发布的最新版 [HMA](https://t.me/HideMyApplist) 插件
+        - 在 LSPosed 管理器中设置 HMA 插件的作用域为仅**系统框架**并启用插件
+        - 配置 HMA
+          - 在 HMA 的设置页面将 HMA 的图标从启动器中隐藏
+          - 在 HMA 的设置页面将数据隔离中的三个开关依次设置为开、关、开（部分修改需要 root 权限）
+          - 构建适当的白名单（只想让检测软件检测到哪些应用）或黑名单（让检测软件不能检测到哪些应用）模板（可参照[该教程](./HMA.md)）
+          - 对除面具管理器和插件之外的一切用户应用和系统预装的非关键应用启用隐藏并应用模板
+      - 在 LSPosed 层安装并激活 FuseFixer 官方 Telegram 发布的最新版 [FuseFixer](https://t.me/real5ec1cff) 插件
+        - 在 LSPosed 管理器中设置 FuseFixer 插件的作用域为仅 LSPosed 管理器中显示的推荐应用程序
+      - 以最小作用域的形式安装并激活其它有需要的插件
+    - 重启设备
   - 在面具层安装最新版 [Play Integrity fix](https://github.com/KOWX712/PlayIntegrityFix/actions) 模块
     - 通过第三方 web UI（例如 [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable/actions)）启用 ``Spoof Build`` 选项
     - 如果需要，可以通过第三方 web UI（例如 [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable/actions)）启用 ``Spoof Build (Play Store)``、``Spoof Props`` 和 ``Spoof Provider`` 选项
@@ -383,7 +439,7 @@ For special cases, please refer to [./specialCases.md](./specialCases.md).
           - 您的 ``keybox.xml`` 在进行检验前被宣布或预计至少通过 Device（旧 Strong）完整性检验
             - 您的 ``keybox.xml`` 是私有的且您不会公开分享：请随意进行完整性检验，因为只要没有多个 Android 设备共享同一个 ``keybox.xml``，Google 很可能不会吊销您的 ``keybox.xml``
             - 您的 ``keybox.xml`` 是从公共渠道获取的或者您想公开分享它：这是可以接受的 $\leftarrow$ 但只要您的 ``keybox.xml`` 在多台 Android 设备上进行检查，基于 Google 应用程序接口的完整性检验将加速 Google 对其吊销 $\leftarrow$ 但是，如果您不手动进行完整性检验，您将难以信任它的完整性，而需要完整性检验的应用程序迟早会基于 Google 应用程序接口进行检查，这也会加速它的吊销 $\leftarrow$ 如果您的 Android 设备上没有这样的应用程序，只需使用 Tricky Store 模块带来的默认 ``keybox.xml`` 或您自己生成的 ``keybox.xml`` 即可
-          - 您的 ``keybox.xml`` 在检查之前已宣布或预计会通过 Basic（旧 Device）完整性检查：请随意检查，因为从 Tricky Store 模块带来的默认 ``keybox.xml`` 或您自己生成的 ``keybox.xml`` 也可以通过 Basic（旧 Device）完整性检验，而且获取它们相当容易
+          - 您的 ``keybox.xml`` 在进行检验前被宣布或预计会通过 Basic（旧 Device）完整性检查：请随意检查，因为从 Tricky Store 模块带来的默认 ``keybox.xml`` 或您自己生成的 ``keybox.xml`` 也可以通过 Basic（旧 Device）完整性检验，而且获取它们相当容易
         - 其它完整性检验应用程序：[https://github.com/LRFP-Team/LRFP/tree/main/Detectors](https://github.com/LRFP-Team/LRFP/tree/main/Detectors) 中的一些完整性检验应用程序会根据自己的云库（而非 Google 的云库）检查 ``keybox.xml`` 是否已被吊销
       - 如果 ``keybox.xml`` 已被吊销，或者其完整性比 Tricky Store 模块提供的默认 ``keybox.xml`` 更差，请在 MT 管理器中单击 ``/data/adb/tricky_store/keybox.xml.bak`` 以恢复备份
     - 使用 MT 管理器提取检测应用的安装包包名（可以长按复制）并编辑 ``/data/adb/tricky_store/target.txt`` 将所有目标应用的包名添加进去（仅支持白名单模式）
@@ -396,7 +452,7 @@ For special cases, please refer to [./specialCases.md](./specialCases.md).
 
 ### 正在使用 Apatch / Apatch Next
 
-- 安装 Apatch GitHub 存储库的 ``Actions`` 选项卡中最后一次成功生成构建的 action 内生成的最新版 [Apatch](https://github.com/bmax121/APatch/actions)
+- 安装 Apatch GitHub 存储库的 ``Actions`` 选项卡中最后一次成功生成构建的工作流内生成的最新版 [Apatch](https://github.com/bmax121/APatch/actions)
   - 在 Apatch 管理器的超级用户页内进行配置
     - 将所有需要 root 的应用程序进行授权
     - 让剩余应用中所有不需要 root 权限的应用使用默认设置（重置设置）
@@ -419,17 +475,26 @@ For special cases, please refer to [./specialCases.md](./specialCases.md).
       - 为避免某些应用程序无法正确运行，推荐禁用 Zygisk Next 链接器（或在 root 下执行 ``/data/adb/modules/zygisksu/bin/zygiskd linker system``）（最终使得文件 ``/data/adb/zygisksu/linker`` 的内容为 ``0``）（此选项在设备重启后才会生效）
       - 请保持“使用匿名内存”和“使用 Zygisk Next 链接器”同开同关以免被检测到
       - 移除 Shamiko 和 NoHello 模块，清理 ``/data/adb`` 下的痕迹并重启设备
-    - 在 Apatch 层安装 ``Jing Matrix`` 分支 GitHub 存储库的 ``Actions`` 选项卡中最后一次成功生成构建的 action 内生成的最新 Release 版的 [LSPosed](https://github.com/JingMatrix/LSPosed/actions) 模块
-      - 重启设备 $\rightarrow$ 打开 LSPosed 管理器 $\rightarrow$ 创建 LSPosed 寄生器 $\rightarrow$ 创建寄生器快捷方式 $\rightarrow$ 关闭可能导致 LSPosed 被检测到的日志功能和 LSPosed 的任务栏通知 $\rightarrow$ 卸载 LSPosed 管理器
-      - 如有需要可使用拨号键拨号 ``*#*#5776733#*#*``（不要呼出）或点击 Apatch 管理器中 LSPosed 模块详情中的操作（播放）按钮打开 LSPosed 寄生器（或是在桌面快捷方式丢失的情况下）
-      - 在 LSPosed 层安装 HMA 官方 Telegram 发布的最新版 [HMA](https://t.me/HideMyApplist) 插件
-      - 设置作用域为仅**系统框架**并启用插件
+    - 在 Apatch 层安装 ``Jing Matrix`` 分支 GitHub 存储库的 ``Actions`` 选项卡中最后一次成功生成构建的工作流内生成的最新 Release 版的 [LSPosed](https://github.com/JingMatrix/LSPosed/actions) 模块
       - 重启设备
-      - 配置 HMA 插件
-        - 在 HMA 的设置页面将 HMA 的图标从启动器中隐藏
-        - 在 HMA 的设置页面将数据隔离中的三个开关依次设置为开、关、开（部分修改需要 root 权限）
-        - 构建适当的白名单（只想让检测软件检测到哪些应用）或黑名单（让检测软件不能检测到哪些应用）模板（可参照[该教程](./HMA.md)）
-        - 对除面具和插件之外的一切用户应用和系统预装的非关键应用启用隐藏并应用模板
+      - 点击 Apatch 管理器中 LSPosed 模块详情中的操作（播放）按钮或使用拨号键拨号 ``*#*#5776733#*#*``（不要呼出）打开 LSPosed 管理器
+      - 切换到 LSPosed 管理器的设置页
+        - 关闭可能会导致 LSPosed 被检测到的日志功能
+        - 创建桌面快捷方式指向 LSPosed 寄生器
+        - 禁用 LSPosed 任务栏通知
+        - 若已将 LSPosed 管理器安装为应用程序请卸载
+      - 在 LSPosed 层以最小作用域的形式安装并激活插件
+        - 在 LSPosed 层安装 HMA 官方 Telegram 发布的最新版 [HMA](https://t.me/HideMyApplist) 插件
+          - 在 LSPosed 管理器中设置 HMA 插件的作用域为仅**系统框架**并启用插件
+          - 配置 HMA
+            - 在 HMA 的设置页面将 HMA 的图标从启动器中隐藏
+            - 在 HMA 的设置页面将数据隔离中的三个开关依次设置为开、关、开（部分修改需要 root 权限）
+            - 构建适当的白名单（只想让检测软件检测到哪些应用）或黑名单（让检测软件不能检测到哪些应用）模板（可参照[该教程](./HMA.md)）
+            - 对除 Apatch 管理器和插件之外的一切用户应用和系统预装的非关键应用启用隐藏并应用模板
+        - 在 LSPosed 层安装并激活 FuseFixer 官方 Telegram 发布的最新版 [FuseFixer](https://t.me/real5ec1cff) 插件
+          - 在 LSPosed 管理器中设置 FuseFixer 插件的作用域为仅 LSPosed 管理器中显示的推荐应用程序
+        - 以最小作用域的形式安装并激活其它有需要的插件
+      - 重启设备
     - 在 Apatch 层安装最新版 [Play Integrity fix](https://github.com/KOWX712/PlayIntegrityFix/actions) 模块
       - 通过 web UI 启用 ``Spoof Build`` 选项
       - 如果需要，可以通过 web UI 启用 ``Spoof Build (Play Store)``、``Spoof Props`` 和 ``Spoof Provider`` 选项
@@ -448,7 +513,7 @@ For special cases, please refer to [./specialCases.md](./specialCases.md).
             - 您的 ``keybox.xml`` 在进行检验前被宣布或预计至少通过 Device（旧 Strong）完整性检验
               - 您的 ``keybox.xml`` 是私有的且您不会公开分享：请随意进行完整性检验，因为只要没有多个 Android 设备共享同一个 ``keybox.xml``，Google 很可能不会吊销您的 ``keybox.xml``
               - 您的 ``keybox.xml`` 是从公共渠道获取的或者您想公开分享它：这是可以接受的 $\leftarrow$ 但只要您的 ``keybox.xml`` 在多台 Android 设备上进行检查，基于 Google 应用程序接口的完整性检验将加速 Google 对其吊销 $\leftarrow$ 但是，如果您不手动进行完整性检验，您将难以信任它的完整性，而需要完整性检验的应用程序迟早会基于 Google 应用程序接口进行检查，这也会加速它的吊销 $\leftarrow$ 如果您的 Android 设备上没有这样的应用程序，只需使用 Tricky Store 模块带来的默认 ``keybox.xml`` 或您自己生成的 ``keybox.xml`` 即可
-            - 您的 ``keybox.xml`` 在检查之前已宣布或预计会通过 Basic（旧 Device）完整性检查：请随意检查，因为从 Tricky Store 模块带来的默认 ``keybox.xml`` 或您自己生成的 ``keybox.xml`` 也可以通过 Basic（旧 Device）完整性检验，而且获取它们相当容易
+            - 您的 ``keybox.xml`` 在进行检验前被宣布或预计会通过 Basic（旧 Device）完整性检查：请随意检查，因为从 Tricky Store 模块带来的默认 ``keybox.xml`` 或您自己生成的 ``keybox.xml`` 也可以通过 Basic（旧 Device）完整性检验，而且获取它们相当容易
           - 其它完整性检验应用程序：[https://github.com/LRFP-Team/LRFP/tree/main/Detectors](https://github.com/LRFP-Team/LRFP/tree/main/Detectors) 中的一些完整性检验应用程序会根据自己的云库（而非 Google 的云库）检查 ``keybox.xml`` 是否已被吊销
         - 如果 ``keybox.xml`` 已被吊销，或者其完整性比 Tricky Store 模块提供的默认 ``keybox.xml`` 更差，请在 MT 管理器中单击 ``/data/adb/tricky_store/keybox.xml.bak`` 以恢复备份
       - 使用 MT 管理器提取检测应用的安装包包名（可以长按复制）并编辑 ``/data/adb/tricky_store/target.txt`` 将所有目标应用的包名添加进去（仅支持白名单模式）
@@ -464,17 +529,26 @@ For special cases, please refer to [./specialCases.md](./specialCases.md).
     - 打开 Zygisk（或使用其它支持的 Zygisk 实现）
     - 在设置界面启用白名单模式
     - 选定需要 root 权限的应用的包（可以不选定某个应用程序内的所有包）
-  - 在面具层安装 ``Jing Matrix`` 分支 GitHub 存储库的 ``Actions`` 选项卡中最后一次成功生成构建的 action 内生成的最新 Release 版的 [LSPosed](https://github.com/JingMatrix/LSPosed/actions) 模块
-    - 重启设备 $\rightarrow$ 打开 LSPosed 管理器 $\rightarrow$ 创建 LSPosed 寄生器 $\rightarrow$ 创建寄生器快捷方式 $\rightarrow$ 关闭可能导致 LSPosed 被检测到的日志功能和 LSPosed 的任务栏通知 $\rightarrow$ 卸载 LSPosed 管理器
-    - 如有需要可使用拨号键拨号 ``*#*#5776733#*#*``（不要呼出）或点击面具管理器中 LSPosed 模块详情中的操作（播放）按钮打开 LSPosed 寄生器（或是在桌面快捷方式丢失的情况下）
-    - 在 LSPosed 层安装 HMA 官方 Telegram 发布的最新版 [HMA](https://t.me/HideMyApplist) 插件
-    - 设置作用域为仅**系统框架**并启用插件
+  - 在面具层安装 ``Jing Matrix`` 分支 GitHub 存储库的 ``Actions`` 选项卡中最后一次成功生成构建的工作流内生成的最新 Release 版的 [LSPosed](https://github.com/JingMatrix/LSPosed/actions) 模块
     - 重启设备
-    - 配置 HMA 插件
-      - 在 HMA 的设置页面将 HMA 的图标从启动器中隐藏
-      - 在 HMA 的设置页面将数据隔离中的三个开关依次设置为开、关、开（部分修改需要 root 权限）
-      - 构建适当的白名单（只想让检测软件检测到哪些应用）或黑名单（让检测软件不能检测到哪些应用）模板（可参照[该教程](./HMA.md)）
-      - 对除面具和插件之外的一切用户应用和系统预装的非关键应用启用隐藏并应用模板
+    - 点击面具管理器中 LSPosed 模块详情中的操作（播放）按钮或使用拨号键拨号 ``*#*#5776733#*#*``（不要呼出）打开 LSPosed 管理器
+    - 切换到 LSPosed 管理器的设置页
+      - 关闭可能会导致 LSPosed 被检测到的日志功能
+      - 创建桌面快捷方式指向 LSPosed 寄生器
+      - 禁用 LSPosed 任务栏通知
+      - 若已将 LSPosed 管理器安装为应用程序请卸载
+    - 在 LSPosed 层以最小作用域的形式安装并激活插件
+      - 在 LSPosed 层安装 HMA 官方 Telegram 发布的最新版 [HMA](https://t.me/HideMyApplist) 插件
+        - 在 LSPosed 管理器中设置 HMA 插件的作用域为仅**系统框架**并启用插件
+        - 配置 HMA
+          - 在 HMA 的设置页面将 HMA 的图标从启动器中隐藏
+          - 在 HMA 的设置页面将数据隔离中的三个开关依次设置为开、关、开（部分修改需要 root 权限）
+          - 构建适当的白名单（只想让检测软件检测到哪些应用）或黑名单（让检测软件不能检测到哪些应用）模板（可参照[该教程](./HMA.md)）
+          - 对除面具管理器和插件之外的一切用户应用和系统预装的非关键应用启用隐藏并应用模板
+      - 在 LSPosed 层安装并激活 FuseFixer 官方 Telegram 发布的最新版 [FuseFixer](https://t.me/real5ec1cff) 插件
+        - 在 LSPosed 管理器中设置 FuseFixer 插件的作用域为仅 LSPosed 管理器中显示的推荐应用程序
+      - 以最小作用域的形式安装并激活其它有需要的插件
+    - 重启设备
   - 在面具层安装最新版 [Play Integrity Fix](https://github.com/KOWX712/PlayIntegrityFix/actions) 模块
     - 通过第三方 web UI（例如 [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable/actions)）启用 ``Spoof Build`` 选项
     - 如果需要，可以通过第三方 web UI（例如 [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable/actions)）启用 ``Spoof Build (Play Store)``、``Spoof Props`` 和 ``Spoof Provider`` 选项
@@ -493,7 +567,7 @@ For special cases, please refer to [./specialCases.md](./specialCases.md).
           - 您的 ``keybox.xml`` 在进行检验前被宣布或预计至少通过 Device（旧 Strong）完整性检验
             - 您的 ``keybox.xml`` 是私有的且您不会公开分享：请随意进行完整性检验，因为只要没有多个 Android 设备共享同一个 ``keybox.xml``，Google 很可能不会吊销您的 ``keybox.xml``
             - 您的 ``keybox.xml`` 是从公共渠道获取的或者您想公开分享它：这是可以接受的 $\leftarrow$ 但只要您的 ``keybox.xml`` 在多台 Android 设备上进行检查，基于 Google 应用程序接口的完整性检验将加速 Google 对其吊销 $\leftarrow$ 但是，如果您不手动进行完整性检验，您将难以信任它的完整性，而需要完整性检验的应用程序迟早会基于 Google 应用程序接口进行检查，这也会加速它的吊销 $\leftarrow$ 如果您的 Android 设备上没有这样的应用程序，只需使用 Tricky Store 模块带来的默认 ``keybox.xml`` 或您自己生成的 ``keybox.xml`` 即可
-          - 您的 ``keybox.xml`` 在检查之前已宣布或预计会通过 Basic（旧 Device）完整性检查：请随意检查，因为从 Tricky Store 模块带来的默认 ``keybox.xml`` 或您自己生成的 ``keybox.xml`` 也可以通过 Basic（旧 Device）完整性检验，而且获取它们相当容易
+          - 您的 ``keybox.xml`` 在进行检验前被宣布或预计会通过 Basic（旧 Device）完整性检查：请随意检查，因为从 Tricky Store 模块带来的默认 ``keybox.xml`` 或您自己生成的 ``keybox.xml`` 也可以通过 Basic（旧 Device）完整性检验，而且获取它们相当容易
         - 其它完整性检验应用程序：[https://github.com/LRFP-Team/LRFP/tree/main/Detectors](https://github.com/LRFP-Team/LRFP/tree/main/Detectors) 中的一些完整性检验应用程序会根据自己的云库（而非 Google 的云库）检查 ``keybox.xml`` 是否已被吊销
       - 如果 ``keybox.xml`` 已被吊销，或者其完整性比 Tricky Store 模块提供的默认 ``keybox.xml`` 更差，请在 MT 管理器中单击 ``/data/adb/tricky_store/keybox.xml.bak`` 以恢复备份
     - 使用 MT 管理器提取检测应用的安装包包名（可以长按复制）并编辑 ``/data/adb/tricky_store/target.txt`` 将所有目标应用的包名添加进去（仅支持白名单模式）
