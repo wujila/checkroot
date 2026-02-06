@@ -12,13 +12,13 @@ EOF = (-1)
 
 
 class GitPusher:
-	def __init__(self:object, timeout:int = 10) -> object:
+	def __init__(self:object, localRepositoryPath:str = ".") -> object:
 		self.__gitFlag = False
-		self.__timeout = timeout if isinstance(timeout, int) and 1 <= timeout <= 100 else 10
+		self.__localRepositoryPath = localRepositoryPath if isinstance(localRepositoryPath, str) else "."
 	def initialize(self:object) -> bool:
 		self.__gitFlag = False
 		try:
-			result = run(("git", "--version"), capture_output = True, text = True, timeout = self.__timeout)
+			result = run(("git", "--version"), capture_output = True, text = True, cwd = self.__localRepositoryPath)
 			if EXIT_SUCCESS == result.returncode and result.stdout.startswith("git version") and not result.stderr:
 				self.__gitFlag = True
 				print("Successfully initialized ``git``. ")
@@ -31,13 +31,13 @@ class GitPusher:
 		if self.__gitFlag:
 			commitMessage = "Regular Update (HKT {0})".format(datetime.now().strftime("%Y%m%d%H%M%S%f"))
 			print("The commit message prepared is \"{0}\". ".format(commitMessage))
-			result = run(("git", "add", "."), capture_output = True, text = True, timeout = self.__timeout)
+			result = run(("git", "add", "."), capture_output = True, text = True, cwd = self.__localRepositoryPath)
 			if EXIT_SUCCESS == result.returncode and not result.stdout and not result.stderr:
-				result = run(("git", "commit", "-m", commitMessage), capture_output = True, text = True, timeout = self.__timeout)
+				result = run(("git", "commit", "-m", commitMessage), capture_output = True, text = True, cwd = self.__localRepositoryPath)
 				print(result.stdout.replace("nothing to commit, working tree clean", "").rstrip())
 				if EXIT_SUCCESS == result.returncode or EXIT_FAILURE == result.returncode and "(use \"git push\" to publish your local commits)" in result.stdout:
 					try:
-						result = run(("git", "push"))
+						result = run(("git", "push"), cwd = self.__localRepositoryPath)
 					except KeyboardInterrupt:
 						print("\nFailed to execute \"git push\" due to KeyboardInterrupt. ")
 						return False
