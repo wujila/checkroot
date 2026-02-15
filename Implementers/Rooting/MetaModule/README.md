@@ -10,7 +10,7 @@ The Meta Module is a feature unique to KernelSU and its branches, which are Andr
 
 #### 元模块
 
-元模块是独属于 KernelSU 及其分支的特性，是一种基于动态加载和卸载内核模块的安卓内核级 root 隐藏技术。
+由于 KernelSU 及其分支自身不会挂载系统分区，用户需要安装元模块来支持有系统分区挂载行为的 root 层系统模块。因此，元模块是独属于 KernelSU 及其分支的特性。
 
 - [OverlayFS](https://github.com/KernelSU-Modules-Repo/meta-overlayfs/actions)：这是官方推荐的经典元模块，利用 Linux 内核的 OverlayFS 机制进行无损系统修改。
 - [Hybrid Mount](https://github.com/Hybrid-Mount/meta-hybrid_mount/actions)：该元模块以混合挂载模式工作。
