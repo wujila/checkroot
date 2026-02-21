@@ -57,18 +57,18 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ Native Test ++
 ### Duck Detector
 
 - **Package Name**: ``com.studio.duckdetector``
-- **Official Link**: The telegram channel is private. 
+- **Official Link**: https://t.me/duck_detector
 - **Developing Purpose**: Environment Detection
-- **Latest Version**: ``v1.6.1-8d59eacb (3)``
-- **Release Date**: Before December 20th, 2025
+- **Latest Version**: ``v1.9.14-beta-0db6ff6a (104)``
+- **Release Date**:  February 16th, 2026
 
 ### Hunter
 
 - **Package Name**: ``com.zhenxi.hunter``
 - **Developing Purpose**: Environment Detection
-- **Latest Version**: ``v6.56 (656)``
-- **Release Date**: On or Before January 27th, 2026
-- **Detection Remark**: Please wait about 20 seconds to complete the detection and display. On some occasions, the output of several specified issues will get loop. 
+- **Latest Version**: ``v6.58 (658)``
+- **Release Date**:  January 29th, 2026
+- **Detection Remark**: Please wait about 20 seconds to complete the detection and display. 
 
 ### IIQE 一考通
 
@@ -359,7 +359,7 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人
 - **开发用途**：应用列表检测
 - **最新版本**：``v2.4``
 - **发行日期**： 2022 年 8 月 12 日
-- **检测备注**：包名 ``com.tsng.applistdetector`` 是历史版本包名（约 ``v1.3.2``）。
+- **检测备注**：The package name ``com.tsng.applistdetector`` is a history name (about ``v1.3.2``). 包名 ``com.tsng.applistdetector`` 是历史版本包名（约 ``v1.3.2``）。
 - ![applistDetector.jpg](applistDetector.jpg)
 
 ### Bank of China (Hong Kong)
@@ -388,24 +388,24 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人
 - **开发用途**：信息收集
 - **最新版本**：``v1.1.15-240919``
 - **发行日期**： 2024 年 9 月 19 日
-- **检测备注**：请检查 Security Level 是否为 L1，等级数值越小越好。
+- **检测备注**：Please check whether the Security Level is Level 1. The smaller the level, the better the device is. 请检查 Security Level 是否为 L1，等级数值越小越好。
 
 ### Duck Detector
 
 - **应用包名**：``com.studio.duckdetector``
-- **官方链接**：[The telegram channel is private. ](The telegram channel is private. )
+- **官方链接**：[https://t.me/duck_detector](https://t.me/duck_detector)
 - **开发用途**：环境检测
-- **最新版本**：``v1.6.1-8d59eacb (3)``
-- **发行日期**：早于 2025 年 12 月 20 日
+- **最新版本**：``v1.9.14-beta-0db6ff6a (104)``
+- **发行日期**： 2026 年 2 月 16 日
 - ![duckDetectorCN.png](duckDetectorCN.png)
 
 ### Hunter
 
 - **应用包名**：``com.zhenxi.hunter``
 - **开发用途**：环境检测
-- **最新版本**：``v6.56 (656)``
-- **发行日期**：不晚于 2026 年 1 月 27 日
-- **检测备注**：请等待 20 秒左右以完成检测和显示，某些情况下可能会一直输出某几个问题。
+- **最新版本**：``v6.58 (658)``
+- **发行日期**： 2026 年 1 月 29 日
+- **检测备注**：Please wait about 20 seconds to complete the detection and display. 请等待 20 秒左右以完成检测和显示。
 - ![hunterCN.jpg](hunterCN.jpg)
 
 ### IIQE 一考通
@@ -416,7 +416,7 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人
 - **开发用途**：安卓桌面应用
 - **最新版本**：``v6.4.3C88``
 - **发行日期**： 2025 年 3 月 3 日
-- **检测备注**：该桌面应用会检测开发者模式。
+- **检测备注**：This desktop application will detect the Developer Mode. 该桌面应用会检测开发者模式。
 
 ### Luna
 
@@ -426,7 +426,7 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人
 - **开发用途**：环境检测
 - **最新版本**：``v1.4.2.7``
 - **发行日期**：不晚于 2025 年 10 月 9 日
-- **检测备注**：该应用会检测特定文件或文件夹是否存在，可以使用官方链接中提供的清理脚本进行清理。由于某些插件需要使用特定目录来存放配置数据且未提供自定义目录功能，清理可能会导致配置丢失，请酌情使用本检测软件。
+- **检测备注**：This detector will detect the existence of a specific file or folder. You can use the cleanup script provided in the official link(s) to clean up. Since some plugins require specific directories to store their configurations without being able to specify custom directories, cleaning may result in configuration loss. Please use this detection software as appropriate. 该应用会检测特定文件或文件夹是否存在，可以使用官方链接中提供的清理脚本进行清理。由于某些插件需要使用特定目录来存放配置数据且未提供自定义目录功能，清理可能会导致配置丢失，请酌情使用本检测软件。
 - ![lunaCN.jpg](lunaCN.jpg)
 
 ### Key Attestation
@@ -458,7 +458,7 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人
 - **开发用途**：环境检测
 - **最新版本**：``v4.4.1``
 - **发行日期**：早于 2023 年 1 月 7 日
-- **检测备注**：请不要为了得到一张笑脸而欺骗该检测软件，因为欺骗某一个检测软件并不能从本质上解决环境问题。
+- **检测备注**：Please do not spoof this detector to get a happy face since spoofing detectors cannot essentially solve the environment issues. 请不要为了得到一张笑脸而欺骗该检测软件，因为欺骗某一个检测软件并不能从本质上解决环境问题。
 - ![momoCN.jpg](momoCN.jpg)
 
 ### Money2India
@@ -488,7 +488,7 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人
 - **开发用途**：安卓桌面应用
 - **最新版本**：``v3.0.7``
 - **发行日期**： 2025 年 4 月 21 日
-- **检测备注**：这应该是目前最难以绕过的检测。
+- **检测备注**：This can be the most challenging one among all the detectors. 这应该是目前最难以绕过的检测。
 
 ### Native Root Detector
 
@@ -499,7 +499,7 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人
 - **开发用途**：环境检测
 - **最新版本**：``v7.6.1 (761)``
 - **发行日期**： 2025 年 9 月 15 日
-- **检测备注**：首次使用时请前往设置页面启用实验性检测和自定义 ROM 检测，随后重新启动该检测工具进行检测。在更改环境或更新该检测工具后，请务必在将已安装版本卸载干净后重新安装该检测工具以避免原有的 ``.odex`` 文件影响检测结果。
+- **检测备注**：For the first time, please go to the settings page to enable the experimental detection and the custom ROM detection. Subsequently, re-launch the detector to show proper detection results. After changing environments or updating this detector, please be sure to completely uninstall the installed version before installing the detector to avoid the previous ``.odex`` affecting the detection results. 首次使用时请前往设置页面启用实验性检测和自定义 ROM 检测，随后重新启动该检测工具进行检测。在更改环境或更新该检测工具后，请务必在将已安装版本卸载干净后重新安装该检测工具以避免原有的 ``.odex`` 文件影响检测结果。
 - ![nativeRootDetectorCN.jpg](nativeRootDetectorCN.jpg)
 
 ### Native Test ++
@@ -511,7 +511,7 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人
 - **开发用途**：环境检测
 - **最新版本**：``v32 (Mean Minotaur)``
 - **发行日期**：不晚于 2025 年 6 月 15 日
-- **检测备注**：此处对 Holmes 和 Native Test 做了整合，部分历史版本会在一些设备上闪退（Holmes 旧版）、假阳性（Native Test 非 Pure 版本在某些没有 root 或注入环境的设备上误报 Malicious Hook）和需要联网权限（Holmes 最近的几个版本）。
+- **检测备注**：Holmes and Native Test are integrated here. Some historical versions will crash on some devices (older versions of Holmes), report false positives (Native Test non-pure versions may mis-report Malicious Hook on some unrooted devices), and require network access (recent versions of Holmes). 此处对 Holmes 和 Native Test 做了整合，部分历史版本会在一些设备上闪退（Holmes 旧版）、假阳性（Native Test 非 Pure 版本在某些没有 root 或注入环境的设备上误报 Malicious Hook）和需要联网权限（Holmes 最近的几个版本）。
 - ![nativeTest.jpg](nativeTest.jpg)
 
 ### Octopus
@@ -649,7 +649,7 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人
 - **开发用途**：环境检测
 - **最新版本**：``v2.5.2 (25080401)``
 - **发行日期**： 2025 年 8 月 4 日
-- **检测备注**：从 ``v2.2`` 版本开始仅支持安卓 12 及以上。如有需要，请使用官方链接中提供的工具。
+- **检测备注**：This detector only supports Android 12 or above since ``v2.2``. Use the tools provided in the official link(s) to bypass if necessary. 从 ``v2.2`` 版本开始仅支持安卓 12 及以上。如有需要，请使用官方链接中提供的工具。
 
 ### 橘子环境检测内测
 

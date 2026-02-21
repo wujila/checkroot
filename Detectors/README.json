@@ -75,10 +75,10 @@
 		{
 			"name":"Duck Detector", 
 			"packageName":"com.studio.duckdetector", 
-			"officialLink":"The telegram channel is private. ", 
+			"officialLink":"https://t.me/duck_detector", 
 			"developingPurpose":"E", 
-			"latestVersion":"v1.6.1-8d59eacb (3)", 
-			"releaseDate":"< 20251220", 
+			"latestVersion":"v1.9.14-beta-0db6ff6a (104)", 
+			"releaseDate":"= 20260216", 
 			"image":{
 				"zh-CN":"duckDetectorCN.png"
 			}
