@@ -62,8 +62,8 @@
   packageName: com.studio.duckdetector
   officialLink: https://t.me/duck_detector
   developingPurpose: E
-  latestVersion: v1.9.14-beta-0db6ff6a (104)
-  releaseDate: = 20260216
+  latestVersion: v1.9.15-beta-487f8a0d (105)
+  releaseDate: = 20260224
   image:
     zh-CN: duckDetectorCN.png
 - name: Hunter
