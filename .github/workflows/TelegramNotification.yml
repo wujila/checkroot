@@ -1,0 +1,28 @@
+name: Telegram Notification
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify updates in the Telegram channel
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
+          message: |
+            📢 *New Push to Repository*
+            
+            *Repository*: ${{ github.repository }}
+            *Branch*: ${{ github.ref_name }}
+            *Commit*: [${{ github.sha }}](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }})
+            *Author*: ${{ github.actor }}
+            
+            *Message*:
+            ```
+            ${{ github.event.head_commit.message }}
+            ```
