@@ -98,7 +98,7 @@ While following the tutorials, please also consider referring to the documentati
 
 ### Using Official Magisk (Including Release, Beta, Canary, Debug, and Nightly Versions) or Magisk Alpha
 
-- Install the latest [Magisk Alpha](https://install.appcenter.ms/users/vvb2060/apps/magisk/distribution_groups/public)
+- Install the latest [Magisk Alpha](https://t.me/magiskalpha)
   - Configure the Magisk
     - Disable built-in Zygisk
     - Disable Denylist
@@ -388,7 +388,7 @@ For special cases, please refer to [./specialCases.md](./specialCases.md).
 
 ### 正在使用官方版（含发行版、Beta 版、金丝雀版、Debug 版和每夜版）或 Alpha 版面具
 
-- 安装最新版 [Alpha 版面具](https://install.appcenter.ms/users/vvb2060/apps/magisk/distribution_groups/public)
+- 安装最新版 [Alpha 版面具](https://t.me/magiskalpha)
   - 配置面具
     - 禁用内置 Zygisk
     - 关闭“遵守排除列表”开关（如有需要可开启但 Tricky Store 模块等可能无法修改目标应用以实施其它方面的过检）

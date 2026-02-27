@@ -2,70 +2,224 @@
 
 The implementers related to Low-level, Rooting, Zygisk, Riru, and Frameworks are stored here. 
 
-The following tutorial is applicable to the deployment of Magisk (and its variants) and Apatch (and its variants) on Android devices. If you have completed a step, please skip it directly. 
+The following tutorial is applicable to the deployment of KernelSU (and its variants), Magisk (and its variants), and Apatch (and its variants) on Android devices. 
+For users who wish to deploy KernelSU or one of its variants, please check whether the kernel of the target Android device is a GKI kernel and supported by the rooting solution. 
+For users who wish to deploy Magisk (or one of its variants) or Apatch (or one of its variants), 
+please check whether the Android version of the target Android device is larger than or equal to the minimum required Android version. 
+Throughout the whole tutorials, there is only a computer and an Android device, where the Android device is the one to be rooted. If you have completed a step, please skip it directly. 
 
-- Install the necessary adb, fastboot, and corresponding mobile device drivers on the computer
-- Connect the Android device to the computer via USB
-- Unlock the bootloader of the Android device (need to clear the data of the Android device)
-  - Enable developer mode on the Android device
-  - Enable the switch to allow OEM unlocking in the developer options of the Android device
-  - Reboot the Android device to fastboot mode
-  - Execute ``fastboot oem unlock`` or ``fastboot flashing unlock`` on the computer (different fastboot versions and devices will have different instructions)
-  - Reboot the Android device
-- First root
-  - Prepare your root manager (latest)
-  - Route 1: By patching the ``boot.img``
-    - Extract boot.img from the 9008 package or full package with the same system version as the target Android device
-    - Copy the extracted boot.img to the external storage of the phone
-    - Patching boot.img
-      - Install the root manager
-      - Open the root manager
-      - Select Install
-      - Select Patching an image
-      - Use the file manager to select the boot.img copied from the computer to the Android device above
-      - Click Patching and wait for the patching to complete
-    - Flash the patched boot.img
-      - Find the patched boot.img in the download directory of the Android device and copy it to the computer
-      - Execute ``fastboot boot "boot_patched.img"`` on the computer and observe whether it can boot (here ``boot_patched.img`` is the computer file path of the patched boot.img)
-      - Execute ``fastboot getvar current-slot`` on the computer to view the current active partition
-      - If it is a: Execute ``fastboot flash boot_a "boot_patched.img"`` on the computer to flash the partition (here ``boot_patched.img`` is the computer file path of the patched boot.img)
-      - If it is b: Execute ``fastboot flash boot_b "boot_patched.img"`` on the computer to flash the partition (here ``boot_patched.img`` is the computer file path of the patched boot.img)
-  - Route 2: Via a third-party recovery (only applicable to Magisk and its variants)
-    - Find and download the TWRP image for the current Android device and system
-    - Reboot the Android device to fastboot mode
-    - Use ``fastboot boot twrp.img`` to boot the Android device to temporary TWRP mode (here ``twrp.img`` is the downloaded TWRP image)
-    - If necessary, you can choose to permanently flash the current TWRP in the TWRP interface of the Android device
-    - Rename the latest version of the Magisk application to magisk.zip and copy it to the Android device
-    - Select Install in the TWRP interface
-    - Select the imported magisk.zip in the TWRP interface and flash it
-- Subsequent root
-  - Refer to the first root
-  - Install directly in the root manager
-- After the deployment is complete, please restart the Android device to normal mode
-
-Among them, rebooting means rebooting into the normal mode by default. For the implementation of restarting the Android device to fastboot mode, please refer to the following content. 
-
-- Reboot the Android device to fastboot mode
-  - Use adb
-    - Put the Android device in the unlocked screen state of normal boot
-    - Enable USB debugging in the developer options of the Android device
-    - Run ``adb devices`` on the computer
-    - If the Android device requires USB debugging authorization, please authorize it
-    - Run ``adb reboot bootloader`` on the computer to restart to fastboot mode
-  - Through advanced reboot
-    - Some Android devices (such as OnePlus) can enable the function of adding advanced reboot options to the long-press of the power button in the developer options
-    - Enable this function and long-press the power button to reboot to the bootloader
-  - Through the combination of keys in the off state
-    - Turn off the Android device
-    - Disconnect the Android device from the USB connection with the computer
-    - Long press the combination of keys according to the phone model (for example, long press the power button and two volume buttons together) to enter the bootloader (if it fails, please wait patiently for the screen to be unlocked after the power is turned on and then turn it off and try again)
-    - Reconnect the Android device to the computer through USB
+- Define
+  - The following ``patched_init_boot.img`` refers to the path to the patched ``init_boot`` image file on the computer (please use double quotes to enclose the path if it is necessary)
+  - The following ``original_init_boot.img`` refers to the path to the original ``init_boot`` image file on the computer (please use double quotes to enclose the path if it is necessary)
+  - The following ``patched_boot.img`` refers to the path to the patched ``boot`` image file on the computer (please use double quotes to enclose the path if it is necessary)
+  - The following ``original_boot.img`` refers to the path to the original ``boot`` image file on the computer (please use double quotes to enclose the path if it is necessary)
+  - The following ``third_party_recovery.img`` refers to the path to the third-party ``recovery`` image file on the computer (please use double quotes to enclose the path if it is necessary)
+  - The following ``original_recovery.img`` refers to the path to the original ``recovery`` image file on the computer (please use double quotes to enclose the path if it is necessary)
+- If this is the first time for the target Android device to be rooted
+  - Deploy the environments of the latest [platform tools](https://developer.android.com/tools/releases/platform-tools) on the computer and make sure the ``adb`` and ``fastboot`` in the search path(s)
+  - Install the corresponding drivers for the target Android device on the computer
+  - Boot the target Android device normally into the system and connect it to the computer via a satisfactory USB data cable
+  - Unlock the bootloader of the target Android device (this will clear all the data of the target Android device if the status of the bootloader is locked)
+    - Enable the developer mode on the target Android device by clicking the system or kernel version at least 5 times
+    - Enable the ``allow OEM unlocking`` option in the developer options of the target Android device
+    - Reboot the target Android device to the bootloader (the following details will not be repeated in the subsequent steps)
+      - If the target Android device supports advanced rebooting, then just reboot to the bootloader via the advanced rebooting menu
+      - Otherwise
+        - Enable the USB debugging option in the developer options of the target Android device
+        - Execute ``adb devices`` on the computer
+        - Grant permissions to the computer for adb debugging on the target Android device
+        - Execute ``adb reboot bootloader`` on the computer
+        - Disable the USB debugging option in the developer options of the target Android device
+    - Execute ``fastboot oem unlock`` or ``fastboot flashing unlock`` on the computer (different fastboot versions and Android devices will have different instructions)
+    - Reboot the target Android device normally into the system
+  - Root the target Android device (please use either one of the following methods)
+    - Method 1: By flashing a patched partition image file
+      - If KernelSU or one of its variants is used
+        - Install and launch the latest root manager on the target Android device
+        - Record the kernel version shown in the root manager (note that the Android version indicated at the beginning of the kernel version can be different from the one of the target Android device)
+        - Use either one of the following modes to patch and flash the partition image file (the GKI mode will take effect if both modes are used)
+          - LKM mode (recommended for those have an ``init_boot`` partition and under this condition there must be an A/B architecture)
+            - Prepare the patched ``init_boot.img`` (please use either of the following ways)
+              - Patch manually (recommended)
+                - Extract the ``init_boot.img`` from the 9008, flashing, or OTA package corresponding to the ROM or the active slot of the target Android device
+                - Copy the extracted ``init_boot.img`` to the external storage of the target Android device
+                - Turn to the main tab of the root manager on the target Android device
+                - If the root manager shows ``Installed`` or ``Not Installed``
+                  - Click on the element where the statement ``Installed`` or ``Not Installed`` lays
+                  - Click ``Select a file`` in the root manager
+                  - Use the file manager to select the ``init_boot.img`` placed in the external storage of the target Android device
+                  - Select the recorded kernel version
+                  - Click ``Patch`` and wait for the patching procedure to complete
+                - Otherwise, please consider using Magisk (or one of its variants) or Apatch (or one of its variants)
+                - Find the patched ``init_boot.img`` under the Download directory of the target Android device and copy or move it to the computer
+              - Search and fetch a corresponding patched ``init_boot.img`` from the Internet or the ROM variants based on the same original ``init_boot.img``
+            - Reboot the target Android device to the bootloader
+            - Execute ``fastboot getvar current-slot`` on the computer to view the current active slot
+            - Execute ``fastboot flash init_boot_a patched_init_boot.img`` (if ``a`` is active) or ``fastboot flash init_boot_b patched_init_boot.img`` (if ``b`` is active) on the computer
+            - Reboot the target Android device normally (by selecting the green ``START`` via +/- and pressing the power key on the target Android device or by executing ``fastboot reboot`` on the computer)
+            - If the above flashing command fails, please stop here and consider using the GKI mode, Magisk (or one of its variants), or Apatch (or one of its variants)
+            - If the target Android device boots normally into the system
+              - Launch the corresponding root manager to check whether the target Android device is rooted
+              - If not, retry, consider using the GKI mode, Magisk (or one of its variants), or Apatch (or one of its variants), or give up rooting (remember to restore to the original partitions)
+            - Otherwise
+              - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
+              - Execute ``fastboot flash init_boot_a original_init_boot.img`` (if ``a`` is active) or ``fastboot flash init_boot_b original_init_boot.img`` (if ``b`` is active) on the computer
+              - Reboot the target Android device normally into the system
+              - Retry, consider using the GKI mode, Magisk (or one of its variants), or Apatch (or one of its variants), or give up rooting
+          - For the GKI mode, please refer to the subsequent tutorials on how to root the target Android device via Magisk (or one of its variants) or Apatch (or one of its variants) for the first time
+      - If the GKI mode of KernelSU (or one of its variants), Magisk (or one of its variants), or Apatch (or one of its variants) is used
+        - Install and launch the latest root manager on the target Android device
+        - Prepare the patched ``boot.imt`` (please use either of the following ways)
+          - Patch manually (recommended)
+            - Extract the ``boot.img`` from the 9008, flashing, or OTA package corresponding to the ROM or the active slot of the target Android device
+            - Copy the extracted ``boot.img`` to the external storage of the target Android device
+            - If patching the ``boot.img`` by KernelSU or one of its variants
+              - Turn to the main tab of the root manager on the target Android device
+              - If the root manager shows ``Installed`` or ``Not Installed``
+                - Click on the element where the statement ``Installed`` or ``Not Installed`` lays
+                - Click ``Select a file`` in the root manager
+                - Use the file manager to select the ``boot.img`` placed in the external storage of the target Android device
+                - Select the recorded kernel version
+                - Click ``Patch`` and wait for the patching procedure to complete
+              - Otherwise, please consider using Magisk (or one of its variants) or Apatch (or one of its variants)
+            - If patching the ``boot.img`` by Magisk or one of its variants
+              - Turn to the main tab of the root manager on the target Android device
+              - Click the first ``Install`` button in the root manager
+              - Click ``Select and patch a file`` in the root manager
+              - Use the file manager to select the ``boot.img`` placed in the external storage of the target Android device
+              - Click ``Start`` and wait for the patching procedure to complete
+            - If patching the ``boot.img`` by Apatch or one of its variants
+              - Turn to the main tab of the root manager on the target Android device
+              - Click the ``Install`` button in the root manager
+              - Click ``Select and patch a file`` in the root manager
+              - Use the file manager to select the ``boot.img`` placed in the external storage of the target Android device
+              - Embed the Cherish Peekaboo kernel module if you wish to
+              - Set a password
+              - Click ``Patch`` and wait for the patching procedure to complete
+            - Find the patched ``boot.img`` under the Download directory of the target Android device and copy or move it to the computer
+          - Patch via an OTA link by Magisk or one of its variants
+            - Turn to the main tab of the root manager on the target Android device
+            - Click the first ``Install`` button in the root manager
+            - Click ``Download and patch an image`` in the root manager
+            - Enter the OTA link and confirm
+          - Search and fetch a corresponding patched ``boot.img`` from the Internet or the ROM variants based on the same original ``boot.img``
+        - Reboot the target Android device to the bootloader
+        - If the target Android device runs on the non-A/B architecture
+          - Execute ``fastboot boot patched_boot.img`` on the computer
+          - If the target Android device boots normally into the system after the above command
+            - Execute ``fastboot flash boot patched_boot.img`` on the computer
+            - Reboot the target Android device (by selecting the green ``START`` via +/- and pressing the power key on the target Android device or by executing ``fastboot reboot`` on the computer)
+            - If the above flashing command fails, please stop here and consider retrying or giving up
+            - If the target Android device boots normally into the system
+              - Launch the corresponding root manager to check whether the target Android device is rooted
+              - If not, retry or give up rooting (remember to restore to the original partitions)
+            - Otherwise
+              - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
+              - Execute ``fastboot flash boot original_boot.img`` on the computer
+              - Reboot the target Android device normally into the system
+              - Retry or give up rooting
+          - Otherwise, consider retrying or giving up rooting
+        - If the target Android device runs on the legacy A/B architecture
+          - Execute ``fastboot getvar current-slot`` on the computer to view the current active slot
+          - Execute ``fastboot boot patched_boot.img`` on the computer
+          - If the target Android device boots normally into the system after the above command
+            - Execute ``fastboot flash boot_a patched_boot.img`` (if ``a`` is active) or ``fastboot flash boot_b patched_boot.img`` (if ``b`` is active) on the computer
+            - Reboot the target Android device (by selecting the green ``START`` via +/- and pressing the power key on the target Android device or by executing ``fastboot reboot`` on the computer)
+            - If the above flashing command fails, please stop here and consider retrying or giving up
+            - If the target Android device boots normally into the system
+              - Launch the corresponding root manager to check whether the target Android device is rooted
+              - If not, retry or give up rooting (remember to restore to the original partitions)
+            - Otherwise
+              - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
+              - Execute ``fastboot flash boot_a original_boot.img`` (if ``a`` is active) or ``fastboot flash boot_b original_boot.img`` (if ``b`` is active) on the computer
+              - Reboot the target Android device normally into the system
+              - Retry or give up rooting
+          - Otherwise, consider retrying or giving up rooting
+        - If the target Android device runs on the virtual A/B architecture
+          - Execute ``fastboot getvar current-slot`` on the computer to view the current active slot
+          - Execute ``fastboot flash boot_a patched_boot.img`` (if ``a`` is active) or ``fastboot flash boot_b patched_boot.img`` (if ``b`` is active) on the computer
+          - Reboot the target Android device (by selecting the green ``START`` via +/- and pressing the power key on the target Android device or by executing ``fastboot reboot`` on the computer)
+          - If the above flashing command fails, please stop here and consider retrying or giving up
+          - If the target Android device boots normally into the system
+            - Launch the corresponding root manager to check whether the target Android device is rooted
+            - If not, retry or give up rooting (remember to restore to the original partitions)
+          - Otherwise
+            - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
+            - Execute ``fastboot flash boot_a original_boot.img`` (if ``a`` is active) or ``fastboot flash boot_b original_boot.img`` (if ``b`` is active) on the computer
+            - Reboot the target Android device normally into the system
+            - Retry or give up rooting
+    - Method 2: Via a third-party recovery (only applicable to Magisk and its variants)
+      - Rename the latest version of the Magisk application to ``magisk.zip`` and copy it to the target Android device
+      - Find and download the third-party recovery image file (like TWRP and OrangeFox) for the target Android device
+      - Reboot the target Android device to the bootloader
+      - If the target Android device runs on the virtual A/B architecture
+        - Execute ``fastboot getvar current-slot`` on the computer to view the current active slot
+        - Try to back up the original recovery partition
+        - Execute ``fastboot flash recovery_a third_party_recovery.img`` (if ``a`` is active) or ``fastboot flash recovery_b third_party_recovery.img`` (if ``b`` is active) on the computer
+        - Reboot the target Android device (by selecting the red ``RECOVERY`` via +/- and pressing the power key on the target Android device or by executing ``fastboot reboot recovery`` on the computer)
+        - If the target Android device boots into the recovery mode and can decrypt the ``/data`` partition after inputting the correct password
+          - Flash the OrangeFox ZIP in the third-party recovery if using OrangeFox
+          - Flash the ``magisk.zip`` in the third-party recovery
+          - Reboot the target Android device normally into the system via the third-party recovery
+          - If the target Android device boots normally into the system
+            - Launch the corresponding root manager to check whether the target Android device is rooted
+            - If not, retry or give up rooting (remember to restore to the original partitions)
+          - Otherwise
+            - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
+            - Reboot the target Android device (by selecting the red ``RECOVERY`` via +/- and pressing the power key on the target Android device or by executing ``fastboot reboot recovery`` on the computer)
+            - Rename the ``magisk.zip`` on the target Android device to ``uninstall.zip`` in the third-party recovery
+            - Flash the ``uninstall.zip`` in the third-party recovery
+            - Rename the ``uninstall.zip`` on the target Android device back to ``magisk.zip`` in the third-party recovery
+            - Reboot the target Android device normally into the system
+            - Retry or give up rooting
+        - Otherwise
+          - Execute ``fastboot flash recovery_a original_recovery.img`` (if ``a`` is active) or ``fastboot flash recovery_b original_recovery.img`` (if ``b`` is active) on the computer
+          - Search another third-party recovery, retry, or give up rooting
+      - Otherwise
+        - Execute ``fastboot boot third_party_recovery.img`` on the computer to make the target Android device temporarily boot into the recovery mode powered by the third-party recovery
+        - If the target Android device boots into the recovery mode and can decrypt the ``/data`` partition after inputting the correct password
+          - Flash current TWRP (if using TWRP) or the OrangeFox ZIP (if using OrangeFox) in the third-party recovery and test it if you wish to make the third-party recovery permanent
+          - Flash the ``magisk.zip`` in the third-party recovery
+          - Reboot the target Android device normally into the system via the third-party recovery
+          - If the target Android device boots normally into the system
+            - Launch the corresponding root manager to check whether the target Android device is rooted
+            - If not, retry or give up rooting (remember to restore to the original partitions)
+          - Otherwise
+            - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
+            - Reboot the target Android device (by selecting the red ``RECOVERY`` via +/- and pressing the power key on the target Android device or by executing ``fastboot reboot recovery`` on the computer)
+            - Rename the ``magisk.zip`` on the target Android device to ``uninstall.zip`` in the third-party recovery
+            - Flash the ``uninstall.zip`` in the third-party recovery
+            - Rename the ``uninstall.zip`` on the target Android device back to ``magisk.zip`` in the third-party recovery
+            - Reboot the target Android device normally into the system
+            - Retry or give up rooting
+        - Otherwise, search for another third-party recovery, retry, or give up rooting
+  - Remove the USB data cable
+- Otherwise (please use either one of the following methods)
+  - Method 1: Please refer to either of the methods in the first-time rooting
+  - Method 2: Install directly in the root manager that already has root privileges on the target Android device and reboot the target Android device normally into the system (recommended)
+  - Method 3: Use [Kernel Flasher](https://github.com/fatalcoder524/KernelFlasher)
+    - Install Kernel Flasher on the target Android device
+    - Grant root privileges to Kernel Flasher in the root manager that already has root privileges
+    - Back up the ``/boot`` partition via Kernel Flasher and copy or move it to the computer
+    - Search and download the corresponding AnyKernel3 (AK3) from the GitHub
+    - Flash the AK3 via Kernel Flasher (the kernel is in the ``/boot`` partition)
+    - Reboot the target Android device normally into the system
+    - If the target Android device boots normally into the system
+      - Launch the corresponding root manager to check whether the target Android device is rooted
+      - If not, please try other methods to root the target Android device
+    - Otherwise
+      - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
+      - Deploy the environments of the latest [platform tools](https://developer.android.com/tools/releases/platform-tools) and make sure the commands ``adb`` and ``fastboot`` in the search path(s)
+      - Install the corresponding drivers for the target Android device on the computer
+      - Execute ``fastboot flash original_boot.img`` on the computer
+      - Reboot the target Android device normally into the system
+      - Use other methods to root the target Android device
 
 The compatibility analysis of some implementations and modules is as follows, where "Y" means compatible and "N" means incompatible. 
 
-| Compatibility | Official Magisk and All variants of KSU | Magisk Alpha | Apatch | Zygisk Next | ReZygisk | NeoZygisk | Shamiko | NoHello | Zygisk Assistant |
+| Compatibility | Official Magisk and all variants of KSU | Magisk Alpha | Apatch | Zygisk Next | ReZygisk | NeoZygisk | Shamiko | NoHello | Zygisk Assistant |
 | - | - | - | - | - | - | - | - | - | - |
-| Official Magisk and All variants of KSU | - | N | N | Y | Y | Y | Y | Y | Y |
+| Official Magisk and all variants of KSU | - | N | N | Y | Y | Y | Y | Y | Y |
 | Magisk Alpha | N | - | N | Y | N | Y | Y | Y | Y |
 | Apatch | N | N | - | Y | Y | Y | N | Y | Y |
 | Zygisk Next | Y | Y | Y | - | N | N | Y | Y | Y |
@@ -91,7 +245,8 @@ Therefore, there are the following collocations (partly), where "P" means passed
 | Magisk Alpha + NeoZygisk + PIF + TS + VBMeta Fixer | F | F |
 | Magisk Alpha + NeoZygisk + Zygisk Assistant (Denylist configured) + PIF + TS + VBMeta Fixer | P | F |
 
-It is worth noting that Zygisk Next integrates most of Shamiko's functionalities starting from version 1.3.0 and is compatible with all root implementations. Currently, SukiSU Ultra or Magisk Alpha, with Zygisk Next 1.3.0 or higher versions, may be the optimal upstream setup. 
+It is worth noting that Zygisk Next integrates most of Shamiko's functionalities starting from version 1.3.0 and is compatible with all root implementations. 
+Currently, SukiSU Ultra or Magisk Alpha, with Zygisk Next 1.3.0 or higher versions, may be the optimal upstream setup. 
 
 ---
 
@@ -99,64 +254,215 @@ It is worth noting that Zygisk Next integrates most of Shamiko's functionalities
 
 与底层、root、Zygisk、riru 和框架相关的部署工具在此处存储。
 
-以下教程适用于 Magisk 及其变体和 Apatch 及其变体在安卓设备上的部署，如已完成请直接跳过。
+以下教程适用于在安卓设备上部署 KernelSU 及其变体、Magisk  及其变体和 Apatch 及其变体。对于希望部署 KernelSU 或其变体之一的用户，请检查目标安卓设备的内核是否为通用内核映像并被 root 方案支持。
+对于希望部署 Magisk（或其变体之一）或 Apatch（或其变体之一）的用户，请检查目标安卓设备的安卓版本是否达到最低的安卓版本要求。
+教程全文仅提及一台计算机和一台安卓设备，其中的安卓设备即为目标安卓设备。如果某个步骤已被完成，请直接跳过。
 
-- 在计算机上安装必要的 adb、fastboot 和对应的手机设备驱动
-- 将安卓设备与计算机进行 USB 连接
-- 为安卓设备解除 bootloader 锁（需要清空安卓设备数据）
-  - 在安卓设备中打开开发者模式
-  - 在安卓设备的开发者选项中打开允许 oem 解锁开关
-  - 重启安卓设备至 fastboot 模式
-  - 在计算机中执行 ``fastboot oem unlock`` 或 ``fastboot flashing unlock``（不同 fastboot 版本和设备会有不同指令）
-  - 重启安卓设备
-- 首次 root
-  - 准备好你的 root 管理器（最新版）
-  - 修补 boot.img 路线
-    - 从与目标安卓设备系统版本相同的 9008 包或全量包中提取 boot.img
-    - 将提取的 boot.img 复制到手机的外部存储中
-    - 修补 boot.img
-      - 安装 root 管理器应用
-      - 打开 root 管理器应用
-      - 选择安装
-      - 选择通过修补一个镜像
-      - 利用文件管理器选择上述从计算机复制到安卓设备的 boot.img
-      - 点击修补并等待修补完成
-    - 刷入修补后的 boot.img
-      - 在安卓设备的下载目录找到修补后的 boot.img 并将其拷贝到计算机中
-      - 在计算机中执行 ``fastboot boot "boot_patched.img"`` 并观察能否开机（此处 ``boot_patched.img`` 为修补后的 boot.img 的计算机文件路径）
-      - 在计算机中执行 ``fastboot getvar current-slot`` 查看当前活跃分区
-      - 若为 a：在计算机中执行 ``fastboot flash boot_a "boot_patched.img"`` 刷入分区（此处 ``boot_patched.img`` 为修补后的 boot.img 的计算机文件路径）
-      - 若为 b：在计算机中执行 ``fastboot flash boot_b "boot_patched.img"`` 刷入分区（此处 ``boot_patched.img`` 为修补后的 boot.img 的计算机文件路径）
-  - 第三方 Rec 路线（仅适用于 Magisk 及其变体）
-    - 寻找并下载适用于当前安卓设备和系统的 TWRP 镜像
-    - 重启安卓设备至 fastboot 模式
-    - 使用 ``fastboot boot twrp.img`` 启动安卓设备至临时 TWRP 模式（此处 ``twrp.img`` 为下载的 TWRP 镜像）
-    - 如有需要可在安卓设备的 TWRP 界面选择永久刷入当前 TWRP
-    - 将最新版 Magisk 应用重命名为 magisk.zip 并复制到安卓设备中
-    - 在 TWRP 界面选择安装
-    - 在 TWRP 界面选中导入的 magisk.zip 并刷入
-- 后续 root
-  - 参阅首次 root
-  - 在 root 管理器中直接安装
-- 部署完成后请重启安卓设备至正常模式
-
-其中，重启安卓设备默认是重启至正常模式。有关重启安卓设备至 fastboot 模式的实现，可参阅以下内容。
-
-- 重启安卓设备至 fastboot 模式
-  - 利用 adb
-    - 让安卓设备出于正常开机的屏幕解锁状态下
-    - 在安卓设备的开发者选项中打开 USB 调试
-    - 在计算机上执行 ``adb devices``
-    - 若安卓设备需要 USB 调试授权请授权
-    - 在计算机上执行 ``adb reboot bootloader`` 实现重启到 fastboot 模式
-  - 通过高级重启
-    - 部分安卓设备（如一加）在开发者选项中可以启用向长按电源键添加高级重启选项的功能
-    - 启用该功能并长按电源键重启至 bootloader
-  - 通过关机状态下的组合键
-    - 将安卓设备关机
-    - 将安卓设备断开与计算机的 USB 连接
-    - 根据手机型号长按组合键（例如电源键与两个音量键一起长按）进入 bootloader（如果失败请耐心等待开机解锁屏幕后关机再来一次）
-    - 重新将安卓设备与计算机进行 USB 连接
+- 定义
+  - 下文的 ``patched_init_boot.img`` 代指位于计算机中的修补后的 ``init_boot`` 镜像文件路径（请在必要时在路径两端添加一对英文双引号）
+  - 下文的 ``original_init_boot.img`` 代指位于计算机中的原始的 ``init_boot`` 镜像文件路径（请在必要时在路径两端添加一对英文双引号）
+  - 下文的 ``patched_boot.img`` 代指位于计算机中的修补后的 ``boot`` 镜像文件路径（请在必要时在路径两端添加一对英文双引号）
+  - 下文的 ``original_boot.img`` 代指位于计算机中的原始的 ``boot`` 镜像文件路径（请在必要时在路径两端添加一对英文双引号）
+  - 下文的 ``third_party_recovery.img`` 代指位于计算机中的第三方 ``recovery`` 镜像文件路径（请在必要时在路径两端添加一对英文双引号）
+  - 下文的 ``original_recovery.img`` 代指位于计算机中的原始 ``recovery`` 镜像文件路径（请在必要时在路径两端添加一对英文双引号）
+- 如果这是首次 root 目标安卓设备（不是指人的首次操作）
+  - 在计算机上部署最新的 [platform tools](https://developer.android.com/tools/releases/platform-tools) 环境并确保 ``adb`` 和 ``fastboot`` 在搜索路径中
+  - 在计算机上为目标安卓设备安装相应的驱动
+  - 启动目标安卓设备使其正常进入系统并使用一条优质的 USB 数据线将计算机和目标安卓设备进行连接
+  - 为目标安卓设备解锁 bootloader（将 bootloader 从锁定状态变成解锁状态会清空目标安卓设备上的所有数据）
+    - 通过至少 5 次连续点击系统版本或内核版本来为目标安卓设备启用开发者模式
+    - 在目标安卓设备中的开发者选项里启用``允许 OEM 解锁``
+    - 重启目标安卓设备到 bootloader（在后续步骤中以下细节不再赘述）
+      - 如果目标安卓设备支持高级重启，那么可以直接通过高级重启菜单重启目标安卓设备到 bootloader
+      - 否则
+        - 在目标安卓设备中的开发者选项里启用 USB 调试选项
+        - 在计算机上执行 ``adb devices``
+        - 在目标安卓设备中允许计算机执行 adb 调试
+        - 在计算机上执行 ``adb reboot bootloader``
+        - 在目标安卓设备中的开发者选项里停用 USB 调试选项
+    - 在计算机上执行 ``fastboot oem unlock`` 或 ``fastboot flashing unlock``（不同的 fastboot 版本和安卓设备会有不同的指令）
+    - 重启目标安卓设备使其正常进入系统
+  - Root 目标安卓设备（请使用下列方法中的任一方法）
+    - 方法 1：通过刷入一个修补后的分区镜像文件
+      - 如果使用的是 KernelSU 或其变体之一
+        - 在目标安卓设备上安装并启动最新版 root 管理器
+        - 记录 root 管理器中显示的内核版本（注意内核版本起始位置指示的安卓版本可以和目标安卓设备的安卓版本不同）
+        - 使用以下模式中的任一模式来修补和刷入分区镜像文件（如果同时使用了两个模式则以 GKI 模式为准）
+          - LKM 模式（推荐有 ``init_boot`` 分区的安卓设备使用，在此条件下，该安卓设备一定是 A/B 架构）
+            - 准备修补后的 ``init_boot.img``（请使用下列方式中的任一方式）
+              - 手动修补（推荐）
+                - 从对应于目标安卓设备 ROM 或活动槽位的 9008 包、线刷包或全量包（卡刷包）中提取 ``init_boot.img``
+                - 将提取的 ``init_boot.img`` 复制到目标安卓设备的外部存储中
+                - 在目标安卓设备上转到 root 管理器的首页
+                - 如果 root 管理器显示``已安装``或``未安装``
+                  - 点击显示``已安装``或``未安装``文字所在的元素
+                  - 在 root 管理器中点击``选择一个文件``
+                  - 使用文件管理器选择放置在目标安卓设备的外部存储中的 ``init_boot.img``
+                  - 选择之前记录的内核版本
+                  - 点击``修补``并等待修补过程完成
+                - 否则，请考虑使用 Magisk（或其变体之一）或 Apatch（或其变体之一）
+                - 在目标安卓设备的下载目录下找到修补后的 ``init_boot.img`` 并复制或移动它到计算机上
+              - 从互联网或基于同一原始 ``init_boot.img`` 的 ROM 的变体中搜索并获取一个对应的修补后的 ``init_boot.img``
+            - 重启目标安卓设备到 bootloader
+            - 在计算机上执行 ``fastboot getvar current-slot`` 来查看当前的活动槽位
+            - 在计算机上执行 ``fastboot flash init_boot_a patched_init_boot.img``（如果槽位 A 活跃）或 ``fastboot flash init_boot_b patched_init_boot.img``（如果槽位 B 活跃）
+            - 重启目标安卓设备使其正常进入系统（在目标安卓设备上通过音量 +/- 键选中绿色的 ``START`` 并按下电源键或在计算机上执行 ``fastboot reboot``）
+            - 如果上述刷入命令失败，请在此停止并考虑使用 GKI 模式、Magisk（或其变体之一）或 Apatch（或其变体之一）
+            - 如果目标安卓设备能够正常进入系统
+              - 启动相应的 root 管理器并检查目标安卓设备是否已成功 root
+              - 如未 root，请重试，考虑使用 GKI 模式、Magisk（或其变体之一）或 Apatch（或其变体之一），或放弃 root（请记得将全部分区还原为原始分区）
+            - 否则
+              - 根据目标安卓设备长按电源键和音量键来强制目标安卓设备重启进入 bootloader
+              - 在计算机上执行 ``fastboot flash init_boot_a original_init_boot.img``（如果槽位 A 活跃）或 ``fastboot flash init_boot_b original_init_boot.img``（如果槽位 B 活跃）
+              - 重启目标安卓设备使其正常进入系统
+              - 重试，考虑使用 GKI 模式、Magisk（或其变体之一）或 Apatch（或其变体之一），或放弃 root
+          - 对于 GKI 模式，请参阅后续有关如何通过 Magisk（或其变体之一）或 Apatch（或其变体之一）首次 root 目标安卓设备的教程
+      - 如果使用的是 KernelSU（或其变体之一）的 GKI 模式、Magisk（或其变体之一）或 Apatch（或其变体之一）
+        - 在目标安卓设备上安装并启动最新版 root 管理器
+        - 准备修补后的 ``boot.img``（请使用下列方式中的任一方式）
+          - 手动修补（推荐）
+            - 从对应于目标安卓设备 ROM 或活动槽位的 9008 包、线刷包或全量包（卡刷包）中提取 ``boot.img``
+            - 将提取的 ``boot.img`` 复制到目标安卓设备的外部存储中
+            - 如果通过 KernelSU 或其变体之一来修补 ``boot.img``
+              - 在目标安卓设备上转到 root 管理器的首页
+              - 如果 root 管理器显示``已安装``或``未安装``
+                - 点击显示``已安装``或``未安装``文字所在的元素
+                - 在 root 管理器中点击``选择一个文件``
+                - 使用文件管理器选择放置在目标安卓设备的外部存储中的 ``boot.img``
+                - 选择之前记录的内核版本
+              - 否则，请考虑使用 Magisk（或其变体之一）或 Apatch（或其变体之一）
+            - 如果通过 Magisk 或其变体之一来修补 ``boot.img``
+              - 在目标安卓设备上转到 root 管理器的首页
+              - 点击 root 管理器中的第一个``安装``按钮
+              - 点击 root 管理器中的``选择并修补文件``
+              - 使用文件管理器选择放置在目标安卓设备的外部存储中的 ``boot.img``
+              - 点击``开始``并等待修补过程完成
+            - 如果通过 Apatch 或其变体之一来修补 ``boot.img``
+              - 在目标安卓设备上转到 root 管理器的首页
+              - 点击 root 管理器中的``安装``按钮
+              - 点击 root 管理器中的``选择并修补文件``
+              - 使用文件管理器选择放置在目标安卓设备的外部存储中的 ``boot.img``
+              - 如有需要可嵌入 Cherish Peekaboo 内核模块
+              - 设置密码
+              - 点击``修补``并等待修补过程完成
+            - 在目标安卓设备的下载目录下找到修补后的 ``boot.img`` 并复制或移动它到计算机上
+          - 通过 Magisk 或其变体之一的 OTA 链接下载并修补镜像
+            - 在目标安卓设备上转到 root 管理器的首页
+            - 点击 root 管理器中的第一个``安装``按钮
+            - 点击 root 管理器中的``下载并修补映像``
+            - 输入 OTA 链接并确认
+          - 从互联网或基于同一原始 ``boot.img`` 的 ROM 的变体中搜索并获取一个对应的修补后的 ``boot.img``
+        - 重启目标安卓设备到 bootloader
+        - 如果目标安卓设备在 non-A/B 架构上运行
+          - 在计算机上执行 ``fastboot boot patched_boot.img``
+          - 如果目标安卓设备在执行上述命令后正常启动进入系统
+            - 在计算机上执行 ``fastboot flash boot patched_boot.img``
+            - 重启目标安卓设备使其正常进入系统（在目标安卓设备上通过音量 +/- 键选中绿色的 ``START`` 并按下电源键或在计算机上执行 ``fastboot reboot``）
+            - 如果上述刷入命令失败，请在此停止并考虑重试或放弃
+            - 如果目标安卓设备能够正常进入系统
+              - 启动相应的 root 管理器并检查目标安卓设备是否已成功 root
+              - 如未 root，请重试或放弃 root（请记得将全部分区还原为原始分区）
+            - 否则
+              - 根据目标安卓设备长按电源键和音量键来强制目标安卓设备重启进入 bootloader
+              - 在计算机上执行 ``fastboot flash boot original_boot.img``
+              - 重启目标安卓设备使其正常进入系统
+              - 重试或放弃 root
+          - 否则，请考虑重试或放弃 root
+        - 如果目标安卓设备在 legacy A/B 架构上运行
+          - 在计算机上执行 ``fastboot getvar current-slot`` 来查看当前的活动槽位
+          - 在计算机上执行 ``fastboot boot patched_boot.img``
+          - 如果目标安卓设备在执行上述命令后正常启动进入系统
+            - 在计算机上执行 ``fastboot flash boot_a patched_boot.img``（如果槽位 A 活跃）或 ``fastboot flash boot_b patched_boot.img``（如果槽位 B 活跃）
+            - 重启目标安卓设备使其正常进入系统（在目标安卓设备上通过音量 +/- 键选中绿色的 ``START`` 并按下电源键或在计算机上执行 ``fastboot reboot``）
+            - 如果上述刷入命令失败，请在此停止并考虑重试或放弃
+            - 如果目标安卓设备能够正常进入系统
+              - 启动相应的 root 管理器并检查目标安卓设备是否已成功 root
+              - 如未 root，请重试或放弃 root（请记得将全部分区还原为原始分区）
+            - 否则
+              - 根据目标安卓设备长按电源键和音量键来强制目标安卓设备重启进入 bootloader
+              - 在计算机上执行 ``fastboot flash boot_a original_boot.img``（如果槽位 A 活跃）或 ``fastboot flash boot_b original_boot.img``（如果槽位 B 活跃）
+              - 重启目标安卓设备使其正常进入系统
+              - 重试或放弃 root
+          - 否则，请考虑重试或放弃 root
+        - 如果目标安卓设备在 virtual A/B 架构上运行
+          - 在计算机上执行 ``fastboot getvar current-slot`` 来查看当前的活动槽位
+          - 在计算机上执行 ``fastboot flash boot_a patched_boot.img``（如果槽位 A 活跃）或 ``fastboot flash boot_b patched_boot.img``（如果槽位 B 活跃）
+          - 重启目标安卓设备使其正常进入系统（在目标安卓设备上通过音量 +/- 键选中绿色的 ``START`` 并按下电源键或在计算机上执行 ``fastboot reboot``）
+          - 如果上述刷入命令失败，请在此停止并考虑重试或放弃
+          - 如果目标安卓设备能够正常进入系统
+            - 启动相应的 root 管理器并检查目标安卓设备是否已成功 root
+            - 如未 root，请重试或放弃 root（请记得将全部分区还原为原始分区）
+          - 否则
+            - 根据目标安卓设备长按电源键和音量键来强制目标安卓设备重启进入 bootloader
+            - 在计算机上执行 ``fastboot flash boot_a original_boot.img``（如果槽位 A 活跃）或 ``fastboot flash boot_b original_boot.img``（如果槽位 B 活跃）
+            - 重启目标安卓设备使其正常进入系统
+            - 重试或放弃 root
+    - 方法 2：通过第三方恢复（仅对 Magisk 及其变体生效）
+      - 将最新版 Magisk 应用重命名为 ``magisk.zip`` 并复制到目标安卓设备上
+      - 为目标安卓设备查找并下载第三方恢复镜像文件（例如 TWRP 和 OrangeFox）
+      - 重启目标安卓设备到 bootloader
+      - 如果目标安卓设备在 virtual A/B 架构上运行
+        - 在计算机上执行 ``fastboot getvar current-slot`` 来查看当前的活动槽位
+        - 尝试备份原始恢复分区
+        - 在计算机上执行 ``fastboot flash recovery_a third_party_recovery.img``（如果槽位 A 活跃）或 ``fastboot flash recovery_b third_party_recovery.img``（如果槽位 B 活跃）
+        - 重启目标安卓设备使其进入恢复模式（在目标安卓设备上通过音量 +/- 键选中红色的 ``RECOVERY`` 并按下电源键或在计算机上执行 ``fastboot reboot recovery``）
+        - 如果目标安卓设备启动到恢复模式并能够在输入正确的密码后解密 ``/data`` 分区
+          - 如果正在使用 OrangeFox 请在第三方恢复中刷入 OrangeFox 的 ZIP 包
+          - 在第三方恢复中刷入 ``magisk.zip``
+          - 通过第三方恢复将目标安卓设备重启至系统
+          - 如果目标安卓设备能够正常进入系统
+            - 启动相应的 root 管理器并检查目标安卓设备是否已成功 root
+            - 如未 root，请重试或放弃 root（请记得将全部分区还原为原始分区）
+          - 否则
+            - 根据目标安卓设备长按电源键和音量键来强制目标安卓设备重启进入 bootloader
+            - 重启目标安卓设备使其进入恢复模式（在目标安卓设备上通过音量 +/- 键选中红色的 ``RECOVERY`` 并按下电源键或在计算机上执行 ``fastboot reboot recovery``）
+            - 通过第三方恢复将目标安卓设备中的 ``magisk.zip`` 重命名为 ``uninstall.zip``
+            - 通过第三方恢复刷入 ``uninstall.zip``
+            - 通过第三方恢复将目标安卓设备中的 ``uninstall.zip`` 重命名回 ``magisk.zip``
+            - 重启目标安卓设备使其正常进入系统
+            - 重试或放弃 root
+        - 否则
+          - 在计算机上执行 ``fastboot flash recovery_a original_recovery.img``（如果槽位 A 活跃）或 ``fastboot flash recovery_b original_recovery.img``（如果槽位 B 活跃）
+          - 搜索其它第三方恢复、重试或放弃 root
+      - 否则
+        - 在计算机中执行 ``fastboot boot third_party_recovery.img`` 以使得目标安卓设备临时启动到由第三方恢复实现的恢复模式
+        - 如果目标安卓设备启动到恢复模式并能够在输入正确的密码后解密 ``/data`` 分区
+          - 如希望将第三方恢复永久保留可在第三方恢复中刷入当前 TWRP（如果使用的是 TWRP）或 OrangeFox 的 ZIP 包（如果使用的是 OrangeFox）
+          - 在第三方恢复中刷入 ``magisk.zip``
+          - 通过第三方恢复将目标安卓设备重启至系统
+          - 如果目标安卓设备能够正常进入系统
+            - 启动相应的 root 管理器并检查目标安卓设备是否已成功 root
+            - 如未 root，请重试或放弃 root（请记得将全部分区还原为原始分区）
+          - 否则
+            - 根据目标安卓设备长按电源键和音量键来强制目标安卓设备重启进入 bootloader
+            - 重启目标安卓设备使其进入恢复模式（在目标安卓设备上通过音量 +/- 键选中红色的 ``RECOVERY`` 并按下电源键或在计算机上执行 ``fastboot reboot recovery``）
+            - 通过第三方恢复将目标安卓设备中的 ``magisk.zip`` 重命名为 ``uninstall.zip``
+            - 通过第三方恢复刷入 ``uninstall.zip``
+            - 通过第三方恢复将目标安卓设备中的 ``uninstall.zip`` 重命名回 ``magisk.zip``
+            - 重启目标安卓设备使其正常进入系统
+            - 重试或放弃 root
+        - 否则，搜索其它第三方恢复、重试或放弃 root
+  - 移除 USB 数据线
+- 否则（请使用下列方法中的任一方法）
+  - 方法 1：请使用首次 root 的方法中的任一方法
+  - 方法 2：通过目标安卓设备中已具有 root 权限的 root 管理器直接安装并重启目标安卓设备使其正常进入系统（推荐）
+  - 方法 3：使用 [Kernel Flasher](https://github.com/fatalcoder524/KernelFlasher)
+    - 在目标安卓设备上安装 Kernel Flasher
+    - 使用已拥有 root 权限的 root 管理器为 Kernel Flasher 授予 root 权限
+    - 通过 Kernel Flasher 备份 ``/boot`` 分区并将其复制或移动到计算机中
+    - 从 GitHub 上搜索并下载相应的 AnyKernel3（AK3）
+    - 通过 Kernel Flasher 刷入 AK3（内核在 ``boot`` 分区中）
+    - 重启目标安卓设备使其正常进入系统
+    - 如果目标安卓设备能够正常进入系统
+      - 启动相应的 root 管理器并检查目标安卓设备是否已成功 root
+      - 如未 root，请尝试使用其它方法 root 目标安卓设备
+    - 否则
+      - 根据目标安卓设备长按电源键和音量键来强制目标安卓设备重启进入 bootloader
+      - 在计算机上部署最新的 [platform tools](https://developer.android.com/tools/releases/platform-tools) 环境并确保 ``adb`` 和 ``fastboot`` 在搜索路径中
+      - 在计算机上为目标安卓设备安装相应的驱动
+      - 在计算机上执行 ``fastboot flash original_boot.img``
+      - 重启目标安卓设备使其正常进入系统
+      - 尝试使用其它方法 root 目标安卓设备
 
 一些实现和模块之间的兼容性分析如下，其中 Y 表示兼容，N 表示不兼容。
 
