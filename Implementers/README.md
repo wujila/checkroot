@@ -60,7 +60,7 @@ Throughout the whole tutorials, there is only a computer and an Android device, 
             - If the above flashing command fails, please stop here and consider using the GKI mode, Magisk (or one of its variants), or Apatch (or one of its variants)
             - If the target Android device boots normally into the system
               - Launch the corresponding root manager to check whether the target Android device is rooted
-              - If not, retry, consider using the GKI mode, Magisk (or one of its variants), or Apatch (or one of its variants), or give up rooting (remember to restore to the original partitions)
+              - If not, please retry, consider using the GKI mode, Magisk (or one of its variants), or Apatch (or one of its variants), or give up rooting (remember to restore to the original partitions)
             - Otherwise
               - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
               - Execute ``fastboot flash init_boot_a original_init_boot.img`` (if ``a`` is active) or ``fastboot flash init_boot_b original_init_boot.img`` (if ``b`` is active) on the computer
@@ -112,7 +112,7 @@ Throughout the whole tutorials, there is only a computer and an Android device, 
             - If the above flashing command fails, please stop here and consider retrying or giving up
             - If the target Android device boots normally into the system
               - Launch the corresponding root manager to check whether the target Android device is rooted
-              - If not, retry or give up rooting (remember to restore to the original partitions)
+              - If not, please retry or give up rooting (remember to restore to the original partitions)
             - Otherwise
               - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
               - Execute ``fastboot flash boot original_boot.img`` on the computer
@@ -128,7 +128,7 @@ Throughout the whole tutorials, there is only a computer and an Android device, 
             - If the above flashing command fails, please stop here and consider retrying or giving up
             - If the target Android device boots normally into the system
               - Launch the corresponding root manager to check whether the target Android device is rooted
-              - If not, retry or give up rooting (remember to restore to the original partitions)
+              - If not, please retry or give up rooting (remember to restore to the original partitions)
             - Otherwise
               - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
               - Execute ``fastboot flash boot_a original_boot.img`` (if ``a`` is active) or ``fastboot flash boot_b original_boot.img`` (if ``b`` is active) on the computer
@@ -142,14 +142,14 @@ Throughout the whole tutorials, there is only a computer and an Android device, 
           - If the above flashing command fails, please stop here and consider retrying or giving up
           - If the target Android device boots normally into the system
             - Launch the corresponding root manager to check whether the target Android device is rooted
-            - If not, retry or give up rooting (remember to restore to the original partitions)
+            - If not, please retry or give up rooting (remember to restore to the original partitions)
           - Otherwise
             - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
             - Execute ``fastboot flash boot_a original_boot.img`` (if ``a`` is active) or ``fastboot flash boot_b original_boot.img`` (if ``b`` is active) on the computer
             - Reboot the target Android device normally into the system
             - Retry or give up rooting
     - Method 2: Via a third-party recovery (only applicable to Magisk and its variants)
-      - Rename the latest version of the Magisk application to ``magisk.zip`` and copy it to the target Android device
+      - Rename the APK of the latest Magisk or one of its variants to ``magisk.zip`` and copy it to the target Android device
       - Find and download the third-party recovery image file (like TWRP and OrangeFox) for the target Android device
       - Reboot the target Android device to the bootloader
       - If the target Android device runs on the virtual A/B architecture
@@ -163,7 +163,7 @@ Throughout the whole tutorials, there is only a computer and an Android device, 
           - Reboot the target Android device normally into the system via the third-party recovery
           - If the target Android device boots normally into the system
             - Launch the corresponding root manager to check whether the target Android device is rooted
-            - If not, retry or give up rooting (remember to restore to the original partitions)
+            - If not, please retry or give up rooting (remember to restore to the original partitions)
           - Otherwise
             - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
             - Reboot the target Android device (by selecting the red ``RECOVERY`` via +/- and pressing the power key on the target Android device or by executing ``fastboot reboot recovery`` on the computer)
@@ -183,7 +183,7 @@ Throughout the whole tutorials, there is only a computer and an Android device, 
           - Reboot the target Android device normally into the system via the third-party recovery
           - If the target Android device boots normally into the system
             - Launch the corresponding root manager to check whether the target Android device is rooted
-            - If not, retry or give up rooting (remember to restore to the original partitions)
+            - If not, please retry or give up rooting (remember to restore to the original partitions)
           - Otherwise
             - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
             - Reboot the target Android device (by selecting the red ``RECOVERY`` via +/- and pressing the power key on the target Android device or by executing ``fastboot reboot recovery`` on the computer)
@@ -205,7 +205,7 @@ Throughout the whole tutorials, there is only a computer and an Android device, 
     - Flash the AK3 via Kernel Flasher (the kernel is in the ``/boot`` partition)
     - Reboot the target Android device normally into the system
     - If the target Android device boots normally into the system
-      - Launch the corresponding root manager to check whether the target Android device is rooted
+      - Install and launch the latest root manager corresponding to the new kernel to check whether the target Android device is rooted (this may be converted from the LKM mode to the GKI mode)
       - If not, please try other methods to root the target Android device
     - Otherwise
       - Long-press the power key and the volume key(s) accordingly to force the target Android device reboot into the bootloader
@@ -398,7 +398,7 @@ Currently, SukiSU Ultra or Magisk Alpha, with Zygisk Next 1.3.0 or higher versio
             - 重启目标安卓设备使其正常进入系统
             - 重试或放弃 root
     - 方法 2：通过第三方恢复（仅对 Magisk 及其变体生效）
-      - 将最新版 Magisk 应用重命名为 ``magisk.zip`` 并复制到目标安卓设备上
+      - 将最新版 Magisk 或其变体之一的 APK 重命名为 ``magisk.zip`` 并复制到目标安卓设备上
       - 为目标安卓设备查找并下载第三方恢复镜像文件（例如 TWRP 和 OrangeFox）
       - 重启目标安卓设备到 bootloader
       - 如果目标安卓设备在 virtual A/B 架构上运行
@@ -454,7 +454,7 @@ Currently, SukiSU Ultra or Magisk Alpha, with Zygisk Next 1.3.0 or higher versio
     - 通过 Kernel Flasher 刷入 AK3（内核在 ``boot`` 分区中）
     - 重启目标安卓设备使其正常进入系统
     - 如果目标安卓设备能够正常进入系统
-      - 启动相应的 root 管理器并检查目标安卓设备是否已成功 root
+      - 安装并启动与新内核对应的最新版 root 管理器以检查目标安卓设备是否已成功 root（这可能从 LKM 模式转换为 GKI 模式）
       - 如未 root，请尝试使用其它方法 root 目标安卓设备
     - 否则
       - 根据目标安卓设备长按电源键和音量键来强制目标安卓设备重启进入 bootloader
