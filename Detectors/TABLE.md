@@ -11,7 +11,7 @@ en
 | Bank of China (Hong Kong) | ``com.bochk.app.aos`` | [https://play.google.com/store/apps/details?id=com.bochk.app.aos](https://play.google.com/store/apps/details?id=com.bochk.app.aos) | 安卓桌面应用 | 安卓桌面应用 | ``v7.3.5 (156)`` |  2025 年 9 月 20 日 |
 | Checker | ``org.akanework.checker`` | | | 环境检测 | ``v1.0.9`` | 早于 2025 年 1 月 8 日 |
 | DRM Info | ``com.androidfung.drminfo`` | [https://play.google.com/store/apps/details?id=com.androidfung.drminfo](https://play.google.com/store/apps/details?id=com.androidfung.drminfo) | | 信息收集 | ``v1.1.15-240919`` |  2024 年 9 月 19 日 |
-| Duck Detector | ``com.studio.duckdetector`` | [https://t.me/duck_detector](https://t.me/duck_detector) | | 环境检测 | ``v1.9.15-beta-487f8a0d (105)`` |  2026 年 2 月 24 日 |
+| Duck Detector | ``com.studio.duckdetector`` | [https://t.me/duck_detector](https://t.me/duck_detector) | | 环境检测 | ``v1.9.16-beta-f098141a (106)`` |  2026 年 3 月 1 日 |
 | Hunter | ``com.zhenxi.hunter`` | | | 环境检测 | ``v6.58 (658)`` |  2026 年 1 月 29 日 |
 | IIQE 一考通 | ``com.prudential.iiqe`` | [https://iiqe-cms.prudential.com.hk/iiqe/](https://iiqe-cms.prudential.com.hk/iiqe/) | 安卓桌面应用 | 安卓桌面应用 | ``v6.4.3C88`` |  2025 年 3 月 3 日 |
 | Luna | ``luna.safe.luna`` | [https://www.54nb.com/lunathanks.html](https://www.54nb.com/lunathanks.html)；[http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=59DJwD_gUpDYerkoGXf8hLg4X-opZImm&authKey=KZCWgoCQMOhN5M80g8%2Bq3L%2FIJvITTMAKTSevEQbahYSW5YwlW8Vq8v6JQ4hcivfp&noverify=0&group_code=1022646824](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=59DJwD_gUpDYerkoGXf8hLg4X-opZImm&authKey=KZCWgoCQMOhN5M80g8%2Bq3L%2FIJvITTMAKTSevEQbahYSW5YwlW8Vq8v6JQ4hcivfp&noverify=0&group_code=1022646824) | 闭源 | 环境检测 | ``v1.4.2.7`` | 不晚于 2025 年 10 月 9 日 |

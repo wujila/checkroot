@@ -59,8 +59,8 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ Native Test ++
 - **Package Name**: ``com.studio.duckdetector``
 - **Official Link**: https://t.me/duck_detector
 - **Developing Purpose**: Environment Detection
-- **Latest Version**: ``v1.9.15-beta-487f8a0d (105)``
-- **Release Date**:  February 24th, 2026
+- **Latest Version**: ``v1.9.16-beta-f098141a (106)``
+- **Release Date**:  March 1st, 2026
 
 ### Hunter
 
@@ -395,8 +395,8 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人
 - **应用包名**：``com.studio.duckdetector``
 - **官方链接**：[https://t.me/duck_detector](https://t.me/duck_detector)
 - **开发用途**：环境检测
-- **最新版本**：``v1.9.15-beta-487f8a0d (105)``
-- **发行日期**： 2026 年 2 月 24 日
+- **最新版本**：``v1.9.16-beta-f098141a (106)``
+- **发行日期**： 2026 年 3 月 1 日
 - ![duckDetectorCN.png](duckDetectorCN.png)
 
 ### Hunter

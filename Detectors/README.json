@@ -77,8 +77,8 @@
 			"packageName":"com.studio.duckdetector", 
 			"officialLink":"https://t.me/duck_detector", 
 			"developingPurpose":"E", 
-			"latestVersion":"v1.9.15-beta-487f8a0d (105)", 
-			"releaseDate":"= 20260224", 
+			"latestVersion":"v1.9.16-beta-f098141a (106)", 
+			"releaseDate":"= 20260301", 
 			"image":{
 				"zh-CN":"duckDetectorCN.png"
 			}
