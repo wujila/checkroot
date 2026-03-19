@@ -59,13 +59,13 @@
     '*': 'Please check whether the Security Level is Level 1. The smaller the level, the better the device is. '
     zh-CN: 请检查 Security Level 是否为 L1，等级数值越小越好。
 - name: Duck Detector
-  packageName: com.studio.duckdetector
+  packageName:
+  - com.studio.duckdetector
+  - com.eltavine.duckdetector
   officialLink: https://t.me/duck_detector
   developingPurpose: E
-  latestVersion: v1.9.16-beta-f098141a (106)
-  releaseDate: = 20260301
-  image:
-    zh-CN: duckDetectorCN.png
+  latestVersion: v26.3.3-alpha (203)
+  releaseDate: = 20260319
 - name: Hunter
   packageName: com.zhenxi.hunter
   developingPurpose: E
