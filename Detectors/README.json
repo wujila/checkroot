@@ -77,8 +77,8 @@
 			"packageName":["com.studio.duckdetector", "com.eltavine.duckdetector"], 
 			"officialLink":"https://t.me/duck_detector", 
 			"developingPurpose":"E", 
-			"latestVersion":"v26.3.3-alpha (203)", 
-			"releaseDate":"= 20260319"
+			"latestVersion":"v26.3.12 (212)", 
+			"releaseDate":"= 20260328"
 		}, 
 		{
 			"name":"Hunter", 

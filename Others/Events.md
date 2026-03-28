@@ -18,6 +18,7 @@ Related events related to Magisk, Zygisk, and LSPosed are stored here.
 - 20250917: There is a large-scale account blocking phenomenon in WeChat. Most blocked accounts are 8.0.56 or above, especially 8.0.62. 
 - 20251220: Some PIF variants were reported as malicious. 
 - 20260202: Telegram channels containing a large number of ``*.apk`` files were maliciously reported. 
+- 20260325: Some plugins that are explicitly prohibited from distribution in certain regions are being widely disseminated on popular social media platforms in those regions. 
 
 ---
 
@@ -41,3 +42,4 @@ Related events related to Magisk, Zygisk, and LSPosed are stored here.
 - 20250917：微信出现大规模封号现象，集中于 8.0.56 及以上版本，在 8.0.62 版本尤为突出。
 - 20251220：一些 PIF 变体被曝恶意。
 - 20260202：含有大量 ``*.apk`` 文件的 Telegram 频道被恶意举报。
+- 20260325：一些已明确禁止在某些地区传播的插件在该地区的知名社交平台上被大范围传播。
