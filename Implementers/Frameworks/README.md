@@ -6,6 +6,13 @@ This folder aims to archive the historical injection frameworks and the latest v
 
 This is the fundamental injection framework. Most of the upcoming injection frameworks are based on this. 
 
+- Non-virtual frameworks
+  - Xposed
+    - Origin (archived on June 1st, 2023): [https://github.com/rovo89/XposedInstaller](https://github.com/rovo89/XposedInstaller)
+    - Build: [https://github.com/hojjatsajjadinia/XposedFrameworkOffline](https://github.com/hojjatsajjadinia/XposedFrameworkOffline)
+- Virtual frameworks
+  - Virtual Xposed: [https://github.com/android-hacker/virtualxposed](https://github.com/android-hacker/virtualxposed)
+
 #### EdXposed
 
 During the EdXposed era, a variety of injection frameworks emerged, which can be categorized into non-virtual frameworks and virtual frameworks based on their working principles. 
@@ -43,7 +50,9 @@ Overall, please disable logging features that may trigger detection, enable Xpos
 Within LSPatch and its variants, we recommend using NPatch. 
 
 - Non-virtual frameworks: LSPosed and its variants (the latest versions based on libxposed100 and libxposed101 are saved for each variant)
-  - The original official LSPosed: [https://github.com/LSPosed/LSPosed](https://github.com/LSPosed/LSPosed) and [https://t.me/LSPosed](https://t.me/LSPosed)
+  - The original official LSPosed (marked ``archived`` on GitHub but still updating privately in the ``it`` variant)
+    - [https://github.com/LSPosed/LSPosed](https://github.com/LSPosed/LSPosed)
+    - [https://t.me/LSPosed](https://t.me/LSPosed)
   - The ``Jing Matrix`` variant
     - Current: [https://github.com/JingMatrix/Vector](https://github.com/JingMatrix/Vector)
     - Original: [https://github.com/JingMatrix/LSPosed](https://github.com/JingMatrix/LSPosed)
@@ -51,12 +60,16 @@ Within LSPatch and its variants, we recommend using NPatch.
       - The first workflow whose names of the artifacts start with ``Vector``: [https://github.com/JingMatrix/LSPosed/actions/runs/22694494599](https://github.com/JingMatrix/LSPosed/actions/runs/22694494599)
   - The ``it`` variant: This variant is private
   - The ``Irena`` variant: [https://github.com/re-zero001/LSPosed-Irena](https://github.com/re-zero001/LSPosed-Irena)
-  - The ``ReLSPosed`` variant (archived on February 13, 2026): [https://github.com/ThePedroo/ReLSPosed/actions/runs/18026600180](https://github.com/ThePedroo/ReLSPosed/actions/runs/18026600180)
+  - The ``ReLSPosed`` variant (archived on February 13th, 2026): [https://github.com/ThePedroo/ReLSPosed/actions/runs/18026600180](https://github.com/ThePedroo/ReLSPosed/actions/runs/18026600180)
   - The ``mod`` variant (last released on March 8th, 2024): [https://github.com/mywalkb/LSPosed_mod](https://github.com/mywalkb/LSPosed_mod)
   - The ``npm`` variant: No public official GitHub repositories are found (A possible publisher Telegram channel should be [https://t.me/rormzhstjxm](https://t.me/rormzhstjxm))
 - Virtual frameworks: LSPatch and its variants
-  - The original official LSPatch: [https://github.com/LSPosed/LSPatch](https://github.com/LSPosed/LSPatch) and [https://t.me/LSPosed](https://t.me/LSPosed)
-  - OPatch: [https://github.com/8MiYile/LSPatch-OP](https://github.com/8MiYile/LSPatch-OP)
+  - The original official LSPatch
+    - [https://github.com/LSPosed/LSPatch](https://github.com/LSPosed/LSPatch)
+    - [https://t.me/LSPosed](https://t.me/LSPosed)
+  - OPatch
+    - Origin (archived on January 4th, 2025): [https://github.com/8MiYile/LSPatch-OP](https://github.com/8MiYile/LSPatch-OP)
+    - Build (archived on November 6th, 2024): [https://github.com/JERRY-SYSTEM/OPatch](https://github.com/JERRY-SYSTEM/OPatch)
   - NPatch: [https://github.com/7723mod/NPatch](https://github.com/7723mod/NPatch)
 
 ---
@@ -68,6 +81,13 @@ Within LSPatch and its variants, we recommend using NPatch.
 #### Xposed
 
 这是最基本的注入框架，后来的大多数注入框架都基于该框架实现。
+
+- 非虚拟框架
+  - Xposed
+    - 原始存储库（已于 2023 年 6 月 1 日归档）：[https://github.com/rovo89/XposedInstaller](https://github.com/rovo89/XposedInstaller)
+    - 本存储库保存的构建：[https://github.com/hojjatsajjadinia/XposedFrameworkOffline](https://github.com/hojjatsajjadinia/XposedFrameworkOffline)
+- 虚拟框架
+  - Virtual Xposed：[https://github.com/android-hacker/virtualxposed](https://github.com/android-hacker/virtualxposed)
 
 #### EdXposed
 
@@ -105,7 +125,9 @@ LSPosed 及其变体需要 root 权限，是非虚拟框架，而 LSPatch 及其
 在 LSPatch 及其变体中，我们建议使用 NPatch。
 
 - 非虚拟框架：LSPosed 及其变体（保存了各变体 libxposed100 和 libxposed101 的最新版）
-  - 原始官方 LSPosed：[https://github.com/LSPosed/LSPosed](https://github.com/LSPosed/LSPosed) 和 [https://t.me/LSPosed](https://t.me/LSPosed)
+  - 原始官方 LSPosed（在 GitHub 上标记为已归档但依旧在 ``it`` 变体中不公开地更新）
+    - [https://github.com/LSPosed/LSPosed](https://github.com/LSPosed/LSPosed)
+    - [https://t.me/LSPosed](https://t.me/LSPosed)
   - ``Jing Matrix`` 变体：[https://github.com/JingMatrix/LSPosed](https://github.com/JingMatrix/LSPosed)
     - 当前的：[https://github.com/JingMatrix/Vector](https://github.com/JingMatrix/Vector)
     - 原来的：[https://github.com/JingMatrix/LSPosed](https://github.com/JingMatrix/LSPosed)
@@ -118,5 +140,7 @@ LSPosed 及其变体需要 root 权限，是非虚拟框架，而 LSPatch 及其
   - ``npm`` 变体：暂未找到公开的 npm 变体官方 GitHub 链接（一个可能的电报发布频道为 [https://t.me/rormzhstjxm](https://t.me/rormzhstjxm)）
 - 虚拟框架：LSPatch 及其变体
   - 原始官方 LSPatch：[https://github.com/LSPosed/LSPatch](https://github.com/LSPosed/LSPatch) 和 [https://t.me/LSPosed](https://t.me/LSPosed)
-  - OPatch：[https://github.com/8MiYile/LSPatch-OP](https://github.com/8MiYile/LSPatch-OP)
+  - OPatch（O 神）
+    - 原始存储库（已于 2025 年 1 月 4 日归档）：[https://github.com/8MiYile/LSPatch-OP](https://github.com/8MiYile/LSPatch-OP)
+    - 本存储库保存的构建（已于 2024 年 11 月 6 日归档）：[https://github.com/JERRY-SYSTEM/OPatch](https://github.com/JERRY-SYSTEM/OPatch)
   - NPatch：[https://github.com/7723mod/NPatch](https://github.com/7723mod/NPatch)
