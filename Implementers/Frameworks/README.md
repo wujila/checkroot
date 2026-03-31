@@ -16,10 +16,10 @@ Virtual frameworks typically achieve injection by patching the target applicatio
 This inherently makes non-virtual frameworks far more stealthy than virtual frameworks, and this has proven to be true. 
 At that time, we recommended using the latest version of EdXposed's YAHFA (YAHFA is older than SandHook by 2 years and outperforms SandHook, as SandHook can make the system heavier than YAHFA). 
 
-- Non-virtual injection frameworks
+- Non-virtual frameworks
   - EdXposed: [EdXposed](https://github.com/ElderDrivers/EdXposed) and [EdXposed Manager](https://github.com/ElderDrivers/EdXposedManager)
   - Tai Chi (root)
-- Virtual injection frameworks
+- Virtual frameworks
   - Tai Chi (non-root)
   - 应用转生
 
@@ -42,7 +42,7 @@ Overall, please disable logging features that may trigger detection, enable Xpos
 
 Within LSPatch and its variants, we recommend using NPatch. 
 
-- LSPosed and its variants
+- Non-virtual frameworks: LSPosed and its variants (the latest versions based on libxposed100 and libxposed101 are saved for each variant)
   - The original official LSPosed: [https://github.com/LSPosed/LSPosed](https://github.com/LSPosed/LSPosed) and [https://t.me/LSPosed](https://t.me/LSPosed)
   - The ``Jing Matrix`` variant
     - Current: [https://github.com/JingMatrix/Vector](https://github.com/JingMatrix/Vector)
@@ -54,7 +54,7 @@ Within LSPatch and its variants, we recommend using NPatch.
   - The ``ReLSPosed`` variant (archived on February 13, 2026): [https://github.com/ThePedroo/ReLSPosed/actions/runs/18026600180](https://github.com/ThePedroo/ReLSPosed/actions/runs/18026600180)
   - The ``mod`` variant (last released on March 8th, 2024): [https://github.com/mywalkb/LSPosed_mod](https://github.com/mywalkb/LSPosed_mod)
   - The ``npm`` variant: No public official GitHub repositories are found (A possible publisher Telegram channel should be [https://t.me/rormzhstjxm](https://t.me/rormzhstjxm))
-- LSPatch and its variants
+- Virtual frameworks: LSPatch and its variants
   - The original official LSPatch: [https://github.com/LSPosed/LSPatch](https://github.com/LSPosed/LSPatch) and [https://t.me/LSPosed](https://t.me/LSPosed)
   - OPatch: [https://github.com/8MiYile/LSPatch-OP](https://github.com/8MiYile/LSPatch-OP)
   - NPatch: [https://github.com/7723mod/NPatch](https://github.com/7723mod/NPatch)
@@ -104,7 +104,7 @@ LSPosed 及其变体需要 root 权限，是非虚拟框架，而 LSPatch 及其
 
 在 LSPatch 及其变体中，我们建议使用 NPatch。
 
-- LSPosed 及其变体
+- 非虚拟框架：LSPosed 及其变体（保存了各变体 libxposed100 和 libxposed101 的最新版）
   - 原始官方 LSPosed：[https://github.com/LSPosed/LSPosed](https://github.com/LSPosed/LSPosed) 和 [https://t.me/LSPosed](https://t.me/LSPosed)
   - ``Jing Matrix`` 变体：[https://github.com/JingMatrix/LSPosed](https://github.com/JingMatrix/LSPosed)
     - 当前的：[https://github.com/JingMatrix/Vector](https://github.com/JingMatrix/Vector)
@@ -116,7 +116,7 @@ LSPosed 及其变体需要 root 权限，是非虚拟框架，而 LSPatch 及其
   - ``ReLSPosed`` 变体（已于 2026 年 2 月 13 日归档）：[https://github.com/ThePedroo/ReLSPosed/actions/runs/18026600180](https://github.com/ThePedroo/ReLSPosed/actions/runs/18026600180)
   - ``mod`` 变体（最后一个版本发布于 2024 年 3 月 8 日）：[https://github.com/mywalkb/LSPosed_mod](https://github.com/mywalkb/LSPosed_mod)
   - ``npm`` 变体：暂未找到公开的 npm 变体官方 GitHub 链接（一个可能的电报发布频道为 [https://t.me/rormzhstjxm](https://t.me/rormzhstjxm)）
-- LSPatch 及其变体
+- 虚拟框架：LSPatch 及其变体
   - 原始官方 LSPatch：[https://github.com/LSPosed/LSPatch](https://github.com/LSPosed/LSPatch) 和 [https://t.me/LSPosed](https://t.me/LSPosed)
   - OPatch：[https://github.com/8MiYile/LSPatch-OP](https://github.com/8MiYile/LSPatch-OP)
   - NPatch：[https://github.com/7723mod/NPatch](https://github.com/7723mod/NPatch)
