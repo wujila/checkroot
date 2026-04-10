@@ -22,7 +22,7 @@ Since the keyword list in the GitHub repository description does not support mor
       - System
     - Rooting
       - KernelSU and its variants
-        - SukiSU Ultra
+        - SukiSU-Ultra
         - KernelSU Next (KSUN)
         - KernelSU (KSU)
       - Magisk and its variants
@@ -66,7 +66,7 @@ Since the keyword list in the GitHub repository description does not support mor
       - 系统
     - Rooting
       - KernelSU 和它的变体
-        - SukiSU Ultra
+        - SukiSU-Ultra
         - KernelSU Next（KSUN）
         - KernelSU（KSU）
       - 面具和它的变体

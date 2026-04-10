@@ -246,7 +246,7 @@ Therefore, there are the following collocations (partly), where "P" means passed
 | Magisk Alpha + NeoZygisk + Zygisk Assistant (Denylist configured) + PIF + TS + VBMeta Fixer | P | F |
 
 It is worth noting that Zygisk Next integrates most of Shamiko's functionalities starting from version 1.3.0 and is compatible with all root implementations. 
-Currently, SukiSU Ultra or Magisk Alpha, with Zygisk Next 1.3.0 or higher versions, may be the optimal upstream setup. 
+Currently, SukiSU-Ultra or Magisk Alpha, with Zygisk Next 1.3.0 or higher versions, may be the optimal upstream setup. 
 
 ---
 
@@ -494,4 +494,4 @@ Currently, SukiSU Ultra or Magisk Alpha, with Zygisk Next 1.3.0 or higher versio
 | Magisk Alpha + NeoZygisk + PIF + TS + VBMeta Fixer | F | F |
 | Magisk Alpha + NeoZygisk + Zygisk Assistant (Denylist configured) + PIF + TS + VBMeta Fixer | P | F |
 
-值得注意的是，Zygisk Next 自 1.3.0 版本起集成了 Shamiko 大部分的功能，且适用于所有的 root 实现。目前，SukiSU Ultra 或 Magisk Alpha，搭配 Zygisk Next 1.3.0 及更高的版本，可能是最好的上游组合。
+值得注意的是，Zygisk Next 自 1.3.0 版本起集成了 Shamiko 大部分的功能，且适用于所有的 root 实现。目前，SukiSU-Ultra 或 Magisk Alpha，搭配 Zygisk Next 1.3.0 及更高的版本，可能是最好的上游组合。

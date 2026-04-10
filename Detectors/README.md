@@ -57,10 +57,10 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ Native Test ++
 ### Duck Detector
 
 - **Package Names**: ``com.studio.duckdetector``; ``com.eltavine.duckdetector``
-- **Official Link**: https://t.me/duck_detector
+- **Official Links**: [https://github.com/eltavine/Duck-Detector-Refactoring](https://github.com/eltavine/Duck-Detector-Refactoring); [https://t.me/duck_detector](https://t.me/duck_detector)
 - **Developing Purpose**: Environment Detection
-- **Latest Version**: ``v26.3.14-alpha (214)``
-- **Release Date**:  March 31st, 2026
+- **Latest Version**: ``v26.4.2-alpha-6784301a (216)``
+- **Release Date**:  April 10th, 2026
 
 ### Hunter
 
@@ -393,10 +393,10 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人
 ### Duck Detector
 
 - **应用包名**：``com.studio.duckdetector``；``com.eltavine.duckdetector``
-- **官方链接**：[https://t.me/duck_detector](https://t.me/duck_detector)
+- **官方链接**：[https://github.com/eltavine/Duck-Detector-Refactoring](https://github.com/eltavine/Duck-Detector-Refactoring)；[https://t.me/duck_detector](https://t.me/duck_detector)
 - **开发用途**：环境检测
-- **最新版本**：``v26.3.14-alpha (214)``
-- **发行日期**： 2026 年 3 月 31 日
+- **最新版本**：``v26.4.2-alpha-6784301a (216)``
+- **发行日期**： 2026 年 4 月 10 日
 
 ### Hunter
 

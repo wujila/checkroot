@@ -20,7 +20,8 @@ Variants within the same series are enumerated in ascending order of time. As th
   - KernelSU Next (KSUN)
     - [https://github.com/KernelSU-Next/KernelSU-Next](https://github.com/KernelSU-Next/KernelSU-Next)
     - [https://t.me/ksunext_ci](https://t.me/ksunext_ci)
-  - SukiSU Ultra: [https://github.com/SukiSU-Ultra/SukiSU-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra)
+  - SukiSU-Ultra: [https://github.com/SukiSU-Ultra/SukiSU-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra)
+    - ReSukiSU (forked from SukiSU-Ultra): [https://github.com/ReSukiSU/ReSukiSU](https://github.com/ReSukiSU/ReSukiSU)
   - Wild KSU (WKSU): [https://github.com/WildKernels/Wild_KSU](https://github.com/WildKernels/Wild_KSU)
 
 Among the three series, Magisk and its variants are user-space-level rooting solutions, and the others are kernel-level ones. 
@@ -30,9 +31,14 @@ Currently, almost all GKI device users are using KSU and its variants as the roo
 As the most original root solution that modifies the ``boot`` partition to achieve rooting without physically modifying the ``system`` partition, 
 Magisk and its variants remain the most widely used root implementation method due to their general applicability. 
 
-[Riru](./Riru) and Zygisk(./Zygisk) are two important fundamental rooting-layer system modules that offer rich application programming interfaces (APIs) to other system modules or plugins. 
-
+[Riru](./Modules/Riru) and Zygisk(./Modules/Zygisk) are two important fundamental rooting-layer system modules that offer rich application programming interfaces (APIs) to other system modules or plugins. 
 Compared to Riru, Zygisk allows Magisk to run within Zygote, offering more precise control, better performance, and greater concealment. 
+
+Compared with Magisk and its variants, KSU and its variants themselves do not mount the ``/system`` partition, making the environment detectors harder to detect the rooting environments. 
+Nonetheless, some modules (e.g., those that install applications as system ones) need to mount the ``/system`` partition to make modifications on it. 
+In the ZIP file (the installer used in the root manager) of such a module, there is normally a folder named ``system`` under the root of the module folder after unzipping the ZIP. 
+[Metamodules](./Modules/Metamodules) are designed to support such modules in KSU and its variants. 
+That is to say, metamodules will control the installation of the rooting-layer system modules if any one of them is installed. 
 
 ---
 
@@ -58,7 +64,8 @@ Compared to Riru, Zygisk allows Magisk to run within Zygote, offering more preci
   - KernelSU Next（KSUN）
     - [https://github.com/KernelSU-Next/KernelSU-Next](https://github.com/KernelSU-Next/KernelSU-Next)
     - [https://t.me/ksunext_ci](https://t.me/ksunext_ci)
-  - SukiSU Ultra：[https://github.com/SukiSU-Ultra/SukiSU-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra)
+  - SukiSU-Ultra：[https://github.com/SukiSU-Ultra/SukiSU-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra)
+    - ReSukiSU（SukiSU-Ultra 的下游）：[https://github.com/ReSukiSU/ReSukiSU](https://github.com/ReSukiSU/ReSukiSU)
   - Wild KSU（WKSU）：[https://github.com/WildKernels/Wild_KSU](https://github.com/WildKernels/Wild_KSU)
 
 在这三个系列中，Magisk 及其变体是用户空间级别的 root 解决方案，而其他系列是内核级别的 root 解决方案。
@@ -68,5 +75,10 @@ Compared to Riru, Zygisk allows Magisk to run within Zygote, offering more preci
 由于通用性最强且作为最原始的通过修补 ``boot`` 分区以在不实际修改 ``system`` 分区的情况下实现 root 的 root 实现方案，Magisk 及其变体目前仍然是使用人数最多的 root 实现方案。
 
 [Riru](./Riru) 和 [Zygisk](./Zygisk) 是两个重要的基础 root 层系统模块，为其它系统模块或插件提供丰富的应用程序编程接口 (API)。
-
 相比于 Riru，Zygisk 让 Magisk 运行在 Zygote 中，拥有更精确的控制、更好的性能和更强的隐蔽性。
+
+与 Magisk 及其变体不同，KSU 及其变体本身并不挂载 ``/system`` 分区，这能够让环境检测器更难检测到 root 环境。
+然而，某些模块（例如，那些将应用程序安装为系统程序的模块）需要挂载 ``/system`` 分区才能对其进行修改。
+在此类模块的 ZIP 文件（用于在 root 管理器中刷入的模块安装包）中，我们通常能够在解压后的模块文件夹的根目录下找到一个名为 ``system`` 的非空文件夹。
+KSU 及其衍生版本中的[元模块](./Modules/Metamodules)旨在支持此类模块。
+这也意味着，如果安装了元模块（只能安装一个），它们将控制 root 层系统模块的安装行为。

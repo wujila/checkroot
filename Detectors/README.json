@@ -75,10 +75,10 @@
 		{
 			"name":"Duck Detector", 
 			"packageName":["com.studio.duckdetector", "com.eltavine.duckdetector"], 
-			"officialLink":"https://t.me/duck_detector", 
+			"officialLink":["https://github.com/eltavine/Duck-Detector-Refactoring", "https://t.me/duck_detector"], 
 			"developingPurpose":"E", 
-			"latestVersion":"v26.3.14-alpha (214)", 
-			"releaseDate":"= 20260331"
+			"latestVersion":"v26.4.2-alpha-6784301a (216)", 
+			"releaseDate":"= 20260410"
 		}, 
 		{
 			"name":"Hunter", 
