@@ -27,7 +27,7 @@ jobs:
           maximumLength=3072
           if [[ ${#changes} -gt ${maximumLength} ]];
           then
-            changes="${changes:0:${maximumLength}}"$'\n...'
+            changes=$(echo "${changes:0:${maximumLength}}" | head -n -1)$'\n...'
           fi
           echo "changes<<EOF" >> "${GITHUB_OUTPUT}"
           echo "${changes}" >> "${GITHUB_OUTPUT}"

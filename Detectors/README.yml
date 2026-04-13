@@ -183,8 +183,8 @@
   - https://t.me/rootdetector
   sourceStatus: O
   developingPurpose: E
-  latestVersion: v7.6.1 (761)
-  releaseDate: = 20250915
+  latestVersion: v7.7.0 (761)
+  releaseDate: = 20260412
   detectionRemark:
     '*': 'For the first time, please go to the settings page to enable the experimental detection and the custom ROM detection.
       Subsequently, re-launch the detector to show proper detection results. After changing environments or updating this
