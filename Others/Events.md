@@ -13,13 +13,14 @@ Related events related to Magisk, Zygisk, and LSPosed are stored here.
 - 20241203: Google announced that it will enhance the Play integrity check for Android 13 and above, and will implement it in May 2025. The old Strong will become the new Device, and the old Device will become the new Basic. 
 - 20250520: The server of the WechatXposed plugin stopped. Subsequently, a large number of WeChat plugins stopped updating due to "too high exposure". 
 - 20250606: The author of the Play Integrity Fix module announces to discontinue in Telegram, who had previously humorously announced on national Fool's Day that he would be suspending updates due to threats from Google. 
-- 20250609: WX Repair Tool_v2.0 is published. After downloading core files and FKZ_WX_DATA files, the WechatXposed plugin can be used again. 
+- 20250609: WX Repair Tool_v2.0 is published. After downloading the core files and FKZ_WX_DATA files, the WechatXposed plugin can be used again. 
 - 20250624: HMA supported the interception of the application list detection by launching activities below Android 13. 
 - 20250917: There is a large-scale account blocking phenomenon in WeChat. Most blocked accounts are 8.0.56 or above, especially 8.0.62. 
 - 20251220: Some PIF variants were reported as malicious. 
 - 20260202: Telegram channels containing a large number of ``*.apk`` files were maliciously reported. 
 - 20260325: Some plugins that are explicitly prohibited from distribution in certain regions are being widely disseminated on popular social media platforms in those regions. 
 - 20260331: The LSPosed official released official LSPosed based on libxposed101. 
+- 20260404: Tools similar to MT Manager had their Dex string decryption functionality exposed as having vulnerabilities, and MT Manager subsequently fixed the issue. 
 
 ---
 
@@ -45,3 +46,4 @@ Related events related to Magisk, Zygisk, and LSPosed are stored here.
 - 20260202：含有大量 ``*.apk`` 文件的 Telegram 频道被恶意举报。
 - 20260325：一些已明确禁止在某些地区传播的插件在该地区的知名社交平台上被大范围传播。
 - 20260331：LSPosed 官方发布了基于 libxposed101 的 LSPosed 构建。
+- 20260404：类似于 MT 管理器的工具的 Dex 字符串解密功能被曝存在风险，随后 MT 管理器修复了相关问题。
