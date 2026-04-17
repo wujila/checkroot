@@ -1,13 +1,71 @@
+- name: Bank of China (Hong Kong)
+  alias:
+    zh-CN:
+    - BOCHK中银香港
+    - 中国银行（香港）
+    - 中银香港
+  packageName: com.bochk.app.aos
+  officialLink: https://play.google.com/store/apps/details?id=com.bochk.app.aos
+  category: $C_G$
+- name: IIQE 一考通
+  alias:
+    en: IIQE YiKaoTong
+  packageName: com.prudential.iiqe
+  officialLink: https://iiqe-cms.prudential.com.hk/iiqe/
+  category: $C_G$
+  detectionRemark:
+    '*': 'This desktop application will detect the Developer Mode. '
+    zh-CN: 该桌面应用会检测开发者模式。
+- name: Money2India
+  packageName: com.icicibank.m2i
+  officialLink: https://play.google.com/store/apps/details?id=com.icicibank.m2i
+  category: $C_G$
+- name: MyLink
+  alias:
+    zh-CN: 八达通
+  packageName: com.ChinaMobile
+  officialLink: https://play.google.com/store/apps/details?id=com.ChinaMobile
+  category: $C_G$
+- name: NSDL Jiffy
+  packageName: com.nsdlpb.jiffy
+  officialLink: https://play.google.com/store/apps/details?id=com.nsdlpb.jiffy
+  category: $C_G$
+  detectionRemark:
+    '*': 'This can be the most challenging one among all the detectors. '
+    zh-CN: 这应该是目前最难以绕过的检测。
+- name: Octopus
+  alias:
+    zh-CN: 八达通
+  packageName: com.octopuscards.nfc_reader
+  officialLink: https://play.google.com/store/apps/details?id=com.octopuscards.nfc_reader
+  category: $C_G$
+- name: Revolut
+  packageName: com.revolut.revolut
+  officialLink: https://play.google.com/store/apps/details?id=com.revolut.revolut
+  category: $C_G$
+- name: Uber Driver
+  packageName: com.ubercab.driver
+  officialLink: https://play.google.com/store/apps/details?id=com.ubercab.driver
+  category: $C_G$
+- name: 邮储银行
+  alias:
+    en:
+    - Postal Savings Bank of China
+    - PSBC
+    zh-CN: 中国邮储银行
+  packageName: com.yitong.mbank.psbc
+  officialLink: https://phone.psbc.com
+  category: $C_Z$
 - name: Android Integrity Checker
   packageName: com.thend.integritychecker
   officialLink: https://play.google.com/store/apps/details?id=com.thend.integritychecker
-  developingPurpose: P
+  category: $D_P$
   latestVersion: v1.0.4 (1000004)
   releaseDate: = 20231114
 - name: APTest
   packageName: me.garfieldhan.hiapatch
-  sourceStatus: C
-  developingPurpose: A
+  openSource: false
+  category: $D_A$
   latestVersion: v1.0
   releaseDate: < 20241227
 - name: Applist Detector
@@ -19,8 +77,8 @@
   - icu.nullptr.applistdetector
   - com.tsng.applistdetector
   officialLink: https://github.com/Dr-TSNG/ApplistDetector
-  sourceStatus: O
-  developingPurpose: L
+  openSource: true
+  category: $D_L$
   latestVersion: v2.4
   releaseDate: = 20220812
   detectionRemark:
@@ -28,23 +86,11 @@
     zh-CN: 包名 ``com.tsng.applistdetector`` 是历史版本包名（约 ``v1.3.2``）。
   image:
     '*': applistDetector.jpg
-- name: Bank of China (Hong Kong)
-  alias:
-    zh-CN:
-    - BOCHK中银香港
-    - 中国银行（香港）
-    - 中银香港
-  packageName: com.bochk.app.aos
-  officialLink: https://play.google.com/store/apps/details?id=com.bochk.app.aos
-  sourceStatus: D
-  developingPurpose: D
-  latestVersion: v7.3.5 (156)
-  releaseDate: = 20250920
 - name: Checker
   alias:
     zh-CN: 校验者
   packageName: org.akanework.checker
-  developingPurpose: E
+  category: $D_E$
   latestVersion: v1.0.9
   releaseDate: < 20250108
   image:
@@ -52,7 +98,7 @@
 - name: DRM Info
   packageName: com.androidfung.drminfo
   officialLink: https://play.google.com/store/apps/details?id=com.androidfung.drminfo
-  developingPurpose: I
+  category: $D_I$
   latestVersion: v1.1.15-240919
   releaseDate: = 20240919
   detectionRemark:
@@ -65,12 +111,16 @@
   officialLink:
   - https://github.com/eltavine/Duck-Detector-Refactoring
   - https://t.me/duck_detector
-  developingPurpose: E
-  latestVersion: v26.4.2-alpha-6784301a (216)
-  releaseDate: = 20260410
+  openSource: true
+  category: $D_E$
+  latestVersion: v26.4.3-alpha-10e7ac96 (217)
+  releaseDate: = 20260416
+  detectionRemark:
+    '*': 'This can be the most challenging one among all the detectors. '
+    zh-CN: 这应该是目前最难以绕过的检测。
 - name: Hunter
   packageName: com.zhenxi.hunter
-  developingPurpose: E
+  category: $D_E$
   latestVersion: v6.58 (658)
   releaseDate: '20260129'
   detectionRemark:
@@ -78,25 +128,13 @@
     zh-CN: 请等待 20 秒左右以完成检测和显示。
   image:
     zh-CN: hunterCN.jpg
-- name: IIQE 一考通
-  alias:
-    en: IIQE YiKaoTong
-  packageName: com.prudential.iiqe
-  officialLink: https://iiqe-cms.prudential.com.hk/iiqe/
-  sourceStatus: D
-  developingPurpose: D
-  latestVersion: v6.4.3C88
-  releaseDate: = 20250303
-  detectionRemark:
-    '*': 'This desktop application will detect the Developer Mode. '
-    zh-CN: 该桌面应用会检测开发者模式。
 - name: Luna
   packageName: luna.safe.luna
   officialLink:
   - https://www.54nb.com/lunathanks.html
   - http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=59DJwD_gUpDYerkoGXf8hLg4X-opZImm&authKey=KZCWgoCQMOhN5M80g8%2Bq3L%2FIJvITTMAKTSevEQbahYSW5YwlW8Vq8v6JQ4hcivfp&noverify=0&group_code=1022646824
-  sourceStatus: C
-  developingPurpose: E
+  openSource: false
+  category: $D_E$
   latestVersion: v1.4.2.7
   releaseDate: <= 20251009
   detectionRemark:
@@ -116,8 +154,8 @@
   - https://t.me/magiskalpha
   - https://t.me/playintegrityfix
   - https://github.com/chiteroman/KeyAttestation
-  sourceStatus: O
-  developingPurpose: K
+  openSource: true
+  category: $D_K$
   latestVersion: v1.8.4
   releaseDate: = 20250206
   image:
@@ -127,8 +165,8 @@
     zh-CN: Magisk 检测应用
   packageName: io.github.vvb2060.magiskdetector
   officialLink: https://github.com/vvb2060/MagiskDetector
-  sourceStatus: AO
-  developingPurpose: M
+  openSource: AO
+  category: $D_M$
   latestVersion: v3.0
   releaseDate: = 20220809
   image:
@@ -137,7 +175,7 @@
   alias:
     zh-CN: 陌陌
   packageName: io.github.vvb2060.mahoshojo
-  developingPurpose: E
+  category: $D_E$
   latestVersion: v4.4.1
   releaseDate: < 20230107
   detectionRemark:
@@ -146,32 +184,6 @@
     zh-CN: 请不要为了得到一张笑脸而欺骗该检测软件，因为欺骗某一个检测软件并不能从本质上解决环境问题。
   image:
     zh-CN: momoCN.jpg
-- name: Money2India
-  packageName: com.icicibank.m2i
-  officialLink: https://play.google.com/store/apps/details?id=com.icicibank.m2i
-  sourceStatus: D
-  developingPurpose: D
-  latestVersion: v1.0.73
-  releaseDate: = 20241222
-- name: MyLink
-  alias:
-    zh-CN: 八达通
-  packageName: com.ChinaMobile
-  officialLink: https://play.google.com/store/apps/details?id=com.ChinaMobile
-  sourceStatus: D
-  developingPurpose: D
-  latestVersion: v11.7.0 (465)
-  releaseDate: = 20251003
-- name: NSDL Jiffy
-  packageName: com.nsdlpb.jiffy
-  officialLink: https://play.google.com/store/apps/details?id=com.nsdlpb.jiffy
-  sourceStatus: D
-  developingPurpose: D
-  latestVersion: v3.0.7
-  releaseDate: = 20250421
-  detectionRemark:
-    '*': 'This can be the most challenging one among all the detectors. '
-    zh-CN: 这应该是目前最难以绕过的检测。
 - name: Native Root Detector
   alias:
     '*':
@@ -181,8 +193,8 @@
   officialLink:
   - https://github.com/reveny/Android-Native-Root-Detector
   - https://t.me/rootdetector
-  sourceStatus: O
-  developingPurpose: E
+  openSource: true
+  category: $D_E$
   latestVersion: v7.7.0 (761)
   releaseDate: = 20260412
   detectionRemark:
@@ -208,8 +220,8 @@
   - icu.nullptr.nativetest
   - com.android.nativetest
   officialLink: https://t.me/app_process64
-  sourceStatus: CS
-  developingPurpose: E
+  openSource: false
+  category: $D_E$
   latestVersion: v32 (Mean Minotaur)
   releaseDate: <= 20250615
   detectionRemark:
@@ -220,43 +232,27 @@
       Hook）和需要联网权限（Holmes 最近的几个版本）。
   image:
     '*': nativeTest.jpg
-- name: Octopus
-  alias:
-    zh-CN: 八达通
-  packageName: com.octopuscards.nfc_reader
-  officialLink: https://play.google.com/store/apps/details?id=com.octopuscards.nfc_reader
-  sourceStatus: D
-  developingPurpose: D
-  latestVersion: v12.29.0 (3302)
-  releaseDate: = 20251002
 - name: Play Integrity API Checker
   packageName: gr.nikolasspyr.integritycheck
   officialLink:
   - https://github.com/1nikolas/play-integrity-checker-app
   - https://play.google.com/store/apps/details?id=gr.nikolasspyr.integritycheck
-  sourceStatus: O
-  developingPurpose: P
+  openSource: true
+  category: $D_P$
   latestVersion: v2.2
   releaseDate: <= 20251210
-- name: Revolut
-  packageName: com.revolut.revolut
-  officialLink: https://play.google.com/store/apps/details?id=com.revolut.revolut
-  sourceStatus: D
-  developingPurpose: D
-  latestVersion: v10.82 (1008204677)
-  releaseDate: = 20250602
 - name: Rookie Detector
   packageName: wu.Rookie.Detector
   officialLink: http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=59DJwD_gUpDYerkoGXf8hLg4X-opZImm&authKey=KZCWgoCQMOhN5M80g8%2Bq3L%2FIJvITTMAKTSevEQbahYSW5YwlW8Vq8v6JQ4hcivfp&noverify=0&group_code=1022646824
-  sourceStatus: C
-  developingPurpose: E
+  openSource: false
+  category: $D_E$
   latestVersion: v1.22 (12)
   releaseDate: = 20250515
 - name: Ruru
   packageName: com.byxiaorun.detector
   officialLink: https://github.com/byxiaorun/Ruru
-  sourceStatus: O
-  developingPurpose: E
+  openSource: true
+  category: $D_E$
   latestVersion: v1.1.1 (15)
   releaseDate: = 20240418
   image:
@@ -264,8 +260,8 @@
 - name: Securify
   packageName: io.github.rabehx.securify
   officialLink: https://github.com/RabehX/Securify
-  sourceStatus: C
-  developingPurpose: E
+  openSource: false
+  category: $D_E$
   latestVersion: v1.3.0
   releaseDate: = 20240728
   image:
@@ -274,8 +270,8 @@
   alias:
     '*': SPIC
   packageName: com.henrikherzig.playintegritychecker
-  sourceStatus: C
-  developingPurpose: P
+  openSource: false
+  category: $D_P$
   latestVersion: v1.4.0
   releaseDate: < 20241110
 - name: TamJiGi
@@ -284,24 +280,17 @@
     '*': xka wl rl
     ZH: 探知君
     JP: 探知機（탐지기）
-  sourceStatus: C
-  developingPurpose: E
+  openSource: false
+  category: $D_E$
   latestVersion: v0.1.0 (46)
   releaseDate: = 20241122
   image:
     '*': tamJiGi.jpg
-- name: Uber Driver
-  packageName: com.ubercab.driver
-  officialLink: https://play.google.com/store/apps/details?id=com.ubercab.driver
-  sourceStatus: D
-  developingPurpose: D
-  latestVersion: v4.529.10000 (230434)
-  releaseDate: = 20250602
 - name: Xposed Checker
   packageName: ml.w568w.checkxposed
   officialLink: https://github.com/w568w/XposedChecker
-  sourceStatus: O
-  developingPurpose: E
+  openSource: true
+  category: $D_E$
   latestVersion: v7.1 (9)
   releaseDate: < 20220203
   image:
@@ -311,8 +300,8 @@
     zh-CN: Xposed 检测应用
   packageName: io.github.vvb2060.xposeddetector
   officialLink: https://github.com/vvb2060/XposedDetector
-  sourceStatus: AO
-  developingPurpose: E
+  openSource: AO
+  category: $D_E$
   latestVersion: v2.2 (5)
   releaseDate: = 20210327
   image:
@@ -322,8 +311,8 @@
     '*': YASNAC
   packageName: rikka.safetynetchecker
   officialLink: https://github.com/RikkaW/YASNAC
-  sourceStatus: AO
-  developingPurpose: P
+  openSource: AO
+  category: $D_P$
   latestVersion: v1.1.5.r65.15110ef310 (65)
   releaseDate: = 20220404
 - name: 凌卿检测
@@ -334,8 +323,8 @@
     zh-CN: 凌卿
   packageName: com.lingqing.detector
   officialLink: http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=59DJwD_gUpDYerkoGXf8hLg4X-opZImm&authKey=KZCWgoCQMOhN5M80g8%2Bq3L%2FIJvITTMAKTSevEQbahYSW5YwlW8Vq8v6JQ4hcivfp&noverify=0&group_code=1022646824
-  sourceStatus: C
-  developingPurpose: E
+  openSource: false
+  category: $D_E$
   latestVersion: v1.6_fix
   releaseDate: = 20250606
 - name: 春秋检测
@@ -346,8 +335,8 @@
   - http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=sHROUm50OrgL5Ko16n5-jfl5sFwr-nbi&authKey=dXMNZRNFvGYMTF6GsDWHb2if5guBnkWOIuRyCAIA9OHf6wsntiMW%2BFJK6v5L6uGE&noverify=0&group_code=738834258
   - https://pan.xunlei.com/s/VOSCXZEqHQ_1l5vJgWWrulefA1?pwd=pdg6&path=%2F%E6%98%A5%E7%A7%8B%E6%A3%80%E6%B5%8B%E5%AE%98%E6%96%B9%E7%BD%91%E7%9B%98
   - http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=59DJwD_gUpDYerkoGXf8hLg4X-opZImm&authKey=KZCWgoCQMOhN5M80g8%2Bq3L%2FIJvITTMAKTSevEQbahYSW5YwlW8Vq8v6JQ4hcivfp&noverify=0&group_code=1022646824
-  sourceStatus: C
-  developingPurpose: E
+  openSource: false
+  category: $D_E$
   latestVersion: v2.5.2 (25080401)
   releaseDate: = 20250804
   detectionRemark:
@@ -359,8 +348,8 @@
     zh-CN: 橘子
   packageName: com.OrangeEnvironment.Detector
   officialLink: http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=59DJwD_gUpDYerkoGXf8hLg4X-opZImm&authKey=KZCWgoCQMOhN5M80g8%2Bq3L%2FIJvITTMAKTSevEQbahYSW5YwlW8Vq8v6JQ4hcivfp&noverify=0&group_code=1022646824
-  sourceStatus: C
-  developingPurpose: E
+  openSource: false
+  category: $D_E$
   latestVersion: v3.0
   releaseDate: = 20250609
 - name: 禁用安全标志检测器
@@ -368,19 +357,7 @@
   officialLink:
   - https://github.com/a13e300/dsf_detector
   - http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=59DJwD_gUpDYerkoGXf8hLg4X-opZImm&authKey=KZCWgoCQMOhN5M80g8%2Bq3L%2FIJvITTMAKTSevEQbahYSW5YwlW8Vq8v6JQ4hcivfp&noverify=0&group_code=1022646824
-  sourceStatus: C
-  developingPurpose: F
+  openSource: false
+  category: $D_F$
   latestVersion: v1.0.3 (5)
   releaseDate: = 20250609
-- name: 邮储银行
-  alias:
-    en:
-    - Postal Savings Bank of China
-    - PSBC
-    zh-CN: 中国邮储银行
-  packageName: com.yitong.mbank.psbc
-  officialLink: https://phone.psbc.com
-  sourceStatus: D
-  developingPurpose: D
-  latestVersion: v10.5.2 (188)
-  releaseDate: = 20250604
