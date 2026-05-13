@@ -6,7 +6,7 @@ Therefore, compared with other rooting solutions, metamodules are a unique featu
 There are many metamodules designed to provide system partition mounting support for rooting-level system modules, with the following three being the main examples. 
 
 - [OverlayFS](https://github.com/KernelSU-Modules-Repo/meta-overlayfs/actions): This is the officially recommended classic metamodule, utilizing the Linux kernel's OverlayFS mechanism for lossless system modification. 
-- [Magic Mount](https://github.com/7a72/meta-magic_mount/actions): Based on the traditional Magic Mount logic, this metamodule is suitable for older environments that do not support OverlayFS. 
+- [Magic Mount](https://github.com/7a72/meta-magic_mount/actions): Based on the traditional Magic Mount logic, this metamodule is suitable for older environments that do not support OverlayFS. This repository seemed to have been removed. 
 - [Hybrid Mount](https://github.com/Hybrid-Mount/meta-hybrid_mount/actions): This metamodule works in the hybrid mount mode, but is considered unstable and power-consuming. 
 
 ---
@@ -19,5 +19,5 @@ There are many metamodules designed to provide system partition mounting support
 用以实现为 root 层系统模块提供系统分区挂载支持的元模块有很多，这里主要列举如下三种。
 
 - [OverlayFS](https://github.com/KernelSU-Modules-Repo/meta-overlayfs/actions)：这是官方推荐的经典元模块，利用 Linux 内核的 OverlayFS 机制进行无损系统修改。
-- [Magic Mount](https://github.com/7a72/meta-magic_mount/actions)：基于传统的 Magic Mount 逻辑，该元模块适用于不支持 OverlayFS 的老旧环境。
+- [Magic Mount](https://github.com/7a72/meta-magic_mount/actions)：基于传统的 Magic Mount 逻辑，该元模块适用于不支持 OverlayFS 的老旧环境。此存储库似乎已被移除。
 - [Hybrid Mount](https://github.com/Hybrid-Mount/meta-hybrid_mount/actions)：该元模块以混合挂载模式工作，但目前被认为不稳定且耗电现象明显。

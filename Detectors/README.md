@@ -6,52 +6,52 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ Native Test $\rightarrow$ 
 
 - **Package Name**: ``com.bochk.app.aos``
 - **Official Link**: https://play.google.com/store/apps/details?id=com.bochk.app.aos
-- **Category**: Global Android Desktop Application
+- **Category**: Abroad Android Desktop Application
 
 ### IIQE 一考通
 
 - **Alias**: IIQE YiKaoTong
 - **Package Name**: ``com.prudential.iiqe``
 - **Official Link**: https://iiqe-cms.prudential.com.hk/iiqe/
-- **Category**: Global Android Desktop Application
+- **Category**: Abroad Android Desktop Application
 - **Detection Remark**: This desktop application will detect the Developer Mode. 
 
 ### Money2India
 
 - **Package Name**: ``com.icicibank.m2i``
 - **Official Link**: https://play.google.com/store/apps/details?id=com.icicibank.m2i
-- **Category**: Global Android Desktop Application
+- **Category**: Abroad Android Desktop Application
 
 ### MyLink
 
 - **Package Name**: ``com.ChinaMobile``
 - **Official Link**: https://play.google.com/store/apps/details?id=com.ChinaMobile
-- **Category**: Global Android Desktop Application
+- **Category**: Abroad Android Desktop Application
 
 ### NSDL Jiffy
 
 - **Package Name**: ``com.nsdlpb.jiffy``
 - **Official Link**: https://play.google.com/store/apps/details?id=com.nsdlpb.jiffy
-- **Category**: Global Android Desktop Application
-- **Detection Remark**: This can be the most challenging one among all the detectors. 
+- **Category**: Abroad Android Desktop Application
+- **Detection Remark**: This should be the most challenging one among all the desktop applications. 
 
 ### Octopus
 
 - **Package Name**: ``com.octopuscards.nfc_reader``
 - **Official Link**: https://play.google.com/store/apps/details?id=com.octopuscards.nfc_reader
-- **Category**: Global Android Desktop Application
+- **Category**: Abroad Android Desktop Application
 
 ### Revolut
 
 - **Package Name**: ``com.revolut.revolut``
 - **Official Link**: https://play.google.com/store/apps/details?id=com.revolut.revolut
-- **Category**: Global Android Desktop Application
+- **Category**: Abroad Android Desktop Application
 
 ### Uber Driver
 
 - **Package Name**: ``com.ubercab.driver``
 - **Official Link**: https://play.google.com/store/apps/details?id=com.ubercab.driver
-- **Category**: Global Android Desktop Application
+- **Category**: Abroad Android Desktop Application
 
 ### 邮储银行
 
@@ -100,8 +100,16 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ Native Test $\rightarrow$ 
 - **Official Link**: https://play.google.com/store/apps/details?id=com.androidfung.drminfo
 - **Category**: Information Gathering
 - **Latest Version**: ``v1.1.15-240919``
-- **Release Date**:  September 19th, 2024
+- **Release Date**:  March 28th, 2026
 - **Detection Remark**: Please check whether the Security Level is Level 1. The smaller the level, the better the device is. 
+
+### Dirty Sepolicy
+
+- **Package Name**: ``org.lsposed.dirtysepolicy``
+- **Official Link**: https://github.com/LSPosed/DirtySepolicy
+- **Category**: SELinux Policy Detection
+- **Latest Version**: ``v2.0 (3)``
+- **Release Date**:  May 13th, 2026
 
 ### Duck Detector
 
@@ -109,9 +117,9 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ Native Test $\rightarrow$ 
 - **Official Links**: [https://github.com/eltavine/Duck-Detector-Refactoring](https://github.com/eltavine/Duck-Detector-Refactoring); [https://t.me/duck_detector](https://t.me/duck_detector)
 - **Source Status**: Yes
 - **Category**: Environment Detection
-- **Latest Version**: ``v26.4.4-alpha-98e80ce9 (220)``
-- **Release Date**:  April 16th, 2026
-- **Detection Remark**: This can be the most challenging one among all the detectors. 
+- **Latest Version**: ``v2026.05.13-e27a91371532 (422)``
+- **Release Date**:  May 13th, 2026
+- **Detection Remark**: This should be the most challenging one among all the detectors. 
 
 ### Hunter
 
@@ -314,53 +322,53 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人 $\rightarrow$ Du
 - **应用别称**：BOCHK中银香港; 中国银行（香港）; 中银香港
 - **应用包名**：``com.bochk.app.aos``
 - **官方链接**：[https://play.google.com/store/apps/details?id=com.bochk.app.aos](https://play.google.com/store/apps/details?id=com.bochk.app.aos)
-- **类别**：国际安卓桌面应用
+- **类别**：境外安卓桌面应用
 
 ### IIQE 一考通
 
 - **应用包名**：``com.prudential.iiqe``
 - **官方链接**：[https://iiqe-cms.prudential.com.hk/iiqe/](https://iiqe-cms.prudential.com.hk/iiqe/)
-- **类别**：国际安卓桌面应用
+- **类别**：境外安卓桌面应用
 - **检测备注**：This desktop application will detect the Developer Mode. 该桌面应用会检测开发者模式。
 
 ### Money2India
 
 - **应用包名**：``com.icicibank.m2i``
 - **官方链接**：[https://play.google.com/store/apps/details?id=com.icicibank.m2i](https://play.google.com/store/apps/details?id=com.icicibank.m2i)
-- **类别**：国际安卓桌面应用
+- **类别**：境外安卓桌面应用
 
 ### MyLink
 
 - **应用别称**：八达通
 - **应用包名**：``com.ChinaMobile``
 - **官方链接**：[https://play.google.com/store/apps/details?id=com.ChinaMobile](https://play.google.com/store/apps/details?id=com.ChinaMobile)
-- **类别**：国际安卓桌面应用
+- **类别**：境外安卓桌面应用
 
 ### NSDL Jiffy
 
 - **应用包名**：``com.nsdlpb.jiffy``
 - **官方链接**：[https://play.google.com/store/apps/details?id=com.nsdlpb.jiffy](https://play.google.com/store/apps/details?id=com.nsdlpb.jiffy)
-- **类别**：国际安卓桌面应用
-- **检测备注**：This can be the most challenging one among all the detectors. 这应该是目前最难以绕过的检测。
+- **类别**：境外安卓桌面应用
+- **检测备注**：This should be the most challenging one among all the desktop applications. 这应该是目前最难以绕过的桌面应用。
 
 ### Octopus
 
 - **应用别称**：八达通
 - **应用包名**：``com.octopuscards.nfc_reader``
 - **官方链接**：[https://play.google.com/store/apps/details?id=com.octopuscards.nfc_reader](https://play.google.com/store/apps/details?id=com.octopuscards.nfc_reader)
-- **类别**：国际安卓桌面应用
+- **类别**：境外安卓桌面应用
 
 ### Revolut
 
 - **应用包名**：``com.revolut.revolut``
 - **官方链接**：[https://play.google.com/store/apps/details?id=com.revolut.revolut](https://play.google.com/store/apps/details?id=com.revolut.revolut)
-- **类别**：国际安卓桌面应用
+- **类别**：境外安卓桌面应用
 
 ### Uber Driver
 
 - **应用包名**：``com.ubercab.driver``
 - **官方链接**：[https://play.google.com/store/apps/details?id=com.ubercab.driver](https://play.google.com/store/apps/details?id=com.ubercab.driver)
-- **类别**：国际安卓桌面应用
+- **类别**：境外安卓桌面应用
 
 ### 邮储银行
 
@@ -412,8 +420,16 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人 $\rightarrow$ Du
 - **官方链接**：[https://play.google.com/store/apps/details?id=com.androidfung.drminfo](https://play.google.com/store/apps/details?id=com.androidfung.drminfo)
 - **类别**：信息收集
 - **最新版本**：``v1.1.15-240919``
-- **发行日期**： 2024 年 9 月 19 日
+- **发行日期**： 2026 年 3 月 28 日
 - **检测备注**：Please check whether the Security Level is Level 1. The smaller the level, the better the device is. 请检查 Security Level 是否为 L1，等级数值越小越好。
+
+### Dirty Sepolicy
+
+- **应用包名**：``org.lsposed.dirtysepolicy``
+- **官方链接**：[https://github.com/LSPosed/DirtySepolicy](https://github.com/LSPosed/DirtySepolicy)
+- **类别**：SE 策略检测
+- **最新版本**：``v2.0 (3)``
+- **发行日期**： 2026 年 5 月 13 日
 
 ### Duck Detector
 
@@ -421,9 +437,9 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人 $\rightarrow$ Du
 - **官方链接**：[https://github.com/eltavine/Duck-Detector-Refactoring](https://github.com/eltavine/Duck-Detector-Refactoring)；[https://t.me/duck_detector](https://t.me/duck_detector)
 - **开源状态**：是
 - **类别**：环境检测
-- **最新版本**：``v26.4.4-alpha-98e80ce9 (220)``
-- **发行日期**： 2026 年 4 月 16 日
-- **检测备注**：This can be the most challenging one among all the detectors. 这应该是目前最难以绕过的检测。
+- **最新版本**：``v2026.05.13-e27a91371532 (422)``
+- **发行日期**： 2026 年 5 月 13 日
+- **检测备注**：This should be the most challenging one among all the detectors. 这应该是目前最难以绕过的检测工具。
 
 ### Hunter
 

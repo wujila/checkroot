@@ -90,12 +90,13 @@ class Detectors:
 			return ""
 	def __getCategory(self:object, code:str, language:str) -> str:
 		if isinstance(code, str) and isinstance(language, str):
-			d = {																																						\
-				"$C_G$":{"*":"Global Android Desktop Application", "zh-CN":"国际安卓桌面应用"}, "$C_Z$":{"*":"Mainland China Android Desktop Application", "zh-CN":"中国大陆安卓桌面应用"}, 
-				"$D_A$":{"*":"Apatch Detection", "zh-CN":"Apatch 检测"}, "$D_E$":{"*":"Environment Detection", "zh-CN":"环境检测"}, 	\
-				"$D_F$":{"*":"Flag Detection", "zh-CN":"安全标志检测"}, "$D_I$":{"*":"Information Gathering", "zh-CN":"信息收集"}, 	\
-				"$D_K$":{"*":"Key Attestation", "zh-CN":"密钥认证"}, "$D_L$":{"*":"Applist Detection", "zh-CN":"应用列表检测"}, 	\
-				"$D_M$":{"*":"Magisk Detection", "zh-CN":"面具检测"}, "$D_P$":{"*":"Play Integrity Check", "zh-CN":"Play 完整性检测"}	\
+			d = {
+				"$C_A$":{"*":"Abroad Android Desktop Application", "zh-CN":"境外安卓桌面应用"}, "$C_K$":{"*":"North Korea Android Desktop Application", "zh-CN":"朝鲜安卓桌面应用"}, 
+				"$C_L$":{"*":"Local Android Desktop Application", "zh-CN":"本地安卓桌面应用"}, "$C_M$":{"*":"Mainland China Android Desktop Application", "zh-CN":"中国大陆安卓桌面应用"}, 
+				"$D_A$":{"*":"Apatch Detection", "zh-CN":"Apatch 检测"}, "$D_E$":{"*":"Environment Detection", "zh-CN":"环境检测"}, "$D_F$":{"*":"Flag Detection", "zh-CN":"安全标志检测"}, 
+				"$D_I$":{"*":"Information Gathering", "zh-CN":"信息收集"}, "$D_K$":{"*":"Key Attestation", "zh-CN":"密钥认证"}, "$D_L$":{"*":"Applist Detection", "zh-CN":"应用列表检测"}, 
+				"$D_M$":{"*":"Magisk Detection", "zh-CN":"面具检测"}, "$D_P$":{"*":"Play Integrity Check", "zh-CN":"Play 完整性检测"}, 
+				"$D_S$":{"*": "SELinux Policy Detection", "zh-CN": "SE 策略检测"}
 			}
 			if code in d:
 				return d[code][language] if language in d[code] else d[code]["*"]
@@ -107,7 +108,10 @@ class Detectors:
 	def __getReleaseDate(self:object, code:str, language:str) -> str:
 		if isinstance(code, str) and isinstance(language, str):
 			if len(code) >= 8 and code[-8:].isdigit():
-				d = {"":"", "=":"", "==":"", "<":{"*":"Before", "zh-CN":"早于"}, "<=":{"*":"On or Before", "zh-CN":"不晚于"}, ">":{"*":"After", "zh-CN":"晚于"}, ">=":{"*":"On or After", "zh-CN":"不早于"}, "!=":{"*":"Not On", "zh-CN":"不是"}}
+				d = {
+					"":"", "=":"", "==":"", "<":{"*":"Before", "zh-CN":"早于"}, "<=":{"*":"On or Before", "zh-CN":"不晚于"}, 
+					">":{"*":"After", "zh-CN":"晚于"}, ">=":{"*":"On or After", "zh-CN":"不早于"}, "!=":{"*":"Not On", "zh-CN":"不是"}
+				}
 				symbol = code[:-8].strip()
 				if symbol in d:
 					year, month, day = int(code[-8:-4]), int(code[-4:-2]), int(code[-2:])
@@ -163,11 +167,11 @@ class Detectors:
 						if "en" in detector["alias"]:
 							aliasVector += detector["alias"]["en"] if isinstance(detector["alias"]["en"], (tuple, list)) else [detector["alias"]["en"]]
 						txt += "; ".join(aliasVector) + "\n"
-					txt += (																																												\
-						"- **Package Names**: " + "; ".join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) if isinstance(detector["packageName"], list) else "- **Package Name**: " + "``{0}``".format(detector["packageName"])	\
+					txt += (
+						"- **Package Names**: " + "; ".join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) if isinstance(detector["packageName"], list) else "- **Package Name**: " + "``{0}``".format(detector["packageName"])
 					) + "\n" if "packageName" in detector else ""
-					txt += (																																							\
-						"- **Official Links**: " + "; ".join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) if isinstance(detector["officialLink"], list) else "- **Official Link**: " + detector["officialLink"]	\
+					txt += (
+						"- **Official Links**: " + "; ".join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) if isinstance(detector["officialLink"], list) else "- **Official Link**: " + detector["officialLink"]
 					) + "\n" if "officialLink" in detector else ""
 					txt += "- **Source Status**: " + self.__getSourceStatus(detector["openSource"], "en") + "\n" if "openSource" in detector else ""
 					txt += "- **Category**: " + self.__getCategory(detector["category"], "en") + "\n" if "category" in detector else ""
@@ -198,11 +202,11 @@ class Detectors:
 						if "zh-CN" in detector["alias"]:
 							aliasVector += detector["alias"]["zh-CN"] if isinstance(detector["alias"]["zh-CN"], (tuple, list)) else [detector["alias"]["zh-CN"]]
 						txt += "; ".join(aliasVector) + "\n"
-					txt += (																																									\
-						"- **应用包名**：{0}\n".format("；".join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) if isinstance(detector["packageName"], list) else "``{0}``".format(detector["packageName"]))		\
+					txt += (
+						"- **应用包名**：{0}\n".format("；".join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) if isinstance(detector["packageName"], list) else "``{0}``".format(detector["packageName"]))
 					) if "packageName" in detector else ""
-					txt += (																																									\
-						"- **官方链接**：{0}\n".format("；".join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) if isinstance(detector["officialLink"], list) else "[{0}]({0})".format(detector["officialLink"]))		\
+					txt += (
+						"- **官方链接**：{0}\n".format("；".join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) if isinstance(detector["officialLink"], list) else "[{0}]({0})".format(detector["officialLink"]))
 					) if "officialLink" in detector else ""
 					txt += "- **开源状态**：" + self.__getSourceStatus(detector["openSource"], "zh-CN") + "\n" if "openSource" in detector else ""
 					txt += "- **类别**：" + self.__getCategory(detector["category"], "zh-CN") + "\n" if "category" in detector else ""
@@ -231,11 +235,11 @@ class Detectors:
 						if "*" in detector["alias"]:
 							aliasVector += detector["alias"]["*"] if isinstance(detector["alias"]["*"], (tuple, list)) else [detector["alias"]["*"]]
 						txt += "; ".join(aliasVector) + "\n"
-					txt += (																																													\
-						"- **Package Names**: " + "; ".join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) if isinstance(detector["packageName"], list) else "- **Package Name**: " + "``{0}``".format(detector["packageName"])		\
+					txt += (
+						"- **Package Names**: " + "; ".join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) if isinstance(detector["packageName"], list) else "- **Package Name**: " + "``{0}``".format(detector["packageName"])
 					) + "\n" if "packageName" in detector else ""
-					txt += (																																							\
-						"- **Official Links**: " + "; ".join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) if isinstance(detector["officialLink"], list) else "- **Official Link**: " + detector["officialLink"]	\
+					txt += (
+						"- **Official Links**: " + "; ".join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) if isinstance(detector["officialLink"], list) else "- **Official Link**: " + detector["officialLink"]
 					) + "\n" if "officialLink" in detector else ""
 					txt += "- **Source Status**: " + self.__getSourceStatus(detector["openSource"], "*") + "\n" if "openSource" in detector else ""
 					txt += "- **Category**: " + self.__getCategory(detector["category"], "*") + "\n" if "category" in detector else ""
@@ -319,10 +323,10 @@ def main() -> int:
 	bRet = detectors.load(jsonFilePath)
 	detectors.checkDetectorFolderPath(detectorFolderPath = detectorFolderPath)
 	if bRet:
-		booleans = [																						\
-			detectors.toMarkdownFile(markdownTextFilePath, languages = ("en", "\n---\n\n", "zh-CN"), isTable = False), 		\
-			detectors.toMarkdownFile(markdownTableFilePath, languages = ("en", "\n---\n\n", "zh-CN"), isTable = True), 		\
-			detectors.toYmlFile(ymlFilePath)																	\
+		booleans = [
+			detectors.toMarkdownFile(markdownTextFilePath, languages = ("en", "\n---\n\n", "zh-CN"), isTable = False), 
+			detectors.toMarkdownFile(markdownTableFilePath, languages = ("en", "\n---\n\n", "zh-CN"), isTable = True), 
+			detectors.toYmlFile(ymlFilePath)
 		]
 	exitCode = EXIT_SUCCESS if bRet and all(booleans) else EXIT_FAILURE
 	try:

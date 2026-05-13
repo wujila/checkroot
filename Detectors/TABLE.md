@@ -5,21 +5,22 @@ en
 
 | 名称 | 应用包名 | 官方链接 | 开源 | 类别 | 最新版本 | 发行日期 |
 | - | - | - | - | - | - | - |
-| Bank of China (Hong Kong) | ``com.bochk.app.aos`` | [https://play.google.com/store/apps/details?id=com.bochk.app.aos](https://play.google.com/store/apps/details?id=com.bochk.app.aos) | | 国际安卓桌面应用 | | |
-| IIQE 一考通 | ``com.prudential.iiqe`` | [https://iiqe-cms.prudential.com.hk/iiqe/](https://iiqe-cms.prudential.com.hk/iiqe/) | | 国际安卓桌面应用 | | |
-| Money2India | ``com.icicibank.m2i`` | [https://play.google.com/store/apps/details?id=com.icicibank.m2i](https://play.google.com/store/apps/details?id=com.icicibank.m2i) | | 国际安卓桌面应用 | | |
-| MyLink | ``com.ChinaMobile`` | [https://play.google.com/store/apps/details?id=com.ChinaMobile](https://play.google.com/store/apps/details?id=com.ChinaMobile) | | 国际安卓桌面应用 | | |
-| NSDL Jiffy | ``com.nsdlpb.jiffy`` | [https://play.google.com/store/apps/details?id=com.nsdlpb.jiffy](https://play.google.com/store/apps/details?id=com.nsdlpb.jiffy) | | 国际安卓桌面应用 | | |
-| Octopus | ``com.octopuscards.nfc_reader`` | [https://play.google.com/store/apps/details?id=com.octopuscards.nfc_reader](https://play.google.com/store/apps/details?id=com.octopuscards.nfc_reader) | | 国际安卓桌面应用 | | |
-| Revolut | ``com.revolut.revolut`` | [https://play.google.com/store/apps/details?id=com.revolut.revolut](https://play.google.com/store/apps/details?id=com.revolut.revolut) | | 国际安卓桌面应用 | | |
-| Uber Driver | ``com.ubercab.driver`` | [https://play.google.com/store/apps/details?id=com.ubercab.driver](https://play.google.com/store/apps/details?id=com.ubercab.driver) | | 国际安卓桌面应用 | | |
+| Bank of China (Hong Kong) | ``com.bochk.app.aos`` | [https://play.google.com/store/apps/details?id=com.bochk.app.aos](https://play.google.com/store/apps/details?id=com.bochk.app.aos) | | 境外安卓桌面应用 | | |
+| IIQE 一考通 | ``com.prudential.iiqe`` | [https://iiqe-cms.prudential.com.hk/iiqe/](https://iiqe-cms.prudential.com.hk/iiqe/) | | 境外安卓桌面应用 | | |
+| Money2India | ``com.icicibank.m2i`` | [https://play.google.com/store/apps/details?id=com.icicibank.m2i](https://play.google.com/store/apps/details?id=com.icicibank.m2i) | | 境外安卓桌面应用 | | |
+| MyLink | ``com.ChinaMobile`` | [https://play.google.com/store/apps/details?id=com.ChinaMobile](https://play.google.com/store/apps/details?id=com.ChinaMobile) | | 境外安卓桌面应用 | | |
+| NSDL Jiffy | ``com.nsdlpb.jiffy`` | [https://play.google.com/store/apps/details?id=com.nsdlpb.jiffy](https://play.google.com/store/apps/details?id=com.nsdlpb.jiffy) | | 境外安卓桌面应用 | | |
+| Octopus | ``com.octopuscards.nfc_reader`` | [https://play.google.com/store/apps/details?id=com.octopuscards.nfc_reader](https://play.google.com/store/apps/details?id=com.octopuscards.nfc_reader) | | 境外安卓桌面应用 | | |
+| Revolut | ``com.revolut.revolut`` | [https://play.google.com/store/apps/details?id=com.revolut.revolut](https://play.google.com/store/apps/details?id=com.revolut.revolut) | | 境外安卓桌面应用 | | |
+| Uber Driver | ``com.ubercab.driver`` | [https://play.google.com/store/apps/details?id=com.ubercab.driver](https://play.google.com/store/apps/details?id=com.ubercab.driver) | | 境外安卓桌面应用 | | |
 | 邮储银行 | ``com.yitong.mbank.psbc`` | [https://phone.psbc.com](https://phone.psbc.com) | | 中国大陆安卓桌面应用 | | |
 | Android Integrity Checker | ``com.thend.integritychecker`` | [https://play.google.com/store/apps/details?id=com.thend.integritychecker](https://play.google.com/store/apps/details?id=com.thend.integritychecker) | | Play 完整性检测 | ``v1.0.4 (1000004)`` |  2023 年 11 月 14 日 |
 | APTest | ``me.garfieldhan.hiapatch`` | | 否 | Apatch 检测 | ``v1.0`` | 早于 2024 年 12 月 27 日 |
 | Applist Detector | ``icu.nullptr.applistdetector``；``com.tsng.applistdetector`` | [https://github.com/Dr-TSNG/ApplistDetector](https://github.com/Dr-TSNG/ApplistDetector) | 是 | 应用列表检测 | ``v2.4`` |  2022 年 8 月 12 日 |
 | Checker | ``org.akanework.checker`` | | | 环境检测 | ``v1.0.9`` | 早于 2025 年 1 月 8 日 |
-| DRM Info | ``com.androidfung.drminfo`` | [https://play.google.com/store/apps/details?id=com.androidfung.drminfo](https://play.google.com/store/apps/details?id=com.androidfung.drminfo) | | 信息收集 | ``v1.1.15-240919`` |  2024 年 9 月 19 日 |
-| Duck Detector | ``com.studio.duckdetector``；``com.eltavine.duckdetector`` | [https://github.com/eltavine/Duck-Detector-Refactoring](https://github.com/eltavine/Duck-Detector-Refactoring)；[https://t.me/duck_detector](https://t.me/duck_detector) | 是 | 环境检测 | ``v26.4.4-alpha-98e80ce9 (220)`` |  2026 年 4 月 16 日 |
+| DRM Info | ``com.androidfung.drminfo`` | [https://play.google.com/store/apps/details?id=com.androidfung.drminfo](https://play.google.com/store/apps/details?id=com.androidfung.drminfo) | | 信息收集 | ``v1.1.15-240919`` |  2026 年 3 月 28 日 |
+| Dirty Sepolicy | ``org.lsposed.dirtysepolicy`` | [https://github.com/LSPosed/DirtySepolicy](https://github.com/LSPosed/DirtySepolicy) | | SE 策略检测 | ``v2.0 (3)`` |  2026 年 5 月 13 日 |
+| Duck Detector | ``com.studio.duckdetector``；``com.eltavine.duckdetector`` | [https://github.com/eltavine/Duck-Detector-Refactoring](https://github.com/eltavine/Duck-Detector-Refactoring)；[https://t.me/duck_detector](https://t.me/duck_detector) | 是 | 环境检测 | ``v2026.05.13-e27a91371532 (422)`` |  2026 年 5 月 13 日 |
 | Hunter | ``com.zhenxi.hunter`` | | | 环境检测 | ``v6.58 (658)`` |  2026 年 1 月 29 日 |
 | Luna | ``luna.safe.luna`` | [https://www.54nb.com/lunathanks.html](https://www.54nb.com/lunathanks.html)；[http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=59DJwD_gUpDYerkoGXf8hLg4X-opZImm&authKey=KZCWgoCQMOhN5M80g8%2Bq3L%2FIJvITTMAKTSevEQbahYSW5YwlW8Vq8v6JQ4hcivfp&noverify=0&group_code=1022646824](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=59DJwD_gUpDYerkoGXf8hLg4X-opZImm&authKey=KZCWgoCQMOhN5M80g8%2Bq3L%2FIJvITTMAKTSevEQbahYSW5YwlW8Vq8v6JQ4hcivfp&noverify=0&group_code=1022646824) | 否 | 环境检测 | ``v1.4.2.7`` | 不晚于 2025 年 10 月 9 日 |
 | Key Attestation | ``io.github.vvb2060.keyattestation`` | [https://github.com/vvb2060/KeyAttestation](https://github.com/vvb2060/KeyAttestation)；[https://t.me/magiskalpha](https://t.me/magiskalpha)；[https://t.me/playintegrityfix](https://t.me/playintegrityfix)；[https://github.com/chiteroman/KeyAttestation](https://github.com/chiteroman/KeyAttestation) | 是 | 密钥认证 | ``v1.8.4`` |  2025 年 2 月 6 日 |

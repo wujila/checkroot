@@ -21,6 +21,7 @@ Related events related to Magisk, Zygisk, and LSPosed are stored here.
 - 20260325: Some plugins that are explicitly prohibited from distribution in certain regions are being widely disseminated on popular social media platforms in those regions. 
 - 20260331: The LSPosed official released official LSPosed based on libxposed101. 
 - 20260404: Tools similar to MT Manager had their Dex string decryption functionality exposed as having vulnerabilities, and MT Manager subsequently fixed the issue. 
+- 20260510: It is pointed out that userspace rooting solutions such as Magisk cannot avoid being detected. 
 
 ---
 
@@ -47,3 +48,4 @@ Related events related to Magisk, Zygisk, and LSPosed are stored here.
 - 20260325：一些已明确禁止在某些地区传播的插件在该地区的知名社交平台上被大范围传播。
 - 20260331：LSPosed 官方发布了基于 libxposed101 的 LSPosed 构建。
 - 20260404：类似于 MT 管理器的工具的 Dex 字符串解密功能被曝存在风险，随后 MT 管理器修复了相关问题。
+- 29260510：用户态 root 实现方案（如 Magisk）被指出无法规避被检测。
