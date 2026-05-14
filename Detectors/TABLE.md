@@ -18,7 +18,7 @@ en
 | APTest | ``me.garfieldhan.hiapatch`` | | 否 | Apatch 检测 | ``v1.0`` | 早于 2024 年 12 月 27 日 |
 | Applist Detector | ``icu.nullptr.applistdetector``；``com.tsng.applistdetector`` | [https://github.com/Dr-TSNG/ApplistDetector](https://github.com/Dr-TSNG/ApplistDetector) | 是 | 应用列表检测 | ``v2.4`` |  2022 年 8 月 12 日 |
 | Checker | ``org.akanework.checker`` | | | 环境检测 | ``v1.0.9`` | 早于 2025 年 1 月 8 日 |
-| DRM Info | ``com.androidfung.drminfo`` | [https://play.google.com/store/apps/details?id=com.androidfung.drminfo](https://play.google.com/store/apps/details?id=com.androidfung.drminfo) | | 信息收集 | ``v1.1.15-240919`` |  2026 年 3 月 28 日 |
+| DRM Info | ``com.androidfung.drminfo`` | [https://play.google.com/store/apps/details?id=com.androidfung.drminfo](https://play.google.com/store/apps/details?id=com.androidfung.drminfo) | | 信息收集 | ``v1.1.16-250712 (468)`` |  2026 年 3 月 28 日 |
 | Dirty Sepolicy | ``org.lsposed.dirtysepolicy`` | [https://github.com/LSPosed/DirtySepolicy](https://github.com/LSPosed/DirtySepolicy) | | SE 策略检测 | ``v2.0 (3)`` |  2026 年 5 月 13 日 |
 | Duck Detector | ``com.studio.duckdetector``；``com.eltavine.duckdetector`` | [https://github.com/eltavine/Duck-Detector-Refactoring](https://github.com/eltavine/Duck-Detector-Refactoring)；[https://t.me/duck_detector](https://t.me/duck_detector) | 是 | 环境检测 | ``v2026.05.13-e27a91371532 (422)`` |  2026 年 5 月 13 日 |
 | Hunter | ``com.zhenxi.hunter`` | | | 环境检测 | ``v6.58 (658)`` |  2026 年 1 月 29 日 |

@@ -99,7 +99,7 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ Native Test $\rightarrow$ 
 - **Package Name**: ``com.androidfung.drminfo``
 - **Official Link**: https://play.google.com/store/apps/details?id=com.androidfung.drminfo
 - **Category**: Information Gathering
-- **Latest Version**: ``v1.1.15-240919``
+- **Latest Version**: ``v1.1.16-250712 (468)``
 - **Release Date**:  March 28th, 2026
 - **Detection Remark**: Please check whether the Security Level is Level 1. The smaller the level, the better the device is. 
 
@@ -419,7 +419,7 @@ Momo $\rightarrow$ Native Root Detector $\rightarrow$ 牛头人 $\rightarrow$ Du
 - **应用包名**：``com.androidfung.drminfo``
 - **官方链接**：[https://play.google.com/store/apps/details?id=com.androidfung.drminfo](https://play.google.com/store/apps/details?id=com.androidfung.drminfo)
 - **类别**：信息收集
-- **最新版本**：``v1.1.15-240919``
+- **最新版本**：``v1.1.16-250712 (468)``
 - **发行日期**： 2026 年 3 月 28 日
 - **检测备注**：Please check whether the Security Level is Level 1. The smaller the level, the better the device is. 请检查 Security Level 是否为 L1，等级数值越小越好。
 

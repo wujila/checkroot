@@ -18,49 +18,63 @@ The following operations can be configured dynamically without rebooting the dev
 - If you want an application to be able to or not be detected by a certain type of application, simply add the application to the template that works for that type of application in the template management of HMA or one of its variants. 
 - If you want an application to be able to or not be able to detect certain applications, simply click on the application in the application management of HMA or one of its variants to configure it. 
 
-In fact, it might be better to have a plugin that can hide the app list without manual configuration. Here, we propose the following game of cat-and-mouse. 
+In fact, it might be better to have a plugin that can hide the application list without manual configuration. Here, we propose the following game of cat-and-mouse. 
 
 - Universal Set $U$: All applications
   - Set $S$: Unbootable system applications and bootable critical pre-installed system applications
-  - Set $M$ (**M**ice): Non-LRFP-environment-detector LRFP applications that should not be detected and VPN proxy tools (that are disallowed in some regions)
+  - Set $M$ (**M**ice): Non-LRFP-environment-detector LRFP applications that should not be detected and VPN proxy applications (that are disallowed in some regions)
   - Set $D$ (**D**ouble roles of cats and mice): LRFP applications for LRFP environment detection
   - Set $C$ (**C**ats): Regular Android desktop applications (that are keen on detecting LRFP environments)
-    - Subset $C_A$: All regular Android desktop applications that do not belong to the other subsets of Set $C$
+    - Elements directly under Set $C$: Marked as $C^{\ast} = C - C_A - C_K - C_L - C_M$
+    - Subset $C_A$: All the abroad (relative to the following regions) regular Android desktop applications that do not directly belong to Set $C$ and do not belong to the other subsets of Set $C$
+    - Subset $C_K$: Regular Android desktop applications released in North Korea (that are keen on detecting applications from other countries or regions)
+    - Subset $C_L$: Unrecorded local regular Android desktop applications
     - Subset $C_M$: Regular Android desktop applications released in mainland China (that are keen on detecting applications from other countries or regions)
 
-Among them, the variables should satisfy the following relationship. The LRFP applications in set $M$, together with set $D$, constitute all LRFP applications. 
+Among them, the variables should satisfy the following relationship. 
 
 $$
 \begin{cases}
 	U = S \cup M \cup D \cup C \\
-	C = C_A \cup C_M \\
+	C - C^{\ast} = C_A \cup C_K \cup C_L \cup C_M \\
 	\|U\| = \|S\| + \|M\| + \|D\| + \|C\| \\
-	\|C\| = \|C_A\| + \|C_M\|
+	\|C\| = \|C^{\ast}\| + \|C_A\| + \|C_K\| + \|C_L\| + \|C_M\|
 \end{cases}
 $$
 
+Each element is an application package name, corresponding to a leaf node in the tree structure. 
+The LRFP applications in Set $M$ (VPN proxy applications are not LRFP applications), together with Set $D$, constitute all LRFP applications. 
+
 For ease of understanding, some possible examples are as follows. 
 
-- Universal Set $U$: This is a non-leaf node
+- Universal Set $U$: This node only contains non-leaf nodes
   - Set $S$: ``com.android.settings``
   - Set $M$: ``io.github.vvb2060.magisk`` and ``bin.mt.plus``
   - Set $D$: ``com.reveny.nativecheck`` and ``com.zhenxi.hunter``
-  - Set $C$: This is a non-leaf node
+  - Set $C$: This node contains both leaf and non-leaf nodes
+    - $C^{\ast}$: ``com.android.vending`` and ``com.google.android.gms``
     - Subset $C_A$: ``org.telegram.messenger`` and ``com.whatsapp``
-    - Subset $C_M$: ``com.tencent.mm`` and `` com.tencent.mobileqq``
+    - Subset $C_K$: ``com.redflag.monitor`` and ``com.redflag.traceviewer``
+    - Subset $C_L$: --
+    - Subset $C_M$: ``com.tencent.mm`` and ``com.tencent.mobileqq``
 
-Let $x \rhd y$ represent that $x$ can detect $y$, and $x \not\rhd y$ represent that $x$ cannot detect $y$. Implement the following configurations correspondingly for HMA or one of its variants. 
+Let $x \rhd y$ represent that $x$ can detect $y$, 
+and $x \not\rhd y$ represent that $x$ cannot detect $y$. 
+Implement the following configurations correspondingly for HMA or one of its variants. 
 
 - $\forall s \in S, s \rhd U, U \rhd s$
 - $\forall m \in M, m \rhd U, S \rhd m, M \rhd m, D \not\rhd m, C \not\rhd m$
 - $\forall d \in D, d \rhd S, d \not\rhd M, d \rhd d, d \not\rhd D - \{d\}, d \rhd C, S \rhd d, M \rhd d, d \rhd d, D - \{d\} \not\rhd d, C \not\rhd d$
-- $\forall c \in C_A, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C_A, c \not\rhd C_M, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
-- $\forall c \in C_M, c \rhd S, c \not\rhd M, c \not\rhd D, c \not\rhd C_A, c \rhd C_M, S \rhd c, M \rhd c, D \rhd c, C_M \rhd c, C_A \not\rhd c$
+- $\forall c \in C^{\ast}, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
+- $\forall c \in C_A, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C^{\ast}, c \rhd C_A, c \not\rhd C - C^{\ast} - C_A, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
+- $\forall c \in C_K, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C^{\ast}, c \rhd C_K, c \not\rhd C - C^{\ast} - C_K, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
+- $\forall c \in C_L, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C^{\ast}, c \rhd C_L, c \not\rhd C - C^{\ast} - C_L, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
+- $\forall c \in C_M, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C^{\ast}, c \rhd C_M, c \not\rhd C - C^{\ast} - C_M, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
 
-If necessary, the set $M$ can be further partitioned into $M_L$, $M_R$, $M_F$, and $M_P$, satisfying that $M = M_L \cup M_R \cup M_F \cup M_P \land \|M\| = \|M_L\| \cup \|M_R\| \cup \|M_F\| \cup \|M_P\|$. 
-Similarly, the set $D$ can also be further partitioned into $D_A$, $D_E$, $D_F$, $D_I$, $D_K$, $D_L$, $D_M$, $D_P$, and $D_S$, 
+If necessary, Set $M$ can be further partitioned into $M_L$, $M_R$, $M_F$, and $M_P$, satisfying that $M = M_L \cup M_R \cup M_F \cup M_P \land \|M\| = \|M_L\| + \|M_R\| + \|M_F\| + \|M_P\|$. 
+Similarly, Set $D$ can also be further partitioned into $D_A$, $D_E$, $D_F$, $D_I$, $D_K$, $D_L$, $D_M$, $D_P$, and $D_S$, 
 satisfying that $D = D_A \cup D_E \cup D_F \cup D_I \cup D_K \cup D_L \cup D_M \cup D_P \cup D_S \land \|D\| = \|D_A\| + \|D_E\| + \|D_F\| + \|D_I\| + \|D_K\| + \|D_L\| + \|D_M\| + \|D_P\| + \|D_S\|$. 
-Regarding the subsets of the set $M$, please refer to the definition of LRFP. Regarding the subsets of the set $D$, please refer to the Python scripts in [Detectors](../Detectors/). 
+Regarding the subsets of Set $M$, please refer to the definition of LRFP. Regarding the subsets of Set $D$, please refer to the Python scripts in [Detectors](../Detectors/). 
 However, in practice, there is no objective need to isolate these subsets from each other as is done with the (regional) subsets of $C$, 
 and using subsets may increase the time and space overhead of the algorithm. Therefore, generally $D$ and $M$ are not further partitioned into multiple subsets. 
 
@@ -97,42 +111,55 @@ If you wish to own a JSON configuration file generated from cloud databases, you
 
 - 全集 $U$：所有应用程序
   - 集合 $S$：无法启动的系统应用和可启动的关键系统预装应用
-  - 集合 $M$（老**鼠**）：需要过检但不属于集合 $D$ 的 LRFP 应用以及（某些地区不允许使用的）VPN 代理工具
+  - 集合 $M$（老**鼠**）：需要过检但不属于集合 $D$ 的 LRFP 应用以及（某些地区不允许使用的）VPN 代理应用
   - 集合 $D$（既猫又鼠的**双**重身份）：用于 LRFP 环境检测的 LRFP 应用
   - 集合 $C$（**猫**）：（热衷于检测 LRFP 环境的）普通安卓桌面应用
-    - 子集 $C_A$：不归属于集合 $C$ 中其余子集合的所有普通安卓桌面应用
-    - 子集 $C_M$：中国大陆地区发布的（会检测是否存在境外软件的）普通安卓桌面应用
+    - 直属于集合 $C$ 的元素：记为 $C^{\ast} = C - C_A - C_K - C_L - C_M$
+    - 子集 $C_A$：不直属于集合 $C$ 且不归属于集合 $C$ 中其余子集合的所有境外（相对于下述地区）普通安卓桌面应用
+    - 子集 $C_K$：朝鲜发布的（热衷于检测是否存在境外软件的）普通安卓桌面应用
+    - 子集 $C_L$：未记录的本地普通安卓桌面应用
+    - 子集 $C_M$：中国大陆地区发布的（热衷于检测是否存在境外软件的）普通安卓桌面应用
 
-其中，各变量应满足如下关系，集合 $M$ 中的 LRFP 应用和集合 $D$ 共同构成所有 LRFP 应用。
+其中，各变量应满足如下关系。
 
 $$
 \begin{cases}
 	U = S \cup M \cup D \cup C \\
-	C = C_A \cup C_M \\
+	C - C^{\ast} = C_A \cup C_K \cup C_L \cup C_M \\
 	\|U\| = \|S\| + \|M\| + \|D\| + \|C\| \\
-	\|C\| = \|C_A\| + \|C_M\|
+	\|C\| = \|C^{\ast}\| + \|C_A\| + \|C_K\| + \|C_L\| + \|C_M\|
 \end{cases}
 $$
 
+一个元素即为一个应用包名，在树结构中对应一个叶子节点；集合 $M$ 中的 LRFP 应用（VPN 代理应用不属于 LRFP 应用）和集合 $D$ 共同构成所有 LRFP 应用。
+
 为了便于理解，一些可能的例子如下。
 
-- 全集 $U$：这是一个非叶子节点
+- 全集 $U$：此节点仅包含非叶子节点
   - 集合 $S$：``com.android.settings``
   - 集合 $M$：``io.github.vvb2060.magisk`` 和 ``bin.mt.plus``
   - 集合 $D$：``com.reveny.nativecheck`` 和 ``com.zhenxi.hunter``
-  - 集合 $C$：这是一个非叶子节点
-    - 子集 $C_A$：``org.telegram.messenger``
-    - 子集 $C_M$：``com.tencent.mm`` 和 `` com.tencent.mobileqq``
+  - 集合 $C$：此节点既包含叶子节点又包含非叶子节点
+    - $C^{\ast}$：``com.android.vending`` 和 ``com.google.android.gms``
+    - 子集 $C_A$：``org.telegram.messenger`` 和 ``com.whatsapp``
+    - 子集 $C_K$：``com.redflag.monitor`` 和 ``com.redflag.traceviewer``
+    - 子集 $C_L$：——
+    - 子集 $C_M$：``com.tencent.mm`` 和 ``com.tencent.mobileqq``
 
-令 $x \rhd y$ 表达 $x$ 检测到 $y$，$x \not\rhd y$ 表达 $x$ 检测不到 $y$，构造如下配置，并为隐藏应用列表或其变体进行相应地落地。
+令 $x \rhd y$ 表达 $x$ 检测到 $y$，
+$x\not\rhd y$ 表达 $x$ 检测不到 $y$。
+构造如下配置，并为隐藏应用列表或其变体进行相应地落地。
 
 - $\forall s \in S, s \rhd U, U \rhd s$
 - $\forall m \in M, m \rhd U, S \rhd m, M \rhd m, D \not\rhd m, C \not\rhd m$
 - $\forall d \in D, d \rhd S, d \not\rhd M, d \rhd d, d \not\rhd D - \{d\}, d \rhd C, S \rhd d, M \rhd d, d \rhd d, D - \{d\} \not\rhd d, C \not\rhd d$
-- $\forall c \in C_A, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C_A, c \not\rhd C_M, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
-- $\forall c \in C_M, c \rhd S, c \not\rhd M, c \not\rhd D, c \not\rhd C_A, c \rhd C_M, S \rhd c, M \rhd c, D \rhd c, C_M \rhd c, C_A \not\rhd c$
+- $\forall c \in C^{\ast}, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
+- $\forall c \in C_A, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C^{\ast}, c \rhd C_A, c \not\rhd C - C^{\ast} - C_A, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
+- $\forall c \in C_K, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C^{\ast}, c \rhd C_K, c \not\rhd C - C^{\ast} - C_K, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
+- $\forall c \in C_L, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C^{\ast}, c \rhd C_L, c \not\rhd C - C^{\ast} - C_L, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
+- $\forall c \in C_M, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C^{\ast}, c \rhd C_M, c \not\rhd C - C^{\ast} - C_M, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
 
-如有需要，还可将集合 $M$ 进一步划分为 $M_L$、$M_R$、$M_F$ 和 $M_P$，并使其满足 $M = M_L \cup M_R \cup M_F \cup M_P \land \|M\| = \|M_L\| \cup \|M_R\| \cup \|M_F\| \cup \|M_P\|$；
+如有需要，还可将集合 $M$ 进一步划分为 $M_L$、$M_R$、$M_F$ 和 $M_P$，并使其满足 $M = M_L \cup M_R \cup M_F \cup M_P \land \|M\| = \|M_L\| + \|M_R\| + \|M_F\| + \|M_P\|$；
 或将集合 $D$ 进一步划分为 $D_A$、$D_E$、$D_F$、$D_I$、$D_K$、$D_L$、$D_M$、$D_P$ 和 $D_S$，
 并使其满足 $D = D_A \cup D_E \cup D_F \cup D_I \cup D_K \cup D_L \cup D_M \cup D_P \cup D_S \land \|D\| = \|D_A\| + \|D_E\| + \|D_F\| + \|D_I\| + \|D_K\| + \|D_L\| + \|D_M\| + \|D_P\| + \|D_S\|$。
 关于集合 $M$ 的子集，请参阅 LRFP 的定义；关于集合 $D$ 的子集，请参阅 [Detectors](../Detectors/) 中的 Python 脚本。

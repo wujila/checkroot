@@ -99,7 +99,7 @@
   packageName: com.androidfung.drminfo
   officialLink: https://play.google.com/store/apps/details?id=com.androidfung.drminfo
   category: $D_I$
-  latestVersion: v1.1.15-240919
+  latestVersion: v1.1.16-250712 (468)
   releaseDate: = 20260328
   detectionRemark:
     '*': 'Please check whether the Security Level is Level 1. The smaller the level, the better the device is. '

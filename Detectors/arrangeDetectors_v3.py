@@ -144,8 +144,12 @@ class Detectors:
 			for detector in self.__data:
 				markdown += "| "
 				markdown += detector["name"] + " | " if "name" in detector else "| "
-				markdown += (separator.join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) if isinstance(detector["packageName"], list) else "``{0}``".format(detector["packageName"])) + " | " if "packageName" in detector else "| "
-				markdown += (separator.join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) if isinstance(detector["officialLink"], list) else "[{0}]({0})".format(detector["officialLink"])) + " | " if "officialLink" in detector else "| "
+				markdown += (separator.join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) if isinstance(
+					detector["packageName"], list
+				) else "``{0}``".format(detector["packageName"])) + " | " if "packageName" in detector else "| "
+				markdown += (separator.join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) if isinstance(
+					detector["officialLink"], list
+				) else "[{0}]({0})".format(detector["officialLink"])) + " | " if "officialLink" in detector else "| "
 				markdown += self.__getSourceStatus(detector["openSource"], language) + " | " if "openSource" in detector else "| "
 				markdown += self.__getCategory(detector["category"], language) + " | " if "category" in detector else "| "
 				markdown += "``{0}`` | ".format(detector["latestVersion"]) if "latestVersion" in detector else "| "
@@ -167,12 +171,16 @@ class Detectors:
 						if "en" in detector["alias"]:
 							aliasVector += detector["alias"]["en"] if isinstance(detector["alias"]["en"], (tuple, list)) else [detector["alias"]["en"]]
 						txt += "; ".join(aliasVector) + "\n"
-					txt += (
-						"- **Package Names**: " + "; ".join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) if isinstance(detector["packageName"], list) else "- **Package Name**: " + "``{0}``".format(detector["packageName"])
-					) + "\n" if "packageName" in detector else ""
-					txt += (
-						"- **Official Links**: " + "; ".join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) if isinstance(detector["officialLink"], list) else "- **Official Link**: " + detector["officialLink"]
-					) + "\n" if "officialLink" in detector else ""
+					if "packageName" in detector:
+						if isinstance(detector["packageName"], list):
+							txt += "- **Package Names**: " + "; ".join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) + "\n"
+						else:
+							txt += "- **Package Name**: " + "``{0}``".format(detector["packageName"]) + "\n"
+					if "officialLink" in detector:
+						if isinstance(detector["officialLink"], list):
+							txt += "- **Official Links**: " + "; ".join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) + "\n"
+						else:
+							txt += "- **Official Link**: " + detector["officialLink"] + "\n"
 					txt += "- **Source Status**: " + self.__getSourceStatus(detector["openSource"], "en") + "\n" if "openSource" in detector else ""
 					txt += "- **Category**: " + self.__getCategory(detector["category"], "en") + "\n" if "category" in detector else ""
 					txt += "- **Latest Version**: ``{0}``\n".format(detector["latestVersion"]) if "latestVersion" in detector else ""
@@ -202,12 +210,16 @@ class Detectors:
 						if "zh-CN" in detector["alias"]:
 							aliasVector += detector["alias"]["zh-CN"] if isinstance(detector["alias"]["zh-CN"], (tuple, list)) else [detector["alias"]["zh-CN"]]
 						txt += "; ".join(aliasVector) + "\n"
-					txt += (
-						"- **应用包名**：{0}\n".format("；".join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) if isinstance(detector["packageName"], list) else "``{0}``".format(detector["packageName"]))
-					) if "packageName" in detector else ""
-					txt += (
-						"- **官方链接**：{0}\n".format("；".join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) if isinstance(detector["officialLink"], list) else "[{0}]({0})".format(detector["officialLink"]))
-					) if "officialLink" in detector else ""
+					if "packageName" in detector:
+						if isinstance(detector["packageName"], list):
+							txt += "- **应用包名**：" + "；".join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) + "\n"
+						else:
+							txt += "- **应用包名**：" + "``{0}``".format(detector["packageName"]) + "\n"
+					if "officialLink" in detector:
+						if isinstance(detector["officialLink"], list):
+							txt += "- **官方链接**：" + "；".join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) + "\n"
+						else:
+							txt += "- **官方链接**：" + "[{0}]({0})".format(detector["officialLink"]) + "\n"
 					txt += "- **开源状态**：" + self.__getSourceStatus(detector["openSource"], "zh-CN") + "\n" if "openSource" in detector else ""
 					txt += "- **类别**：" + self.__getCategory(detector["category"], "zh-CN") + "\n" if "category" in detector else ""
 					txt += "- **最新版本**：``{0}``\n".format(detector["latestVersion"]) if "latestVersion" in detector else ""
@@ -235,12 +247,16 @@ class Detectors:
 						if "*" in detector["alias"]:
 							aliasVector += detector["alias"]["*"] if isinstance(detector["alias"]["*"], (tuple, list)) else [detector["alias"]["*"]]
 						txt += "; ".join(aliasVector) + "\n"
-					txt += (
-						"- **Package Names**: " + "; ".join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) if isinstance(detector["packageName"], list) else "- **Package Name**: " + "``{0}``".format(detector["packageName"])
-					) + "\n" if "packageName" in detector else ""
-					txt += (
-						"- **Official Links**: " + "; ".join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) if isinstance(detector["officialLink"], list) else "- **Official Link**: " + detector["officialLink"]
-					) + "\n" if "officialLink" in detector else ""
+					if "packageName" in detector:
+						if isinstance(detector["packageName"], list):
+							txt += "- **Package Names**: " + "; ".join(["``{0}``".format(pkg) for pkg in detector["packageName"]]) + "\n"
+						else:
+							txt += "- **Package Name**: " + "``{0}``".format(detector["packageName"]) + "\n"
+					if "officialLink" in detector:
+						if isinstance(detector["officialLink"], list):
+							txt += "- **Official Links**: " + "; ".join(["[{0}]({0})".format(link) for link in detector["officialLink"]]) + "\n"
+						else:
+							txt += "- **Official Link**: " + detector["officialLink"] + "\n"
 					txt += "- **Source Status**: " + self.__getSourceStatus(detector["openSource"], "*") + "\n" if "openSource" in detector else ""
 					txt += "- **Category**: " + self.__getCategory(detector["category"], "*") + "\n" if "category" in detector else ""
 					txt += "- **Latest Version**: ``{0}``\n".format(detector["latestVersion"]) if "latestVersion" in detector else ""
