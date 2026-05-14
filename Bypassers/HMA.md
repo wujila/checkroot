@@ -72,7 +72,14 @@ Implement the following configurations correspondingly for HMA or one of its var
 - $\forall c \in C_M, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C^{\ast}, c \rhd C_M, c \not\rhd C - C^{\ast} - C_M, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
 
 If necessary, Set $M$ can be further partitioned into $M_L$, $M_R$, $M_F$, and $M_P$, satisfying that $M = M_L \cup M_R \cup M_F \cup M_P \land \|M\| = \|M_L\| + \|M_R\| + \|M_F\| + \|M_P\|$. 
-Similarly, Set $D$ can also be further partitioned into $D_A$, $D_E$, $D_F$, $D_I$, $D_K$, $D_L$, $D_M$, $D_P$, and $D_S$, 
+Similarly, Set $D$ can also be further partitioned into $D_A$, 
+$D_E$, 
+$D_F$, 
+$D_I$, 
+$D_K$, 
+$D_L$, 
+$D_M$, 
+$D_P$, and $D_S$, 
 satisfying that $D = D_A \cup D_E \cup D_F \cup D_I \cup D_K \cup D_L \cup D_M \cup D_P \cup D_S \land \|D\| = \|D_A\| + \|D_E\| + \|D_F\| + \|D_I\| + \|D_K\| + \|D_L\| + \|D_M\| + \|D_P\| + \|D_S\|$. 
 Regarding the subsets of Set $M$, please refer to the definition of LRFP. Regarding the subsets of Set $D$, please refer to the Python scripts in [Detectors](../Detectors/). 
 However, in practice, there is no objective need to isolate these subsets from each other as is done with the (regional) subsets of $C$, 
@@ -160,7 +167,14 @@ $x\not\rhd y$ 表达 $x$ 检测不到 $y$。
 - $\forall c \in C_M, c \rhd S, c \not\rhd M, c \not\rhd D, c \rhd C^{\ast}, c \rhd C_M, c \not\rhd C - C^{\ast} - C_M, S \rhd c, M \rhd c, D \rhd c, C_M \not\rhd c, C_A \rhd c$
 
 如有需要，还可将集合 $M$ 进一步划分为 $M_L$、$M_R$、$M_F$ 和 $M_P$，并使其满足 $M = M_L \cup M_R \cup M_F \cup M_P \land \|M\| = \|M_L\| + \|M_R\| + \|M_F\| + \|M_P\|$；
-或将集合 $D$ 进一步划分为 $D_A$、$D_E$、$D_F$、$D_I$、$D_K$、$D_L$、$D_M$、$D_P$ 和 $D_S$，
+或将集合 $D$ 进一步划分为 $D_A$、
+$D_E$、
+$D_F$、
+$D_I$、
+$D_K$、
+$D_L$、
+$D_M$、
+$D_P$ 和 $D_S$，
 并使其满足 $D = D_A \cup D_E \cup D_F \cup D_I \cup D_K \cup D_L \cup D_M \cup D_P \cup D_S \land \|D\| = \|D_A\| + \|D_E\| + \|D_F\| + \|D_I\| + \|D_K\| + \|D_L\| + \|D_M\| + \|D_P\| + \|D_S\|$。
 关于集合 $M$ 的子集，请参阅 LRFP 的定义；关于集合 $D$ 的子集，请参阅 [Detectors](../Detectors/) 中的 Python 脚本。
 不过，在实际使用中，由于客观上不需要将这些子集像 $C$ 的（区域性）子集那样相互隔离，且使用子集会增加算法的时间和空间开销，故而在一般情况下，$D$ 和 $M$ 不会被进一步拆为若干个子集。
