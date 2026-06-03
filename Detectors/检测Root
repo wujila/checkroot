@@ -17,9 +17,10 @@ Duck Detector 检测root
 https://github.com/eltavine/Duck-Detector-Refactoring
 
 元模块magic mount rs
-https://github.com/Tools-cx-app/meta-magic_mount-rs
+https://github.com/KernelSU-Modules-Repo/magic_mount_rs
 
-hma-OSS (hybird Mount)
+元模块hma-OSS (hybird Mount)
+https://github.com/Hybrid-Mount/meta-hybrid_mount/releases
 
 zygisknext框架
 https://github.com/Dr-TSNG/ZygiskNext/releases
