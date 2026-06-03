@@ -9,25 +9,26 @@ Luna检测
 ROOT检测-Android-Native-Root-Detector 
 https://github.com/reveny/Android-Native-Root-Detector
 
-ApplistDetector
+ApplistDetector 检测root
 https://github.com/Dr-TSNG/ApplistDetector
 
-Duck Detector
+Duck Detector 检测root
+https://github.com/eltavine/Duck-Detector-Refactoring
 
 元模块magic mount rs
 
 hma-OSS (hybird Mount)
 
-zygisknext
+zygisknext框架
 https://github.com/Dr-TSNG/ZygiskNext/releases
 
-rezygisk
+rezygisk框架
 https://github.com/PerformanC/ReZygisk/releases/tag/v1.0.0
 
-隐藏引用列表下载
+隐藏引用列表下载框架应用
 https://github.com/Dr-TSNG/Hide-My-Applist
 
-Lsposed下载，（github上已不更新），只在TG群更新
+Lsposed模块下载，（github上已不更新），只在TG群更新
 https://t.me/LSPosed
 
 Shamiko-zygisk
